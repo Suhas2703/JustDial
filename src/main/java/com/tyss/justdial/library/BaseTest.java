@@ -118,6 +118,7 @@ public class BaseTest implements IAutoConstant {
 
 
 	/**
+	 * Launching the Application
 	 * @author Automation Team
 	 * @param deviceName
 	 * @param platformName
@@ -156,12 +157,12 @@ public class BaseTest implements IAutoConstant {
 		capabilities.setCapability("uiautomator2ServerInstallTimeout", 50000);
 	
 		try {
-			
 			if (driver != null) {
-			
 			}
-			driver = new AndroidDriver<MobileElement>(new URL("http://" + ip + ":" + port + "/wd/hub"), capabilities);
-		} catch (MalformedURLException e) {
+			URL url = new URL("http://" + ip + ":" + port + "/wd/hub");
+			driver = new AndroidDriver<MobileElement>(url, capabilities);
+		} catch (MalformedURLException e) 
+		{
 			e.printStackTrace();
 		}
 			mobileActionUtil = new MobileActionUtil(driver);
@@ -169,7 +170,7 @@ public class BaseTest implements IAutoConstant {
 	}
 
 	/**
-	 * Closing the  driver Session
+	 * Closing The Driver Session
 	 */
 	public void closeApp() {
 		try {

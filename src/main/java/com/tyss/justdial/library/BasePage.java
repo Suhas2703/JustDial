@@ -11,7 +11,7 @@ public class BasePage {
 	public MobileActionUtil mobileActionUtil;
 
 	/**
-	 * Initailizing PageFactory for all the POM Pages
+	 * Initializing PageFactory for all the POM Pages
 	 * @param driver
 	 * @param mobileActionUtil
 	 */

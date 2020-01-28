@@ -22,4 +22,5 @@ public interface IAutoConstant {
 	String PORT ="PORT"; 
 	String UDID ="UDID"; 
 	String IP ="IP";
+
 }
