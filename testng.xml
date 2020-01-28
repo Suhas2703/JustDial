@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" parallel="tests" thread-count="2">
+	<listeners>
+		<listener
+			class-name="com.tyss.justdial.extentreports.TestListener" />
+	</listeners>
+ 	<test thread-count="1" name="Device1Test">
+		<parameter name="deviceName" value="Galaxy M20"></parameter>
+		<parameter name="platformName" value="android"></parameter>
+		<parameter name="platformVersion" value="9.0"></parameter>
+		<parameter name="automationName" value="appium"></parameter>
+		<parameter name="appPackage" value="com.justdial.search"></parameter>
+		<parameter name="appActivity"
+			value=".SplashScreenNewActivity"></parameter>
+		<parameter name="port" value="4723"></parameter>
+		<parameter name="udid" value="3401eb0e8c0c4609"></parameter>
+		<parameter name="ip" value="localhost"></parameter>
+		<classes>
+			<class
+				name="com.tyss.justdial.testscripts.homepage.JustDial_HomePageTest_TC0024" />
+
+		</classes>
+	</test> 
+	<test thread-count="1" name="Device2Test">
+		<parameter name="deviceName" value="Galaxy M20"></parameter>
+		<parameter name="platformName" value="android"></parameter>
+		<parameter name="platformVersion" value="10"></parameter>
+		<parameter name="automationName" value="appium"></parameter>
+		<parameter name="appPackage" value="com.justdial.search"></parameter>
+		<parameter name="appActivity"
+			value=".SplashScreenNewActivity"></parameter>
+		<parameter name="port" value="4733"></parameter>
+		<parameter name="udid" value="340157f4030c3651"></parameter>
+		<parameter name="ip" value="localhost"></parameter>
+		<classes>
+			<class
+				name="com.tyss.justdial.testscripts.homepage.JustDial_HomePageTest_TC0024" />
+		</classes>
+	</test>
+</suite>
