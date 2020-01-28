@@ -9,28 +9,32 @@ import com.aventstack.extentreports.Status;
 
 public class TestListener implements ITestListener {
 
+	
+	/**
+	 * Design for the Extent TestListener 
+	 */
 public void onStart(ITestContext context) {
-		Reporter.log("************* Test Suite " + context.getName() + " started *************", true);
+		Reporter.log("*************** Test Suite " + context.getName() + " Started *************", true);
 	}
 
 	public void onFinish(ITestContext context) {
-		Reporter.log(("************* Test Suite " + context.getName() + " ending *************"), true);
+		Reporter.log(("*************** Test Suite " + context.getName() + " Ending *************"), true);
 		ExtentTestManager.endTest();
 		ExtentManager.getInstance().flush();
 	}
 
 	public void onTestStart(ITestResult result) {
-		Reporter.log(("************* Running test method " + result.getMethod().getMethodName() + "..."), true);
+		Reporter.log(("*************** Running test method " + result.getMethod().getMethodName() + "..."), true);
 		ExtentTestManager.startTest(result.getMethod().getMethodName());
 	}
 
 	public void onTestSuccess(ITestResult result) {
-		Reporter.log("************* Executed " + result.getMethod().getMethodName() + " test successfully...", true);
-		ExtentTestManager.getTest().log(Status.PASS, "Test passed");
+		Reporter.log("*************** Executed " + result.getMethod().getMethodName() + " Test Successfully...", true);
+		ExtentTestManager.getTest().log(Status.PASS, "Test Passed");
 	}
 
 	public void onTestFailure(ITestResult result) {
-		Reporter.log("************* Test Execution " + result.getMethod().getMethodName() + " failed...", true);
+		Reporter.log("*************** Test Execution " + result.getMethod().getMethodName() + " Failed...", true);
 		ExtentTestManager.getTest().log(Status.FAIL, "Test Failed");
 	}
 
@@ -40,6 +44,6 @@ public void onStart(ITestContext context) {
 	}
 
 	public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
-		System.out.println("************* Test failed but within percentage % " + result.getMethod().getMethodName());
+		System.out.println("*************** Test failed but within percentage % " + result.getMethod().getMethodName());
 	}
 }

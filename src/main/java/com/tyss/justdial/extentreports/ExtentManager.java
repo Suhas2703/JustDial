@@ -10,11 +10,12 @@ import com.aventstack.extentreports.reporter.configuration.Theme;
 
 public class ExtentManager {
 
+	/* Initialize Extent Reports variables*/
 	private static ExtentReports extent;
 	private static String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
 	private static String reportFileName = "JustDial Test-Automation-Report-" + timeStamp + ".html";
 	private static String fileSeperator = System.getProperty("file.separator");
-	private static String reportFilepath = System.getProperty("user.dir") + fileSeperator + "TestReport";
+	private static String reportFilepath = System.getProperty("user.dir") + fileSeperator + "ExecutionReports";
 	private static String reportFileLocation = reportFilepath + fileSeperator + reportFileName;
 
 	public static ExtentReports getInstance() {
@@ -23,7 +24,7 @@ public class ExtentManager {
 		return extent;
 	}
 
-	// Create an extent report instance
+	/* Create an extent report instance */
 	public static ExtentReports createInstance() {
 
 		String fileName = getReportPath(reportFilepath);
@@ -36,13 +37,15 @@ public class ExtentManager {
 
 		extent = new ExtentReports();
 		extent.attachReporter(htmlReporter);
-		// Set environment details
-		extent.setSystemInfo("OS", "Windows");
-		extent.setSystemInfo("AUT", "QA");
+
+		/* Set environment details */
+		extent.setSystemInfo("Mobile Application Name", "Just Dial");
+		extent.setSystemInfo("Platform", "Android");
+
 		return extent;
 	}
 
-	// Create the report path
+	/* Create the report path */
 	private static String getReportPath(String path) {
 
 		File testDirectory = new File(path);

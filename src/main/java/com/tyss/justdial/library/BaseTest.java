@@ -27,7 +27,7 @@ public class BaseTest implements IAutoConstant {
 	
 	/**
 	 * Getting parameters from the TestNG
-	 * @author Shobhan
+	 * @author Automation Team
 	 * @param deviceName
 	 * @param platformName
 	 * @param platformVersion
@@ -118,7 +118,16 @@ public class BaseTest implements IAutoConstant {
 
 
 	/**
-	 * Set the Device Capability
+	 * @author Automation Team
+	 * @param deviceName
+	 * @param platformName
+	 * @param platformVersion
+	 * @param automationName
+	 * @param appPackage
+	 * @param appActivity
+	 * @param port
+	 * @param udid
+	 * @param ip
 	 */
 	public void launchApp(String deviceName,
 								  String platformName, 
