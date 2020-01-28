@@ -428,7 +428,7 @@ public class MobileActionUtil {
 	}
 
 	@SuppressWarnings("deprecation")
-	public WebElement visibilityWaitOfElement(int timeoutInSeconds, WebElement element) {
+	public WebElement visibilityWaitOfElement(long timeoutInSeconds, WebElement element) {
 		return new FluentWait<AndroidDriver>(driver).withTimeout(20, TimeUnit.SECONDS)
 				.pollingEvery(500, TimeUnit.SECONDS).ignoring(NotFoundException.class)
 				.ignoring(NoSuchElementException.class).until(ExpectedConditions.visibilityOf(element));
@@ -447,6 +447,21 @@ public class MobileActionUtil {
 		WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
 		wait.until(ExpectedConditions.elementToBeClickable(element));
 		info(elementName + " is Clickable ");
+	}
+
+	/*
+	 *
+	 */
+	/**
+	 * Wait For Element to be Staleness
+	 * 
+	 * @param element
+	 * @param timeOutInSeconds
+	 * @param elementName
+	 */
+	public void waitForElementStaleness(WebElement element, long timeOutInSeconds, String elementName) {
+		WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
+		wait.until(ExpectedConditions.stalenessOf(element));
 	}
 
 	/**

@@ -2,7 +2,6 @@ package com.tyss.justdial.pages;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.springframework.util.Assert;
 
 import com.tyss.justdial.library.BasePage;
 import com.tyss.justdial.library.MobileActionUtil;
@@ -10,13 +9,29 @@ import com.tyss.justdial.library.MobileActionUtil;
 import io.appium.java_client.android.AndroidDriver;
 
 public class SearchPage extends BasePage {
-	long timeinSeconds = 5;
 
+	/**
+	 * MoviesPage Constructor
+	 * 
+	 * @param driver
+	 * @param mobileActionUtil
+	 */
 	public SearchPage(AndroidDriver driver, MobileActionUtil mobileActionUtil) {
 		super(driver, mobileActionUtil);
-
+	}
+	
+	public void testName(String testName) {
+		mobileActionUtil.info("\n");
+		mobileActionUtil.info("=======================================================================");
+		mobileActionUtil.info(" Test Case Name : " + testName);
+		mobileActionUtil.info("=======================================================================");
+		mobileActionUtil.info("\n");
 	}
 
+	/**
+	 * Adding the Elements
+	 */
+	long timeinSeconds = 5;
 	@FindBy(xpath = "//android.widget.TextView[@text='Search']")
 	private WebElement searchTab;
 
@@ -40,18 +55,17 @@ public class SearchPage extends BasePage {
 
 	@FindBy(xpath = "//android.widget.TextView[contains(@text,\"080-67189999\")]")
 	private WebElement jwMarriotHotelPhoneNoTxt;
-	
+
 	@FindBy(xpath = "//android.widget.TextView[@text='Dr. Rudrappa Hospital']")
 	private WebElement rudrappaHospitalTxt;
-	
+
 	@FindBy(xpath = "//android.widget.TextView[contains(@text,\"+(91)-9152385750\")]")
 	private WebElement rudrappaHospitalPhoneNoTxt;
-	
-	
-	@FindBy(xpath = "//android.widget.TextView[contains(@text,'Cafe Coffee Day')]  ")//android.widget.TextView[contains(@text,"080-67189999")]
+
+	@FindBy(xpath = "//android.widget.TextView[contains(@text,'Cafe Coffee Day')]  ") // android.widget.TextView[contains(@text,"080-67189999")]
 	private WebElement ccdNagwaraTxt;
-	
-	@FindBy(xpath = "//android.widget.TextView[contains(@text,'08431958')]  ")//android.widget.TextView[contains(@text,"080-67189999")]
+
+	@FindBy(xpath = "//android.widget.TextView[contains(@text,'08431958')]  ") // android.widget.TextView[contains(@text,"080-67189999")]
 	private WebElement ccdNagwaraPhoneNoTxt;
 
 	@FindBy(xpath = "(//android.widget.TextView[@resource-id='com.justdial.search:id/filtername'])[2]")
@@ -66,6 +80,9 @@ public class SearchPage extends BasePage {
 		return mobileActionUtil.getWebElement("xpath", "//android.widget.TextView[contains(@text," + e + ")]");
 	}
 
+	/**
+	 * Utilized Methods
+	 */
 	public void verifySearchedKeywordWithVidyarthiBhavan(String enterText) {
 		mobileActionUtil.waitForElement(vidyarthiBhavan, timeinSeconds, enterText);
 		System.out.println(vidyarthiBhavan.getText());
@@ -83,7 +100,7 @@ public class SearchPage extends BasePage {
 		mobileActionUtil.swipeUp(578, 1475, 550);
 		mobileActionUtil.swipeUp(578, 1475, 550);
 		mobileActionUtil.swipeUp(578, 1475, 550);
-		mobileActionUtil.swipeUp(578, 1475, 550);			
+		mobileActionUtil.swipeUp(578, 1475, 550);
 		mobileActionUtil.swipeUp(578, 1475, 550);
 		mobileActionUtil.checkElementScroll(touristAttractionTxt);
 
@@ -101,7 +118,7 @@ public class SearchPage extends BasePage {
 		mobileActionUtil.waitForElement(tajMahalTxt, timeinSeconds, enterText);
 		mobileActionUtil.verifyElementText(tajMahalTxt, timeinSeconds, enterText);
 	}
-	
+
 	public void scrollTillJWMarriotHotelPhoneNumber() {
 		mobileActionUtil.sleep(2);
 		mobileActionUtil.waitForElement(jwMarriottHotelTxt, 2, "'J W Marriott Hotel Label'");
@@ -117,7 +134,6 @@ public class SearchPage extends BasePage {
 		mobileActionUtil.verifyElementText(jwMarriotHotelPhoneNoTxt, 5, expected);
 	}
 
-	
 	public void scrollTillRudrappaHospitalPhoneNumber() {
 
 		mobileActionUtil.sleep(2);
@@ -126,10 +142,13 @@ public class SearchPage extends BasePage {
 		mobileActionUtil.swipeUp(578, 1475, 550);
 		mobileActionUtil.checkElementScroll(rudrappaHospitalPhoneNoTxt);
 		mobileActionUtil.sleep(1);
-/*		driver.findElementByAndroidUIAutomator(
-				"new UiScrollable(new UiSelector()).scrollIntoView(text(\"+(91)-9152385750\"))");*/
+		/*
+		 * driver.findElementByAndroidUIAutomator(
+		 * "new UiScrollable(new UiSelector()).scrollIntoView(text(\"+(91)-9152385750\"))"
+		 * );
+		 */
 	}
-	
+
 	public void verifyRudrappaHospitalPhoneNumber(String expected) {
 		mobileActionUtil.verifyElementText(rudrappaHospitalPhoneNoTxt, 5, expected);
 	}
@@ -141,11 +160,12 @@ public class SearchPage extends BasePage {
 		mobileActionUtil.swipeUp(578, 1475, 550);
 		mobileActionUtil.checkElementScroll(ccdNagwaraPhoneNoTxt);
 		mobileActionUtil.sleep(1);
-		
-//		driver.findElementByAndroidUIAutomator(
-//				"new UiScrollable(new UiSelector()).scrollIntoView(text(\"Make payment using JD Pay\"))");
+
+		// driver.findElementByAndroidUIAutomator(
+		// "new UiScrollable(new UiSelector()).scrollIntoView(text(\"Make
+		// payment using JD Pay\"))");
 	}
-	
+
 	public void verifyCCDPhoneNumber(String expText3) {
 		String numText = ccdNagwaraPhoneNoTxt.getText().split(",")[1].trim().toString();
 		System.out.println(numText);
