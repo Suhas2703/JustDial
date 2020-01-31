@@ -55,18 +55,14 @@ public class LoginPage extends BasePage {
 	 * Utilized Methods
 	 */
 	public void clickOnAgreeAndContinueButton() {
-		try {
-			mobileActionUtil.clickOnMobileElement(agreeAndContinueBtn, "'Agree And Continue' Button");
-		} catch (Exception e) {
-			mobileActionUtil.clickOnElement(agreeAndContinueBtn, "'Agree And Continue' Button");
-		}
+		mobileActionUtil.clickOnMobileElement(agreeAndContinueBtn, "'Agree And Continue' Button");
 	}
 
 	public void clickOnNoneOfTheAbove() {
 		try {
 			
 			if (noneOfTheAboveLnk.isDisplayed()) {
-				mobileActionUtil.clickOnElement(noneOfTheAboveLnk, "'None Of The Above' Button ");
+				mobileActionUtil.clickOnMobileElement(noneOfTheAboveLnk, "'None Of The Above' Button ");
 			}
 		} catch (Exception e) {
 		}
@@ -74,13 +70,13 @@ public class LoginPage extends BasePage {
 	}
 
 	public void clickOnMayBeLaterLink() {
-		mobileActionUtil.clickOnElement(mayBeLaterLnk, "'May Be Later' Link");
+		mobileActionUtil.clickOnMobileElement(mayBeLaterLnk, "'May Be Later' Link");
 	}
 
 	public void clickOnlanguageMayBeLaterLink() {
 		mobileActionUtil.waitForElement(namasteTxt, 5, "Namaste Text");
 		mobileActionUtil.pressBack();
-		mobileActionUtil.clickOnElement(languageMaybelaterlnk, "Language May be later lnk");
+		mobileActionUtil.clickOnMobileElement(languageMaybelaterlnk, "Language May be later lnk");
 	}
 
 	public void goToHomeScreen() {

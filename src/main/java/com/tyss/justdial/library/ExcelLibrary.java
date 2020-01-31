@@ -27,7 +27,8 @@ public class ExcelLibrary {
 			Workbook wb = (Workbook) WorkbookFactory.create(fis);
 			Sheet sht = wb.getSheet(sheetName);
 			data = sht.getRow(rowNo).getCell(cellNo).toString();
-			System.out.println(data);
+//			sht.getRow(rowNo).getLastCellNum();
+			//System.out.println(data);
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -74,4 +75,21 @@ public class ExcelLibrary {
 		}
 		return cellCount;
 	}
+	
+	public void getAllTheExcelData(String excelPath,String sheetName) 
+	{
+		ExcelLibrary excelLibrary = new ExcelLibrary();
+		int row = excelLibrary.getExcelRowCount(excelPath, sheetName);
+		int column = excelLibrary.getExcelCellCount(excelPath, sheetName, row);
+		System.out.println(row);
+		System.out.println(column);
+
+		for (int i = 0; i <= row; i++) {
+
+			for (int j = 0; j <column; j++) {
+				System.out.println(excelLibrary.getExcelData(excelPath, sheetName, i, j));
+			}
+			
+		}
+	} 
 }

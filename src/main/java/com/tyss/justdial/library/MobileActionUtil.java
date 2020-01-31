@@ -1,23 +1,31 @@
 package com.tyss.justdial.library;
 
+import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NotFoundException;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.touch.TouchActions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.ITestResult;
 import org.testng.Reporter;
 
+import com.aventstack.extentreports.Status;
 import com.tyss.justdial.extentreports.ExtentTestManager;
 
 import io.appium.java_client.TouchAction;
@@ -29,6 +37,7 @@ import io.appium.java_client.touch.offset.PointOption;
 public class MobileActionUtil {
 
 	AndroidDriver driver;
+	ITestResult result;
 
 	/**
 	 * Initializing The MobileActionUtil Constructor With Driver Instance
@@ -39,15 +48,53 @@ public class MobileActionUtil {
 		this.driver = driver;
 	}
 
+	public String getScreenShot() {
+		String screenShotName = "screenshot";
+		String dateName = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
+		// Convert web driver object to TakeScreenshot
+		TakesScreenshot scrShot = ((TakesScreenshot) driver);
+		// Call getScreenshotAs method to create image file
+		File SrcFile = scrShot.getScreenshotAs(OutputType.FILE);
+		// Move image file to new destination
+		String DestFile = System.getProperty("user.dir") + "/ScreenShots/" + screenShotName + dateName + ".png";
+
+		File finalDestFile = new File(DestFile);
+
+		// Copy file at destination
+		try {
+			FileUtils.copyFile(SrcFile, finalDestFile);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return DestFile;
+	}
+
+	public void pass(String description) {
+		ExtentTestManager.getTest().pass(description);
+		Reporter.log(description, true);
+	}
+
 	/**
 	 * Log Status : Pass
 	 * 
 	 * @param description
 	 */
 
-	public void pass(String description) {
-		ExtentTestManager.getTest().pass(description);
-		Reporter.log(description, true);
+	public void tearDown(ITestResult result) {
+
+		if (result.getStatus() == ITestResult.FAILURE) {
+			ExtentTestManager.getTest().log(Status.FAIL, "Test Step Failed" + result.getName());
+			ExtentTestManager.getTest().log(Status.FAIL, "Test Step Failed" + result.getThrowable());
+			String screenShotpath = getScreenShot();
+			try {
+				ExtentTestManager.getTest().addScreenCaptureFromPath(screenShotpath);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+		} else {
+
+		}
 	}
 
 	/**
@@ -56,8 +103,26 @@ public class MobileActionUtil {
 	 * @param description
 	 */
 	public void fail(String description) {
-		ExtentTestManager.getTest().fail(description);
-		Reporter.log(description, true);
+		try {
+			String screenShotpath =getScreenShot();
+			Reporter.log(description, true);
+			ExtentTestManager.getTest().fail(description);
+			ExtentTestManager.getTest().addScreenCaptureFromPath(screenShotpath);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		//getfailedScreenshots();
+	}
+
+	public void getScreenshotAndAddToReport() {
+		// mobileActionUtil.getScreenShot("Test");
+		String screenShotpath = getScreenShot();
+		try {
+			ExtentTestManager.getTest().addScreenCaptureFromPath(screenShotpath);
+			sleep(2);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -127,23 +192,15 @@ public class MobileActionUtil {
 	 */
 	public void clickOnMobileElement(WebElement element, String elementName) {
 		try {
-			element.click();
+			WebDriverWait wait = new WebDriverWait(driver,5);
+			wait.ignoring(NoSuchElementException.class).until(ExpectedConditions.visibilityOf(element)).click();
+			//element.click();
 			pass("Clicking on the Element : " + elementName);
 		} catch (Exception e1) {
 			fail("Unable to click on the Element :" + elementName);
 		}
 	}
 
-	/**
-	 * Click On Element
-	 * 
-	 * @param element
-	 * @param elementName
-	 */
-	public void clickOnElement(WebElement element, String elementName) {
-		element.click();
-		info("Clicking On Element " + elementName);
-	}
 
 	/**
 	 * Enter the Text for WebElement
@@ -216,7 +273,13 @@ public class MobileActionUtil {
 	 */
 	public void openNotification() {
 		info("Opening the Notification");
-		driver.openNotifications();
+		try {
+			driver.openNotifications();
+			pass("Notification Opened");
+		} catch (Exception e) {
+			fail("unable to open the Notification");
+		}
+
 	}
 
 	/**
@@ -242,15 +305,10 @@ public class MobileActionUtil {
 
 		TouchActions action = new TouchActions(driver);
 		try {
-
 			action.singleTap(element).perform();
 			pass("Clicking on the Element " + elementName);
 		} catch (Exception e1) {
-			/*
-			 * try { element.click(); } catch (Exception e2) {
-			 */
 			fail("Unable to click on the Element " + elementName);
-			// }
 		}
 
 	}
@@ -267,8 +325,8 @@ public class MobileActionUtil {
 
 		info("swipe coordinates detail");
 		/*
-		 * info("From X:" + fromX); info("From Y:" + fromY); info("To X:" +
-		 * toX); info("To Y:" + toY);
+		 * info("From X:" + fromX); info("From Y:" + fromY); info("To X:" + toX);
+		 * info("To Y:" + toY);
 		 */
 		TouchAction action = new TouchAction(driver);
 		action.longPress(PointOption.point(fromX, fromY)).moveTo(PointOption.point(toX, toY)).release().perform();
@@ -378,8 +436,26 @@ public class MobileActionUtil {
 	public void SingleTap(WebElement element) {
 		TouchActions action = new TouchActions(driver);
 		action.singleTap(element).perform();
+		action.doubleTap(element).perform();
 	}
 
+	/**
+	 * doubleTap
+	 * 
+	 * @param element
+	 */
+	public void doubleTap(WebElement element,String elementName) {
+		TouchActions action = new TouchActions(driver);
+
+		try {
+			action.doubleTap(element).perform();
+			pass("Clicking on the Element : " + elementName);
+		} catch (Exception e) {
+			pass("unable to click on the Element : " + elementName);
+		}
+
+	}
+	
 	/**
 	 * switchToView
 	 */
@@ -417,8 +493,8 @@ public class MobileActionUtil {
 		info("Waiting For Element to Visible : " + elementName);
 		/*
 		 * Wait<AndroidDriver> wait = new
-		 * FluentWait<AndroidDriver>(driver).withTimeout(seconds,
-		 * TimeUnit.SECONDS) .pollingEvery(250,
+		 * FluentWait<AndroidDriver>(driver).withTimeout(seconds, TimeUnit.SECONDS)
+		 * .pollingEvery(250,
 		 * TimeUnit.MICROSECONDS).ignoring(NoSuchElementException.class);
 		 */
 		WebDriverWait wait = new WebDriverWait(driver, 10);
@@ -521,8 +597,25 @@ public class MobileActionUtil {
 		info("Expected Text is " + expectedText);
 		Assert.assertEquals(actualText, expectedText);
 		info(actualText + " is matching with " + expectedText);
+
 	}
 
+	public void verifyElementTextContains(WebElement element, long timeOutInSeconds, String expectedText) {
+		WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
+		wait.until(ExpectedConditions.visibilityOf(element));
+		String actualText = element.getText().toString();
+		info("Actual Text is " + actualText);
+		info("Expected Text is " + expectedText);
+		if(actualText.contains(expectedText)) {
+			info(actualText + " contains " + expectedText);
+		}
+		else {
+			info(actualText + " DO NOT contains " + expectedText);
+			Assert.fail();
+		}
+		
+
+	}
 	/**
 	 * Verify The Text
 	 * 

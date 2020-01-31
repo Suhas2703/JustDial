@@ -1,8 +1,11 @@
 package com.tyss.justdial.pages;
 
+import java.io.IOException;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import com.tyss.justdial.extentreports.ExtentTestManager;
 import com.tyss.justdial.library.BasePage;
 import com.tyss.justdial.library.MobileActionUtil;
 
@@ -19,7 +22,7 @@ public class SearchPage extends BasePage {
 	public SearchPage(AndroidDriver driver, MobileActionUtil mobileActionUtil) {
 		super(driver, mobileActionUtil);
 	}
-	
+
 	public void testName(String testName) {
 		mobileActionUtil.info("\n");
 		mobileActionUtil.info("=======================================================================");
@@ -91,12 +94,13 @@ public class SearchPage extends BasePage {
 
 	public void scrollTillTouristAttraction() {
 		mobileActionUtil.sleep(2);
-		// mobileActionUtil.waitForElement(tajMahalTxt, 2, "'Taj Mahal'");
+		//
 		/*
 		 * driver.findElementByAndroidUIAutomator(
 		 * "new UiScrollable(new UiSelector()).scrollIntoView(text(\"Tourist Attraction\"))"
 		 * );
 		 */
+		mobileActionUtil.waitForElement(tajMahalTxt, 2, "'Taj Mahal' Text");
 		mobileActionUtil.swipeUp(578, 1475, 550);
 		mobileActionUtil.swipeUp(578, 1475, 550);
 		mobileActionUtil.swipeUp(578, 1475, 550);
@@ -112,6 +116,8 @@ public class SearchPage extends BasePage {
 
 	public void verifyTouristAttraction(String expected) {
 		mobileActionUtil.verifyElementText(touristAttractionTxt, 5, expected);
+		takeScreenshot();
+
 	}
 
 	public void verifyTajMahalText(String enterText) {
@@ -132,6 +138,7 @@ public class SearchPage extends BasePage {
 
 	public void verifyJWMarriotHotelPhoneNumber(String expected) {
 		mobileActionUtil.verifyElementText(jwMarriotHotelPhoneNoTxt, 5, expected);
+		mobileActionUtil.getScreenshotAndAddToReport();
 	}
 
 	public void scrollTillRudrappaHospitalPhoneNumber() {
@@ -151,6 +158,7 @@ public class SearchPage extends BasePage {
 
 	public void verifyRudrappaHospitalPhoneNumber(String expected) {
 		mobileActionUtil.verifyElementText(rudrappaHospitalPhoneNoTxt, 5, expected);
+		mobileActionUtil.getScreenshotAndAddToReport();
 	}
 
 	public void scrollTillCCDPhoneNumber() {
@@ -170,6 +178,7 @@ public class SearchPage extends BasePage {
 		String numText = ccdNagwaraPhoneNoTxt.getText().split(",")[1].trim().toString();
 		System.out.println(numText);
 		mobileActionUtil.verifyText(numText, expText3);
+		mobileActionUtil.getScreenshotAndAddToReport();
 	}
 
 	public void verifyPhoneNumber(String enterText) {
@@ -179,11 +188,21 @@ public class SearchPage extends BasePage {
 	public void verifySearchResultPage(String enterText) {
 		mobileActionUtil.waitForElement(searchTab, timeinSeconds, "Search Navigation Bar");
 		mobileActionUtil.verifyElementText(searchTab, timeinSeconds, enterText);
+		mobileActionUtil.getScreenshotAndAddToReport();
 	}
 
 	public void verifyDateTab() {
 		mobileActionUtil.info(dateTab.getText());
 		mobileActionUtil.verifyElementIsDisplayed(dateTab, timeinSeconds, "Date Tab");
 
+	}
+
+	public void takeScreenshot() {
+		String screenShotpath = mobileActionUtil.getScreenShot();
+		try {
+			ExtentTestManager.getTest().addScreenCaptureFromPath(screenShotpath);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

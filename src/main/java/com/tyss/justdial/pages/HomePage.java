@@ -106,16 +106,11 @@ public class HomePage extends BasePage {
 
 	@FindBy(xpath = "(//android.widget.TextView[@resource-id='com.justdial.search:id/displayTxt']|//android.widget.TextView[@resource-id='com.justdial.search:id/autoArea'])[2]")
 	private WebElement generalisedXpath2;
-
+/*
 	@FindBy(xpath = "//android.widget.TextView[@text='Home']")
 	private WebElement homeIcon;
-
-	/**
-	 * dynamic X-path
-	 * 
-	 * @param value
-	 * @return
-	 */
+*/
+	
 	private WebElement getLocation(String value) {
 		return mobileActionUtil.getWebElement("xpath", "//android.widget.TextView[@text='" + value + "']");
 	}
@@ -125,28 +120,25 @@ public class HomePage extends BasePage {
 				"(//android.widget.TextView[@resource-id='com.justdial.search:id/displayTxt'])[" + value + "]");
 	}
 
-	/**
-	 * Utilized Functions
-	 */
 
+    /**
+     * @author Shobhan
+     * @description Method to click on serach box
+     */
 	public void clickOnSearchBox() {
-		try {
-			mobileActionUtil.visibilityWaitOfElement(seconds, searchBx1);
-			mobileActionUtil.clickOnElement(searchBx1, "search Box");
-		} catch (Exception e) {
-			homeIcon.click();
-			mobileActionUtil.clickOnElement(searchBx, "search Box");
-		}
+		mobileActionUtil.sleep(5);
+		mobileActionUtil.clickOnMobileElement(searchBx, "search Box");
+	//	mobileActionUtil.doubleTap(searchBx, "search Box");
 		mobileActionUtil.sleep(2);
 	}
 
 	public void clickOnHomeSearchBox() {
 		try {
+			mobileActionUtil.swipeDown(500,600,700);
 			mobileActionUtil.visibilityWaitOfElement(seconds, searchBx1);
-			mobileActionUtil.clickOnElement(searchBx1, "search Box");
+			mobileActionUtil.clickOnMobileElement(searchBx1, "search Box");
 		} catch (Exception e) {
-			homeIcon.click();
-			mobileActionUtil.clickOnElement(searchBx, "search Box");
+			mobileActionUtil.clickOnMobileElement(searchBx, "search Box");
 		}
 	}
 
@@ -154,7 +146,7 @@ public class HomePage extends BasePage {
 		mobileActionUtil.hideKeyboard();
 		mobileActionUtil.sleep(3);
 		try {
-			mobileActionUtil.clickOnElement(selectLocationDrpDwn1, "Select Location Drop Down");
+			mobileActionUtil.clickOnMobileElement(selectLocationDrpDwn1, "Select Location Drop Down");
 			mobileActionUtil.clickOnMobileElement(detecteMyLocationOtn, "Detect My Location ");
 		} catch (Exception e) {
 		}
@@ -351,7 +343,7 @@ public class HomePage extends BasePage {
 	}
 
 	public void selectDominosPizzaOutlets() {
-		mobileActionUtil.clickOnElement(dominosOutletsTxt, "Dominos-Pizza Outlets");
+		mobileActionUtil.clickOnMobileElement(dominosOutletsTxt, "Dominos-Pizza Outlets");
 	}
 
 	public void displayFirstDominosPizza() {
@@ -367,7 +359,7 @@ public class HomePage extends BasePage {
 	}
 
 	public void selectDilwaleDulhaniaLeJayengeHindiMovie() {
-		mobileActionUtil.clickOnElement(getGeneralElement("2"), "Dilwale Dulhania Le Jayenge Hindi Movie");
+		mobileActionUtil.clickOnMobileElement(getGeneralElement("2"), "Dilwale Dulhania Le Jayenge Hindi Movie");
 	}
 
 	public void verifyDDLJSearchResult(String expText1) {

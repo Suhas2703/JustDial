@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.Reporter;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
@@ -16,6 +17,8 @@ import com.tyss.justdial.pages.LoginPage;
 
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.remote.AndroidMobileCapabilityType;
+import io.appium.java_client.remote.MobileCapabilityType;
 
 public class BaseTest implements IAutoConstant {
 
@@ -49,7 +52,7 @@ public class BaseTest implements IAutoConstant {
 				  "port",
 				  "udid",
 				  "ip" })
-	@BeforeClass
+	@BeforeMethod
 	public void beforeConfig(@Optional String deviceName, 
 							 @Optional String platformName, 
 							 @Optional String platformVersion,
@@ -106,14 +109,9 @@ public class BaseTest implements IAutoConstant {
 	/**
 	 * Closing the Session in the Device
 	 */
-	@BeforeMethod
-	public void beforeMethod() {
-		//closeApp();
-	}
-	
-	@AfterClass
+	@AfterSuite
 	public void afterClass() {
-		//closeApp();
+		closeApp();
 	}
 
 
@@ -141,20 +139,22 @@ public class BaseTest implements IAutoConstant {
 								  String ip){
 				
 		DesiredCapabilities capabilities = new DesiredCapabilities();
-		capabilities.setCapability("deviceName", deviceName);
-		capabilities.setCapability("platformName", platformName);
-		capabilities.setCapability("platformVersion", platformVersion);
-		capabilities.setCapability("automationName", automationName);
-		capabilities.setCapability("appPackage", appPackage);
-		capabilities.setCapability("appActivity", appActivity);
-		capabilities.setCapability("fullReset", false);
-		capabilities.setCapability("noReset", false);
-		capabilities.setCapability("appWaitDuration", 180000);
-		capabilities.setCapability("newCommandTimeout", 180000);
-		capabilities.setCapability("autoGrantPermissions", true);
+		capabilities.setCapability(MobileCapabilityType.DEVICE_NAME, deviceName);
+		capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, platformName);
+		capabilities.setCapability(MobileCapabilityType.VERSION, platformVersion);
+		capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, automationName);
+		capabilities.setCapability(MobileCapabilityType.FULL_RESET, false);
+		capabilities.setCapability(MobileCapabilityType.NO_RESET, false);
+		capabilities.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, 180000);
+		capabilities.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, appPackage);
+		capabilities.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, appActivity);
+		capabilities.setCapability(AndroidMobileCapabilityType.APP_WAIT_DURATION, 180000);
+		capabilities.setCapability(AndroidMobileCapabilityType.AUTO_GRANT_PERMISSIONS, true);
+		capabilities.setCapability(MobileCapabilityType.UDID, udid);
 		capabilities.setCapability("autoAcceptAlerts", true);
-		capabilities.setCapability("udid", udid);
 		capabilities.setCapability("uiautomator2ServerInstallTimeout", 50000);
+		capabilities.setCapability("adbExecTimeout", 50000);
+		capabilities.setCapability("gpsEnabled", true);
 	
 		try {
 			if (driver != null) {

@@ -16,7 +16,7 @@ public class S1_CompanySearch_CompleteWord extends BaseTest {
 
 		/* Fetch the Test Data from Excel File */
 		String enterText = ExcelLibrary.getExcelData(XL_TESTPATH, "Sheet1", 67, 1);
-		String expText2 = ExcelLibrary.getExcelData(XL_TESTPATH, "Sheet1", 67, 3);
+		String expText2 = ExcelLibrary.getExcelData(XL_TESTPATH, "Sheet1", 67, 4);
 
 		/* Click On Agree and Continue Button */
 		LoginPage loginPage = new LoginPage(driver, mobileActionUtil);
@@ -57,5 +57,6 @@ public class S1_CompanySearch_CompleteWord extends BaseTest {
 
 		/* Verify Tourist Attraction Text */
 		searchpage.verifyTouristAttraction(expText2);
+
 	}
 }
