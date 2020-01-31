@@ -9,7 +9,8 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 public class ExcelLibrary {
 
 	/**
-	 * To Read the data from the cell
+	 * @author Shobhan
+	 * @description To Read the data from the cell
 	 * @param excelPath
 	 * @param sheetName
 	 * @param rowNo
@@ -21,15 +22,15 @@ public class ExcelLibrary {
 		String data = "";
 
 		try {
-			//System.out.println("excelPath:" + excelPath);
-			System.out.println("SheetName:" + sheetName+" "+"rowNo:" + rowNo + " " + "cellNo:" + cellNo);
+			// System.out.println("excelPath:" + excelPath);
+			System.out.println("SheetName:" + sheetName + " " + "rowNo:" + rowNo + " " + "cellNo:" + cellNo);
 			FileInputStream fis = new FileInputStream(excelPath);
 			Workbook wb = (Workbook) WorkbookFactory.create(fis);
 			Sheet sht = wb.getSheet(sheetName);
 			data = sht.getRow(rowNo).getCell(cellNo).toString();
 //			sht.getRow(rowNo).getLastCellNum();
-			//System.out.println(data);
-			
+			// System.out.println(data);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -37,7 +38,8 @@ public class ExcelLibrary {
 	}
 
 	/**
-	 * To get the Total number of rows(data filled rows) in the sheet 
+	 * @author Shobhan
+	 * @description To get the Total number of rows(data filled rows) in the sheet
 	 * @param excelPath
 	 * @param sheetName
 	 * @return
@@ -56,7 +58,8 @@ public class ExcelLibrary {
 	}
 
 	/**
-	 *  To get the Number of columns from the Each row 
+	 * @author Shobhan
+	 * @description To get the Number of columns from the Each row
 	 * @param excelPath
 	 * @param sheetName
 	 * @param rowNo
@@ -75,9 +78,8 @@ public class ExcelLibrary {
 		}
 		return cellCount;
 	}
-	
-	public void getAllTheExcelData(String excelPath,String sheetName) 
-	{
+
+	public void getAllTheExcelData(String excelPath, String sheetName) {
 		ExcelLibrary excelLibrary = new ExcelLibrary();
 		int row = excelLibrary.getExcelRowCount(excelPath, sheetName);
 		int column = excelLibrary.getExcelCellCount(excelPath, sheetName, row);
@@ -86,10 +88,10 @@ public class ExcelLibrary {
 
 		for (int i = 0; i <= row; i++) {
 
-			for (int j = 0; j <column; j++) {
+			for (int j = 0; j < column; j++) {
 				System.out.println(excelLibrary.getExcelData(excelPath, sheetName, i, j));
 			}
-			
+
 		}
-	} 
+	}
 }

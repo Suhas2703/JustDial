@@ -1,9 +1,8 @@
 package com.tyss.justdial.library;
 
 /**
- * Stored all the required Global Constants
- * 
- * @author Automation Team
+ * @author Shobhan
+ * @description Stored all the required Global Constants
  */
 public interface IAutoConstant {
 

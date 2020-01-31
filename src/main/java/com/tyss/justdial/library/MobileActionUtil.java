@@ -42,6 +42,8 @@ public class MobileActionUtil {
 	/**
 	 * Initializing The MobileActionUtil Constructor With Driver Instance
 	 * 
+	 * @description
+	 * @author Shobhan
 	 * @param driver
 	 */
 	public MobileActionUtil(AndroidDriver driver) {
@@ -75,8 +77,8 @@ public class MobileActionUtil {
 	}
 
 	/**
-	 * Log Status : Pass
-	 * 
+	 * @author Shobhan
+	 * @description Log Status : Pass
 	 * @param description
 	 */
 
@@ -98,22 +100,26 @@ public class MobileActionUtil {
 	}
 
 	/**
-	 * Log Status : Fail
-	 * 
+	 * @author Shobhan
+	 * @description Log Status : Fail
 	 * @param description
 	 */
 	public void fail(String description) {
 		try {
-			String screenShotpath =getScreenShot();
+			String screenShotpath = getScreenShot();
 			Reporter.log(description, true);
 			ExtentTestManager.getTest().fail(description);
 			ExtentTestManager.getTest().addScreenCaptureFromPath(screenShotpath);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		//getfailedScreenshots();
 	}
 
+	/**
+	 * @author Shobhan
+	 * @description Getting Screenshot And Add To Report
+	 * @param description
+	 */
 	public void getScreenshotAndAddToReport() {
 		// mobileActionUtil.getScreenShot("Test");
 		String screenShotpath = getScreenShot();
@@ -126,8 +132,8 @@ public class MobileActionUtil {
 	}
 
 	/**
-	 * Log Status : Info
-	 * 
+	 * @author Shobhan
+	 * @description Log Status : Info
 	 * @param description
 	 */
 	public void info(String description) {
@@ -136,9 +142,9 @@ public class MobileActionUtil {
 	}
 
 	/**
-	 * Get the Web Element Send the name Address of the element and name of the
-	 * locator
-	 * 
+	 * @author Shobhan
+	 * @description Get the Web Element Send the name Address of the element and
+	 *              name of the locator
 	 * @param locatorType
 	 * @param locatorValue
 	 * @return
@@ -155,7 +161,10 @@ public class MobileActionUtil {
 	}
 
 	/**
-	 * Checking for Element Displayed
+	 * 
+	 * @author Shobhan
+	 * 
+	 * @description Checking for Element Displayed
 	 * 
 	 * @param element
 	 * @return
@@ -165,7 +174,8 @@ public class MobileActionUtil {
 	}
 
 	/**
-	 * Checking for Element Enabled
+	 * @author Shobhan
+	 * @description Checking for Element Enabled
 	 * 
 	 * @param element
 	 * @return
@@ -175,7 +185,8 @@ public class MobileActionUtil {
 	}
 
 	/**
-	 * Checking for Element Selected
+	 * @author Shobhan
+	 * @description Checking for Element Enabled
 	 * 
 	 * @param element
 	 * @return
@@ -185,25 +196,26 @@ public class MobileActionUtil {
 	}
 
 	/**
-	 * Click On Mobile Element
+	 * @author Shobhan
+	 * @description Click On Mobile Element
 	 * 
 	 * @param element
 	 * @param elementName
 	 */
 	public void clickOnMobileElement(WebElement element, String elementName) {
 		try {
-			WebDriverWait wait = new WebDriverWait(driver,5);
+			WebDriverWait wait = new WebDriverWait(driver, 5);
 			wait.ignoring(NoSuchElementException.class).until(ExpectedConditions.visibilityOf(element)).click();
-			//element.click();
+			// element.click();
 			pass("Clicking on the Element : " + elementName);
 		} catch (Exception e1) {
 			fail("Unable to click on the Element :" + elementName);
 		}
 	}
 
-
 	/**
-	 * Enter the Text for WebElement
+	 * @author Shobhan
+	 * @description Enter the Text for WebElement
 	 * 
 	 * @param element
 	 * @param enterText
@@ -220,7 +232,8 @@ public class MobileActionUtil {
 	}
 
 	/**
-	 * Enter the Text for List<WebElement>
+	 * @author Shobhan
+	 * @description Enter the Text for List<WebElement>
 	 * 
 	 * @param element
 	 * @param enterText
@@ -236,7 +249,8 @@ public class MobileActionUtil {
 	}
 
 	/**
-	 * Clearing the Text in the Element
+	 * @author Shobhan
+	 * @description Clearing the Text in the Element
 	 * 
 	 * @param element
 	 * @param elementName
@@ -247,7 +261,8 @@ public class MobileActionUtil {
 	}
 
 	/**
-	 * Press Back Navigation
+	 * @author Shobhan
+	 * @description Press Back Navigation
 	 */
 	public void pressBack() {
 		driver.pressKey(new KeyEvent().withKey(AndroidKey.BACK));
@@ -255,7 +270,8 @@ public class MobileActionUtil {
 	}
 
 	/**
-	 * Hide The Keyboard
+	 * @author Shobhan
+	 * @description Hide The Keyboard
 	 */
 	public void hideKeyboard() {
 		try {
@@ -269,7 +285,8 @@ public class MobileActionUtil {
 	}
 
 	/**
-	 * open Notification
+	 * @author Shobhan
+	 * @description open Notification
 	 */
 	public void openNotification() {
 		info("Opening the Notification");
@@ -283,7 +300,8 @@ public class MobileActionUtil {
 	}
 
 	/**
-	 * Tap On Specified Location
+	 * @author Shobhan
+	 * @description Tap On Specified Location
 	 * 
 	 * @param xCoordinate
 	 * @param yCoordinate
@@ -296,7 +314,8 @@ public class MobileActionUtil {
 	}
 
 	/**
-	 * Tap With Element
+	 * @author Shobhan
+	 * @description Tap With Element
 	 * 
 	 * @param element
 	 * @param elementName
@@ -314,7 +333,8 @@ public class MobileActionUtil {
 	}
 
 	/**
-	 * swipe
+	 * @author Shobhan
+	 * @description Swipe Action
 	 * 
 	 * @param fromX
 	 * @param fromY
@@ -333,7 +353,8 @@ public class MobileActionUtil {
 	}
 
 	/**
-	 * swipeDown
+	 * @author Shobhan
+	 * @description Swipe Down
 	 * 
 	 * @param fromX
 	 * @param fromY
@@ -348,7 +369,8 @@ public class MobileActionUtil {
 	}
 
 	/**
-	 * swipeUp
+	 * @author Shobhan
+	 * @description Swipe Up
 	 * 
 	 * @param fromX
 	 * @param fromY
@@ -363,7 +385,8 @@ public class MobileActionUtil {
 	}
 
 	/**
-	 * swipe Left To Right
+	 * @author Shobhan
+	 * @description swipe Left To Right
 	 * 
 	 * @param fromX
 	 * @param fromY
@@ -378,7 +401,8 @@ public class MobileActionUtil {
 	}
 
 	/**
-	 * swipe Right To Left
+	 * @author Shobhan
+	 * @description swipe Right To Left
 	 * 
 	 * @param fromX
 	 * @param fromY
@@ -395,7 +419,8 @@ public class MobileActionUtil {
 	}
 
 	/**
-	 * With Maximum scroll and mobile element
+	 * @author Shobhan
+	 * @description With Maximum scroll and mobile element
 	 * 
 	 * @param fromX
 	 * @param fromY
@@ -429,7 +454,8 @@ public class MobileActionUtil {
 	}
 
 	/**
-	 * SingleTap
+	 * @author Shobhan
+	 * @description SingleTap
 	 * 
 	 * @param element
 	 */
@@ -440,11 +466,12 @@ public class MobileActionUtil {
 	}
 
 	/**
-	 * doubleTap
+	 * @author Shobhan
+	 * @description doubleTap
 	 * 
 	 * @param element
 	 */
-	public void doubleTap(WebElement element,String elementName) {
+	public void doubleTap(WebElement element, String elementName) {
 		TouchActions action = new TouchActions(driver);
 
 		try {
@@ -455,9 +482,10 @@ public class MobileActionUtil {
 		}
 
 	}
-	
+
 	/**
-	 * switchToView
+	 * @author Shobhan
+	 * @description switchToView
 	 */
 	public void switchToView() {
 		info("Switch To View");
@@ -470,7 +498,8 @@ public class MobileActionUtil {
 	}
 
 	/**
-	 * Wait Function
+	 * @author Shobhan
+	 * @description Wait Function
 	 * 
 	 * @param sec
 	 */
@@ -483,7 +512,8 @@ public class MobileActionUtil {
 	}
 
 	/**
-	 * Wait For the Element
+	 * @author Shobhan
+	 * @description Wait For the Element
 	 * 
 	 * @param element
 	 * @param timeOutInSeconds
@@ -513,7 +543,8 @@ public class MobileActionUtil {
 	}
 
 	/**
-	 * Wait For Element to be Click-able
+	 * @author Shobhan
+	 * @description Wait For Element to be Click-able
 	 * 
 	 * @param element
 	 * @param timeOutInSeconds
@@ -529,7 +560,8 @@ public class MobileActionUtil {
 	 *
 	 */
 	/**
-	 * Wait For Element to be Staleness
+	 * @author Shobhan
+	 * @description Wait For Element to be Staleness
 	 * 
 	 * @param element
 	 * @param timeOutInSeconds
@@ -541,7 +573,8 @@ public class MobileActionUtil {
 	}
 
 	/**
-	 * UiScrollable Scroll Till Element
+	 * @author Shobhan
+	 * @description UiScrollable Scroll Till Element
 	 * 
 	 * @param text
 	 */
@@ -551,7 +584,8 @@ public class MobileActionUtil {
 	}
 
 	/**
-	 * Check for The Element and Scroll
+	 * @author Shobhan
+	 * @description Check for The Element and Scroll
 	 * 
 	 * @param element
 	 */
@@ -571,7 +605,8 @@ public class MobileActionUtil {
 	}
 
 	/**
-	 * Get The Text From Element
+	 * @author Shobhan
+	 * @description Get The Text From Element
 	 * 
 	 * @param element
 	 * @return
@@ -583,7 +618,8 @@ public class MobileActionUtil {
 	}
 
 	/**
-	 * Verify The Text
+	 * @author Shobhan
+	 * @description Verify The Text
 	 * 
 	 * @param element
 	 * @param timeOutInSeconds
@@ -600,24 +636,32 @@ public class MobileActionUtil {
 
 	}
 
+	/**
+	 * @author Shobhan
+	 * @description Verify The Text Contains
+	 * 
+	 * @param element
+	 * @param timeOutInSeconds
+	 * @param expectedText
+	 */
 	public void verifyElementTextContains(WebElement element, long timeOutInSeconds, String expectedText) {
 		WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
 		wait.until(ExpectedConditions.visibilityOf(element));
 		String actualText = element.getText().toString();
 		info("Actual Text is " + actualText);
 		info("Expected Text is " + expectedText);
-		if(actualText.contains(expectedText)) {
+		if (actualText.contains(expectedText)) {
 			info(actualText + " contains " + expectedText);
-		}
-		else {
+		} else {
 			info(actualText + " DO NOT contains " + expectedText);
 			Assert.fail();
 		}
-		
 
 	}
+
 	/**
-	 * Verify The Text
+	 * @author Shobhan
+	 * @description Verify The Text
 	 * 
 	 * @param actualText
 	 * @param expectedText
@@ -630,7 +674,8 @@ public class MobileActionUtil {
 	}
 
 	/**
-	 * Verify Element Is Displayed
+	 * @author Shobhan
+	 * @description Verify Element Is Displayed
 	 * 
 	 * @param element
 	 * @param timeOutInSeconds
@@ -648,7 +693,8 @@ public class MobileActionUtil {
 	}
 
 	/**
-	 * Verify Element Is Not Displayed
+	 * @author Shobhan
+	 * @description Verify Element Is Not Displayed
 	 * 
 	 * @param element
 	 * @param timeOutInSeconds
@@ -666,7 +712,8 @@ public class MobileActionUtil {
 	}
 
 	/**
-	 * Click Check Box
+	 * @author Shobhan
+	 * @description Click Check Box
 	 * 
 	 * @param element
 	 * @param elementname
@@ -683,7 +730,8 @@ public class MobileActionUtil {
 	}
 
 	/**
-	 * Get the Next Day date
+	 * @author Shobhan
+	 * @description Get the Next Day date
 	 * 
 	 * @return
 	 */
@@ -694,7 +742,8 @@ public class MobileActionUtil {
 	}
 
 	/**
-	 * Get the Today's date
+	 * @author Shobhan
+	 * @description Get the Today's date
 	 * 
 	 * @return
 	 */

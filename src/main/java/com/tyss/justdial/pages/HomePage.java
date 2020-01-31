@@ -106,11 +106,7 @@ public class HomePage extends BasePage {
 
 	@FindBy(xpath = "(//android.widget.TextView[@resource-id='com.justdial.search:id/displayTxt']|//android.widget.TextView[@resource-id='com.justdial.search:id/autoArea'])[2]")
 	private WebElement generalisedXpath2;
-/*
-	@FindBy(xpath = "//android.widget.TextView[@text='Home']")
-	private WebElement homeIcon;
-*/
-	
+
 	private WebElement getLocation(String value) {
 		return mobileActionUtil.getWebElement("xpath", "//android.widget.TextView[@text='" + value + "']");
 	}

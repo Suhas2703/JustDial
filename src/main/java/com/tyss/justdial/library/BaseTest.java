@@ -29,8 +29,8 @@ public class BaseTest implements IAutoConstant {
 
 	
 	/**
-	 * Getting parameters from the TestNG
-	 * @author Automation Team
+	 * @author Shobhan
+	 * @description Getting parameters from the TestNG
 	 * @param deviceName
 	 * @param platformName
 	 * @param platformVersion
@@ -116,8 +116,8 @@ public class BaseTest implements IAutoConstant {
 
 
 	/**
-	 * Launching the Application
-	 * @author Automation Team
+	 * @author Shobhan
+	 * @description Launching the Application
 	 * @param deviceName
 	 * @param platformName
 	 * @param platformVersion
@@ -170,7 +170,8 @@ public class BaseTest implements IAutoConstant {
 	}
 
 	/**
-	 * Closing The Driver Session
+	 * @author Shobhan
+	 * @description Closing The Driver Session
 	 */
 	public void closeApp() {
 		try {
