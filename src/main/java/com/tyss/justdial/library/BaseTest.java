@@ -146,10 +146,10 @@ public class BaseTest implements IAutoConstant {
 		capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, automationName);
 		capabilities.setCapability(MobileCapabilityType.FULL_RESET, false);
 		capabilities.setCapability(MobileCapabilityType.NO_RESET, false);
-		capabilities.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, 180000);
+		capabilities.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, 1200);
 		capabilities.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, appPackage);
 		capabilities.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, appActivity);
-		capabilities.setCapability(AndroidMobileCapabilityType.APP_WAIT_DURATION, 180000);
+	//	capabilities.setCapability(AndroidMobileCapabilityType.APP_WAIT_DURATION, 180000);
 		capabilities.setCapability(AndroidMobileCapabilityType.AUTO_GRANT_PERMISSIONS, true);
 		capabilities.setCapability(MobileCapabilityType.UDID, udid);
 		capabilities.setCapability("autoAcceptAlerts", true);
@@ -167,7 +167,7 @@ public class BaseTest implements IAutoConstant {
 			e.printStackTrace();
 		}
 			mobileActionUtil = new MobileActionUtil(driver);
-			driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+			driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 	}
 
 	/**
