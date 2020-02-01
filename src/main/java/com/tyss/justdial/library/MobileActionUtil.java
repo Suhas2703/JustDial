@@ -741,5 +741,15 @@ public class MobileActionUtil {
 		cal.add(Calendar.DATE, 0);
 		return new SimpleDateFormat(" MM/dd/yyyy").format(cal.getTime());
 	}
+	
+	/**
+	 * @author Sunil.S
+	 * @description Method to tap on element using touch action class based on co-ordinates
+	 * @param ele
+	 */
+	public void tapOnElement(WebElement ele) {
+		TouchAction action = new TouchAction<>(driver);
+		action.tap(PointOption.point(ele.getLocation().x, ele.getLocation().y)).waitAction().perform();
+	}
 
 }

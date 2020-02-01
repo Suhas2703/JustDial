@@ -5,29 +5,29 @@
 		<listener
 			class-name="com.tyss.justdial.extentreports.TestListener" />
 	</listeners>
-	<test thread-count="1" name="Device1Test">
+ 	<test thread-count="1" name="Device1Test">
 		<parameter name="deviceName"      value="SM_M205F"></parameter>
 		<parameter name="platformName"    value="android"></parameter>
-		<parameter name="platformVersion" value="10.0"></parameter>
-		<parameter name="automationName"  value="appium"></parameter>
+		<parameter name="platformVersion" value="9.0"></parameter>
+		<parameter name="automationName"  value="UiAutomator2"></parameter>
 		<parameter name="appPackage"      value="com.justdial.search"></parameter>
 		<parameter name="appActivity"     value=".SplashScreenNewActivity"></parameter>	
 		<parameter name="port"            value="4723"></parameter>
-	 	<parameter name="udid"            value="340157f4030c3651"></parameter>
+	 	<parameter name="udid"            value="3401eb0e8c0c4609"></parameter>
 		<parameter name="ip"              value="localhost"></parameter>
 		<classes>
 			 <class name="com.tyss.justdial.testscripts.S2_CompanySearch_PartialWord"/> 
 		</classes>
- 	 </test>
+ 	 </test> 
 	<test thread-count="1" name="Device2Test">
 		<parameter name="deviceName"      value="SM_M205F"></parameter>
 		<parameter name="platformName"    value="android"></parameter>
 		<parameter name="platformVersion" value="9.0"></parameter>
-		<parameter name="automationName"  value="appium"></parameter>
+		<parameter name="automationName"  value="UiAutomator2"></parameter>
 		<parameter name="appPackage"      value="com.justdial.search"></parameter>
 		<parameter name="appActivity"     value=".SplashScreenNewActivity"></parameter>	
 		<parameter name="port"            value="4733"></parameter>
-	 	<parameter name="udid"            value="3401eb0e8c0c4609"></parameter>
+	 	<parameter name="udid"            value="340157f4030c3651"></parameter>
 		<parameter name="ip"              value="localhost"></parameter>
 		<classes>
 		           	 <class name="com.tyss.justdial.testscripts.S2_CompanySearch_PartialWord"/>

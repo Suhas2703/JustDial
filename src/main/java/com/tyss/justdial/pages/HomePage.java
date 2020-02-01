@@ -7,7 +7,12 @@ import org.openqa.selenium.support.FindBy;
 import com.tyss.justdial.library.BasePage;
 import com.tyss.justdial.library.MobileActionUtil;
 
+import io.appium.java_client.MobileDriver;
+import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.touch.TapOptions;
+import io.appium.java_client.touch.offset.ElementOption;
+import io.appium.java_client.touch.offset.PointOption;
 
 public class HomePage extends BasePage {
 
@@ -128,7 +133,7 @@ public class HomePage extends BasePage {
 	public void clickOnSearchBox() {
 
 		mobileActionUtil.waitForElementToLoad(5);
-		mobileActionUtil.clickOnMobileElement(searchBx, "search Box");
+	    mobileActionUtil.tapOnElement(searchBx1);
 		mobileActionUtil.waitForElementToLoad(2);
 	}
 
