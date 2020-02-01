@@ -13,17 +13,13 @@ import io.appium.java_client.android.AndroidDriver;
 
 public class SearchPage extends BasePage {
 
-	/**
-	 * MoviesPage Constructor
-	 * 
-	 * @param driver
-	 * @param mobileActionUtil
-	 */
+	
 	public SearchPage(AndroidDriver driver, MobileActionUtil mobileActionUtil) {
 		super(driver, mobileActionUtil);
 	}
 
 	public void testName(String testName) {
+		
 		mobileActionUtil.info("\n");
 		mobileActionUtil.info("=======================================================================");
 		mobileActionUtil.info(" Test Case Name : " + testName);
@@ -31,9 +27,7 @@ public class SearchPage extends BasePage {
 		mobileActionUtil.info("\n");
 	}
 
-	/**
-	 * Adding the Elements
-	 */
+	
 	long timeinSeconds = 5;
 	@FindBy(xpath = "//android.widget.TextView[@text='Search']")
 	private WebElement searchTab;
@@ -83,23 +77,17 @@ public class SearchPage extends BasePage {
 		return mobileActionUtil.getWebElement("xpath", "//android.widget.TextView[contains(@text," + e + ")]");
 	}
 
-	/**
-	 * Utilized Methods
-	 */
+
 	public void verifySearchedKeywordWithVidyarthiBhavan(String enterText) {
+		
 		mobileActionUtil.waitForElement(vidyarthiBhavan, timeinSeconds, enterText);
 		System.out.println(vidyarthiBhavan.getText());
 		mobileActionUtil.verifyElementText(vidyarthiBhavan, timeinSeconds, enterText);
 	}
 
 	public void scrollTillTouristAttraction() {
-		mobileActionUtil.sleep(2);
-		//
-		/*
-		 * driver.findElementByAndroidUIAutomator(
-		 * "new UiScrollable(new UiSelector()).scrollIntoView(text(\"Tourist Attraction\"))"
-		 * );
-		 */
+		
+		mobileActionUtil.waitForElementToLoad(2);
 		mobileActionUtil.waitForElement(tajMahalTxt, 2, "'Taj Mahal' Text");
 		mobileActionUtil.swipeUp(578, 1475, 550);
 		mobileActionUtil.swipeUp(578, 1475, 550);
@@ -111,70 +99,69 @@ public class SearchPage extends BasePage {
 	}
 
 	public void clickOnTouristAttractionText() {
+		
 		mobileActionUtil.clickOnMobileElement(touristAttractionTxt, "'Tourist Attraction' Button");
 	}
 
 	public void verifyTouristAttraction(String expected) {
+		
 		mobileActionUtil.verifyElementText(touristAttractionTxt, 5, expected);
 		takeScreenshot();
 
 	}
 
 	public void verifyTajMahalText(String enterText) {
+		
 		mobileActionUtil.waitForElement(tajMahalTxt, timeinSeconds, enterText);
 		mobileActionUtil.verifyElementText(tajMahalTxt, timeinSeconds, enterText);
 	}
 
 	public void scrollTillJWMarriotHotelPhoneNumber() {
-		mobileActionUtil.sleep(2);
+		
+		mobileActionUtil.waitForElementToLoad(2);
 		mobileActionUtil.waitForElement(jwMarriottHotelTxt, 2, "'J W Marriott Hotel Label'");
 		mobileActionUtil.swipeUp(578, 1475, 550);
 		mobileActionUtil.swipeUp(578, 1475, 550);
 		mobileActionUtil.checkElementScroll(jwMarriotHotelPhoneNoTxt);
-		mobileActionUtil.sleep(1);
-		// driver.findElementByAndroidUIAutomator("new UiScrollable(new
-		// UiSelector()).scrollIntoView(text(\"080-67189999\"))");
+		mobileActionUtil.waitForElementToLoad(1);
+
 	}
 
 	public void verifyJWMarriotHotelPhoneNumber(String expected) {
+		
 		mobileActionUtil.verifyElementText(jwMarriotHotelPhoneNoTxt, 5, expected);
 		mobileActionUtil.getScreenshotAndAddToReport();
 	}
 
 	public void scrollTillRudrappaHospitalPhoneNumber() {
 
-		mobileActionUtil.sleep(2);
+		mobileActionUtil.waitForElementToLoad(2);
 		mobileActionUtil.waitForElement(rudrappaHospitalTxt, 6, "'Rudrappa Hospital Label'");
 		mobileActionUtil.swipeUp(578, 1475, 550);
 		mobileActionUtil.swipeUp(578, 1475, 550);
 		mobileActionUtil.checkElementScroll(rudrappaHospitalPhoneNoTxt);
-		mobileActionUtil.sleep(1);
-		/*
-		 * driver.findElementByAndroidUIAutomator(
-		 * "new UiScrollable(new UiSelector()).scrollIntoView(text(\"+(91)-9152385750\"))"
-		 * );
-		 */
+		mobileActionUtil.waitForElementToLoad(1);
 	}
 
 	public void verifyRudrappaHospitalPhoneNumber(String expected) {
+		
 		mobileActionUtil.verifyElementText(rudrappaHospitalPhoneNoTxt, 5, expected);
 		mobileActionUtil.getScreenshotAndAddToReport();
 	}
 
 	public void scrollTillCCDPhoneNumber() {
-		mobileActionUtil.sleep(2);
+		
+		mobileActionUtil.waitForElementToLoad(2);
 		mobileActionUtil.waitForElement(ccdNagwaraTxt, 6, "'CCD NagaWara Label'");
 		mobileActionUtil.swipeUp(578, 1475, 550);
 		mobileActionUtil.swipeUp(578, 1475, 550);
 		mobileActionUtil.checkElementScroll(ccdNagwaraPhoneNoTxt);
-		mobileActionUtil.sleep(1);
+		mobileActionUtil.waitForElementToLoad(1);
 
-		// driver.findElementByAndroidUIAutomator(
-		// "new UiScrollable(new UiSelector()).scrollIntoView(text(\"Make
-		// payment using JD Pay\"))");
 	}
 
 	public void verifyCCDPhoneNumber(String expText3) {
+		
 		String numText = ccdNagwaraPhoneNoTxt.getText().split(",")[1].trim().toString();
 		System.out.println(numText);
 		mobileActionUtil.verifyText(numText, expText3);
@@ -186,18 +173,21 @@ public class SearchPage extends BasePage {
 	}
 
 	public void verifySearchResultPage(String enterText) {
+		
 		mobileActionUtil.waitForElement(searchTab, timeinSeconds, "Search Navigation Bar");
 		mobileActionUtil.verifyElementText(searchTab, timeinSeconds, enterText);
 		mobileActionUtil.getScreenshotAndAddToReport();
 	}
 
 	public void verifyDateTab() {
+		
 		mobileActionUtil.info(dateTab.getText());
 		mobileActionUtil.verifyElementIsDisplayed(dateTab, timeinSeconds, "Date Tab");
 
 	}
 
 	public void takeScreenshot() {
+		
 		String screenShotpath = mobileActionUtil.getScreenShot();
 		try {
 			ExtentTestManager.getTest().addScreenCaptureFromPath(screenShotpath);

@@ -50,17 +50,14 @@ public class LoginPage extends BasePage {
 	@FindBy(xpath = "//android.widget.TextView[@text='Namaste']")
 	private WebElement namasteTxt;
 
-	
-	/**
-	 * Utilized Methods
-	 */
 	public void clickOnAgreeAndContinueButton() {
 		mobileActionUtil.clickOnMobileElement(agreeAndContinueBtn, "'Agree And Continue' Button");
 	}
 
 	public void clickOnNoneOfTheAbove() {
+
 		try {
-			
+
 			if (noneOfTheAboveLnk.isDisplayed()) {
 				mobileActionUtil.clickOnMobileElement(noneOfTheAboveLnk, "'None Of The Above' Button ");
 			}
@@ -70,16 +67,19 @@ public class LoginPage extends BasePage {
 	}
 
 	public void clickOnMayBeLaterLink() {
+
 		mobileActionUtil.clickOnMobileElement(mayBeLaterLnk, "'May Be Later' Link");
 	}
 
 	public void clickOnlanguageMayBeLaterLink() {
+
 		mobileActionUtil.waitForElement(namasteTxt, 5, "Namaste Text");
 		mobileActionUtil.pressBack();
 		mobileActionUtil.clickOnMobileElement(languageMaybelaterlnk, "Language May be later lnk");
 	}
 
 	public void goToHomeScreen() {
+
 		try {
 			mobileActionUtil.waitForElement(namasteTxt, 10, "Namaste Text");
 
@@ -87,8 +87,8 @@ public class LoginPage extends BasePage {
 				mobileActionUtil.pressBack();
 			}
 		} catch (Exception e) {
-			mobileActionUtil.sleep(1);
-			
+			mobileActionUtil.waitForElementToLoad(1);
+
 			if (namasteTxt.isDisplayed()) {
 				mobileActionUtil.pressBack();
 			}
@@ -96,8 +96,7 @@ public class LoginPage extends BasePage {
 	}
 
 	public void clickOnNoThanksButton() {
-		// mobileActionUtil.clickOnMobileElement(noThanksBtn, "No Thanks
-		// Button");
-		/* mobileActionUtil.sleep(1); */
+		 mobileActionUtil.clickOnMobileElement(noThanksBtn, "No Thanks Button");
+		 mobileActionUtil.waitForElementToLoad(1);
 	}
 }
