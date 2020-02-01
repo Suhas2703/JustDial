@@ -28,9 +28,7 @@ public class ExcelLibrary {
 			Workbook wb = (Workbook) WorkbookFactory.create(fis);
 			Sheet sht = wb.getSheet(sheetName);
 			data = sht.getRow(rowNo).getCell(cellNo).toString();
-//			sht.getRow(rowNo).getLastCellNum();
-			// System.out.println(data);
-
+	
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

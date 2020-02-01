@@ -11,8 +11,8 @@ import io.appium.java_client.android.AndroidDriver;
 public class LoginPage extends BasePage {
 
 	/**
-	 * LoginPage Constructor
-	 * 
+	 * @author Shobhan
+	 * @description Constructor to initialize Login mobile elements
 	 * @param driver
 	 * @param mobileActionUtil
 	 */
@@ -20,6 +20,11 @@ public class LoginPage extends BasePage {
 		super(driver, mobileActionUtil);
 	}
 
+	/**
+	 * @author Shobhan
+	 * @description Method to log test name info
+	 * @param testName
+	 */
 	public void testName(String testName) {
 		mobileActionUtil.info("\n");
 		mobileActionUtil.info("=======================================================================");
@@ -28,9 +33,7 @@ public class LoginPage extends BasePage {
 		mobileActionUtil.info("\n");
 	}
 
-	/**
-	 * Adding the Elements
-	 */
+	/** Log In Screen MOBILE ELEMENTS DECLARATION **/
 	long seconds = 10;
 	@FindBy(id = "com.justdial.search:id/terms_accept_btn")
 	private WebElement agreeAndContinueBtn;
@@ -50,10 +53,19 @@ public class LoginPage extends BasePage {
 	@FindBy(xpath = "//android.widget.TextView[@text='Namaste']")
 	private WebElement namasteTxt;
 
+	/**
+	 * @author Shobhan
+	 * @description Click on Agree And Continue Button
+	 */
 	public void clickOnAgreeAndContinueButton() {
+
 		mobileActionUtil.clickOnMobileElement(agreeAndContinueBtn, "'Agree And Continue' Button");
 	}
 
+	/**
+	 * @author Shobhan
+	 * @description Click on None of the Above Button
+	 */
 	public void clickOnNoneOfTheAbove() {
 
 		try {
@@ -66,11 +78,19 @@ public class LoginPage extends BasePage {
 
 	}
 
+	/**
+	 * @author Shobhan
+	 * @description Click on May Be Later Button
+	 */
 	public void clickOnMayBeLaterLink() {
 
 		mobileActionUtil.clickOnMobileElement(mayBeLaterLnk, "'May Be Later' Link");
 	}
 
+	/**
+	 * @author Shobhan
+	 * @description Click on May Be Later Link in Language Pop Up
+	 */
 	public void clickOnlanguageMayBeLaterLink() {
 
 		mobileActionUtil.waitForElement(namasteTxt, 5, "Namaste Text");
@@ -78,6 +98,10 @@ public class LoginPage extends BasePage {
 		mobileActionUtil.clickOnMobileElement(languageMaybelaterlnk, "Language May be later lnk");
 	}
 
+	/**
+	 * @author Shobhan
+	 * @description Go To Home Screen
+	 */
 	public void goToHomeScreen() {
 
 		try {
@@ -95,8 +119,12 @@ public class LoginPage extends BasePage {
 		}
 	}
 
+	/**
+	 * @author Shobhan
+	 * @description Click On No Thanks Button
+	 */
 	public void clickOnNoThanksButton() {
-		 mobileActionUtil.clickOnMobileElement(noThanksBtn, "No Thanks Button");
-		 mobileActionUtil.waitForElementToLoad(1);
+		mobileActionUtil.clickOnMobileElement(noThanksBtn, "No Thanks Button");
+		mobileActionUtil.waitForElementToLoad(1);
 	}
 }

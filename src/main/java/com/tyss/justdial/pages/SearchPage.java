@@ -12,14 +12,23 @@ import com.tyss.justdial.library.MobileActionUtil;
 import io.appium.java_client.android.AndroidDriver;
 
 public class SearchPage extends BasePage {
-
-	
+	/**
+	 * @author Shobhan
+	 * @description Constructor to initialize Login mobile elements
+	 * @param driver
+	 * @param mobileActionUtil
+	 */
 	public SearchPage(AndroidDriver driver, MobileActionUtil mobileActionUtil) {
 		super(driver, mobileActionUtil);
 	}
 
+	/**
+	 * @author Shobhan
+	 * @description Method to log test name info
+	 * @param testName
+	 */
 	public void testName(String testName) {
-		
+
 		mobileActionUtil.info("\n");
 		mobileActionUtil.info("=======================================================================");
 		mobileActionUtil.info(" Test Case Name : " + testName);
@@ -27,7 +36,7 @@ public class SearchPage extends BasePage {
 		mobileActionUtil.info("\n");
 	}
 
-	
+	/** Search Screen MOBILE ELEMENTS DECLARATION **/
 	long timeinSeconds = 5;
 	@FindBy(xpath = "//android.widget.TextView[@text='Search']")
 	private WebElement searchTab;
@@ -77,16 +86,13 @@ public class SearchPage extends BasePage {
 		return mobileActionUtil.getWebElement("xpath", "//android.widget.TextView[contains(@text," + e + ")]");
 	}
 
-
-	public void verifySearchedKeywordWithVidyarthiBhavan(String enterText) {
-		
-		mobileActionUtil.waitForElement(vidyarthiBhavan, timeinSeconds, enterText);
-		System.out.println(vidyarthiBhavan.getText());
-		mobileActionUtil.verifyElementText(vidyarthiBhavan, timeinSeconds, enterText);
-	}
+	/**
+	 * @author Shobhan
+	 * @description Scroll Till Tourist Attraction
+	 */
 
 	public void scrollTillTouristAttraction() {
-		
+
 		mobileActionUtil.waitForElementToLoad(2);
 		mobileActionUtil.waitForElement(tajMahalTxt, 2, "'Taj Mahal' Text");
 		mobileActionUtil.swipeUp(578, 1475, 550);
@@ -95,29 +101,44 @@ public class SearchPage extends BasePage {
 		mobileActionUtil.swipeUp(578, 1475, 550);
 		mobileActionUtil.swipeUp(578, 1475, 550);
 		mobileActionUtil.checkElementScroll(touristAttractionTxt);
-
 	}
 
+	/**
+	 * @author Shobhan
+	 * @description Click On Tourist Attraction
+	 */
 	public void clickOnTouristAttractionText() {
-		
+
 		mobileActionUtil.clickOnMobileElement(touristAttractionTxt, "'Tourist Attraction' Button");
 	}
 
+	/**
+	 * @author Shobhan
+	 * @description Verify Tourist Attraction
+	 */
 	public void verifyTouristAttraction(String expected) {
-		
+
 		mobileActionUtil.verifyElementText(touristAttractionTxt, 5, expected);
-		takeScreenshot();
+		mobileActionUtil.getScreenshotAndAddToReport();
 
 	}
 
+	/**
+	 * @author Shobhan
+	 * @description Verify Tourist Attraction
+	 */
 	public void verifyTajMahalText(String enterText) {
-		
+
 		mobileActionUtil.waitForElement(tajMahalTxt, timeinSeconds, enterText);
 		mobileActionUtil.verifyElementText(tajMahalTxt, timeinSeconds, enterText);
 	}
 
+	/**
+	 * @author Shobhan
+	 * @description Verify Tourist Attraction
+	 */
 	public void scrollTillJWMarriotHotelPhoneNumber() {
-		
+
 		mobileActionUtil.waitForElementToLoad(2);
 		mobileActionUtil.waitForElement(jwMarriottHotelTxt, 2, "'J W Marriott Hotel Label'");
 		mobileActionUtil.swipeUp(578, 1475, 550);
@@ -127,12 +148,20 @@ public class SearchPage extends BasePage {
 
 	}
 
+	/**
+	 * @author Shobhan
+	 * @description Verify Tourist Attraction
+	 */
 	public void verifyJWMarriotHotelPhoneNumber(String expected) {
-		
+
 		mobileActionUtil.verifyElementText(jwMarriotHotelPhoneNoTxt, 5, expected);
 		mobileActionUtil.getScreenshotAndAddToReport();
 	}
 
+	/**
+	 * @author Shobhan
+	 * @description Verify Tourist Attraction
+	 */
 	public void scrollTillRudrappaHospitalPhoneNumber() {
 
 		mobileActionUtil.waitForElementToLoad(2);
@@ -143,14 +172,22 @@ public class SearchPage extends BasePage {
 		mobileActionUtil.waitForElementToLoad(1);
 	}
 
+	/**
+	 * @author Shobhan
+	 * @description Verify Tourist Attraction
+	 */
 	public void verifyRudrappaHospitalPhoneNumber(String expected) {
-		
+
 		mobileActionUtil.verifyElementText(rudrappaHospitalPhoneNoTxt, 5, expected);
 		mobileActionUtil.getScreenshotAndAddToReport();
 	}
 
+	/**
+	 * @author Shobhan
+	 * @description Verify Tourist Attraction
+	 */
 	public void scrollTillCCDPhoneNumber() {
-		
+
 		mobileActionUtil.waitForElementToLoad(2);
 		mobileActionUtil.waitForElement(ccdNagwaraTxt, 6, "'CCD NagaWara Label'");
 		mobileActionUtil.swipeUp(578, 1475, 550);
@@ -160,39 +197,44 @@ public class SearchPage extends BasePage {
 
 	}
 
+	/**
+	 * @author Shobhan
+	 * @description Verify Tourist Attraction
+	 */
 	public void verifyCCDPhoneNumber(String expText3) {
-		
+
 		String numText = ccdNagwaraPhoneNoTxt.getText().split(",")[1].trim().toString();
 		System.out.println(numText);
 		mobileActionUtil.verifyText(numText, expText3);
 		mobileActionUtil.getScreenshotAndAddToReport();
 	}
 
+	/**
+	 * @author Shobhan
+	 * @description Verify Tourist Attraction
+	 */
 	public void verifyPhoneNumber(String enterText) {
 		mobileActionUtil.verifyElementText(getPhoneNumberElement(enterText), timeinSeconds, enterText);
 	}
 
+	/**
+	 * @author Shobhan
+	 * @description Verify Tourist Attraction
+	 */
 	public void verifySearchResultPage(String enterText) {
-		
+
 		mobileActionUtil.waitForElement(searchTab, timeinSeconds, "Search Navigation Bar");
 		mobileActionUtil.verifyElementText(searchTab, timeinSeconds, enterText);
 		mobileActionUtil.getScreenshotAndAddToReport();
 	}
 
+	/**
+	 * @author Shobhan
+	 * @description Verify Tourist Attraction
+	 */
 	public void verifyDateTab() {
-		
+
 		mobileActionUtil.info(dateTab.getText());
 		mobileActionUtil.verifyElementIsDisplayed(dateTab, timeinSeconds, "Date Tab");
-
-	}
-
-	public void takeScreenshot() {
-		
-		String screenShotpath = mobileActionUtil.getScreenShot();
-		try {
-			ExtentTestManager.getTest().addScreenCaptureFromPath(screenShotpath);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+	}	
 }

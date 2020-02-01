@@ -40,8 +40,8 @@ public class MobileActionUtil {
 	ITestResult result;
 
 	/**
-	 * Initializing The MobileActionUtil Constructor With Driver Instance
-	 * 
+	 * @description Initializing The MobileActionUtil Constructor With Driver
+	 *              Instance
 	 * @description
 	 * @author Shobhan
 	 * @param driver
@@ -76,12 +76,39 @@ public class MobileActionUtil {
 
 	/**
 	 * @author Shobhan
+	 * @description Log Status : Info
+	 * @param description
+	 */
+	public void info(String description) {
+		ExtentTestManager.getTest().info(description);
+		Reporter.log(description, true);
+	}
+
+	/**
+	 * @author Shobhan
 	 * @description Method to log results
 	 * @param description
 	 */
 	public void pass(String description) {
 		ExtentTestManager.getTest().pass(description);
 		Reporter.log(description, true);
+	}
+
+	/**
+	 * @author Shobhan
+	 * @description Log Status : Fail
+	 * @param description
+	 */
+	public void fail(String description) {
+
+		try {
+			String screenShotpath = getScreenShot();
+			Reporter.log(description, true);
+			ExtentTestManager.getTest().fail(description);
+			ExtentTestManager.getTest().addScreenCaptureFromPath(screenShotpath);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -109,23 +136,6 @@ public class MobileActionUtil {
 
 	/**
 	 * @author Shobhan
-	 * @description Log Status : Fail
-	 * @param description
-	 */
-	public void fail(String description) {
-
-		try {
-			String screenShotpath = getScreenShot();
-			Reporter.log(description, true);
-			ExtentTestManager.getTest().fail(description);
-			ExtentTestManager.getTest().addScreenCaptureFromPath(screenShotpath);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * @author Shobhan
 	 * @description Getting Screenshot And Add To Report
 	 * @param description
 	 */
@@ -138,16 +148,6 @@ public class MobileActionUtil {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-
-	/**
-	 * @author Shobhan
-	 * @description Log Status : Info
-	 * @param description
-	 */
-	public void info(String description) {
-		ExtentTestManager.getTest().info(description);
-		Reporter.log(description, true);
 	}
 
 	/**
@@ -211,6 +211,7 @@ public class MobileActionUtil {
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, 5);
 			wait.ignoring(NoSuchElementException.class).until(ExpectedConditions.visibilityOf(element)).click();
+	
 			pass("Clicking on the Element : " + elementName);
 		} catch (Exception e1) {
 			fail("Unable to click on the Element :" + elementName);
@@ -224,7 +225,6 @@ public class MobileActionUtil {
 	 * @param enterText
 	 * @param elementName
 	 */
-
 	public void setText(WebElement element, String enterText, String elementName) {
 
 		try {
@@ -408,7 +408,6 @@ public class MobileActionUtil {
 	 * @param fromY
 	 * @param toX
 	 */
-
 	public void swipeRightToLeft(Integer fromX, Integer fromY, Integer toX) {
 
 		info("swipeRightToLeft");
@@ -460,7 +459,7 @@ public class MobileActionUtil {
 	 * @param element
 	 */
 	public void SingleTap(WebElement element) {
-		
+
 		TouchActions action = new TouchActions(driver);
 		action.singleTap(element).perform();
 		action.doubleTap(element).perform();
@@ -472,7 +471,7 @@ public class MobileActionUtil {
 	 * @param element
 	 */
 	public void doubleTap(WebElement element, String elementName) {
-		
+
 		TouchActions action = new TouchActions(driver);
 		try {
 			action.doubleTap(element).perform();
@@ -488,7 +487,7 @@ public class MobileActionUtil {
 	 * @description switchToView
 	 */
 	public void switchToView() {
-		
+
 		info("Switch To View");
 		Set<String> contextNames = driver.getContextHandles();
 		for (String contextName : contextNames) {
@@ -504,7 +503,7 @@ public class MobileActionUtil {
 	 * @param sec
 	 */
 	public void waitForElementToLoad(int sec) {
-		
+
 		try {
 			Thread.sleep(sec * 1000);
 		} catch (InterruptedException e) {
@@ -544,7 +543,7 @@ public class MobileActionUtil {
 	 * @param elementName
 	 */
 	public void waitForElementClickable(WebElement element, long timeOutInSeconds, String elementName) {
-		
+
 		WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
 		wait.until(ExpectedConditions.elementToBeClickable(element));
 		info(elementName + " is Clickable ");
@@ -558,7 +557,7 @@ public class MobileActionUtil {
 	 * @param elementName
 	 */
 	public void waitForElementStaleness(WebElement element, long timeOutInSeconds, String elementName) {
-		
+
 		WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
 		wait.until(ExpectedConditions.stalenessOf(element));
 	}
@@ -569,7 +568,7 @@ public class MobileActionUtil {
 	 * @param text
 	 */
 	public void scrollTillElement(String text) {
-		
+
 		driver.findElementByAndroidUIAutomator(
 				"new UiScrollable(new UiSelector()).scrollIntoView(text(" + "\\" + "\"" + text + "\\" + "\"" + "))");
 	}
@@ -580,7 +579,7 @@ public class MobileActionUtil {
 	 * @param element
 	 */
 	public void checkElementScroll(WebElement element) {
-		
+
 		try {
 			if (element.isDisplayed()) {
 			}
@@ -602,7 +601,7 @@ public class MobileActionUtil {
 	 * @return
 	 */
 	public String getText(WebElement element) {
-		
+
 		String text = element.getText();
 		info("Text is " + text);
 		return text;
@@ -616,7 +615,7 @@ public class MobileActionUtil {
 	 * @param expectedText
 	 */
 	public void verifyElementText(WebElement element, long timeOutInSeconds, String expectedText) {
-		
+
 		WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
 		wait.until(ExpectedConditions.visibilityOf(element));
 		String actualText = element.getText().toString();
@@ -629,13 +628,13 @@ public class MobileActionUtil {
 
 	/**
 	 * @author Shobhan
-	 * @description Verify The Text Contains 
+	 * @description Verify The Text Contains
 	 * @param element
 	 * @param timeOutInSeconds
 	 * @param expectedText
 	 */
 	public void verifyElementTextContains(WebElement element, long timeOutInSeconds, String expectedText) {
-		
+
 		WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
 		wait.until(ExpectedConditions.visibilityOf(element));
 		String actualText = element.getText().toString();
@@ -657,7 +656,7 @@ public class MobileActionUtil {
 	 * @param expectedText
 	 */
 	public void verifyText(String actualText, String expectedText) {
-		
+
 		info("Actual Text is " + actualText);
 		info("Expected Text is " + expectedText);
 		Assert.assertEquals(actualText, expectedText);
@@ -673,7 +672,7 @@ public class MobileActionUtil {
 	 * @param elementName
 	 */
 	public void verifyElementIsDisplayed(WebElement element, long timeOutInSeconds, String elementName) {
-	
+
 		info("Verifying whether the element: " + elementName + " isDisplayed");
 		WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
 		try {
@@ -692,7 +691,7 @@ public class MobileActionUtil {
 	 * @param elementName
 	 */
 	public void verifyElementIsNotDisplayed(WebElement element, Integer timeOutInSeconds, String elementName) {
-		
+
 		info("Verifying whether the element: " + elementName + " is NOT Displayed");
 		WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
 		try {

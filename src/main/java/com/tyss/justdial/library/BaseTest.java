@@ -65,7 +65,7 @@ public class BaseTest implements IAutoConstant {
 							 @Optional String ip) throws MalformedURLException, InterruptedException {
 
 		
-		/*To Run Scripts Locally*/
+		/**To Run Scripts Locally**/
 		if (RUN_ENV.equals("local")){
 			
 			Reporter.log("Running Scripts in Local Device",true);
@@ -80,36 +80,35 @@ public class BaseTest implements IAutoConstant {
 					  ip);
 		} 
 
-		/*To Run Scripts in BrowserStack*/
+		/**To Run Scripts in BrowserStack**/
 		else if (RUN_ENV.equals("external")) {
 		
 			Reporter.log("Running Scripts in browserstack Device", true);
-			String userName = "shreyau1";
-			String accessKey = "oEUhApyGPx6ss5XVrLKJ";
-			
+			String userName = "shobhanks1";
+			String accessKey = "aL4GTvsP9UADLBeihTxE";
+		
 			DesiredCapabilities caps = new DesiredCapabilities();
 			caps.setCapability("device", "Samsung Galaxy S8");
 			caps.setCapability("os_version", "7.0");
-			caps.setCapability("project", "My First Project");
-			caps.setCapability("build", "My First Build");
-			caps.setCapability("name", "Bstack-[Java] Sample Test");
-			caps.setCapability("app", "bs://aadd20dcc0c64df74ce06b05da09b790d30ef811");
+			caps.setCapability("project", "JustDial Java-Appium");
+			caps.setCapability("build", "Build-One");
+			caps.setCapability("name", " Sample Test Java Appium");
+			caps.setCapability("app", "bs://a0a4c36bd53d8709fc0f17e5a37a1ae5d105c5aa");
 			caps.setCapability("browserstack.debug", "true");
 			caps.setCapability("browserstack.video", "true");
-			caps.setCapability("automationName", "appium");
-			caps.setCapability("appPackage", "com.justdial.search");
-			caps.setCapability("appActivity", ".SplashScreenNewActivity");
+			caps.setCapability("automationName", "UiAutomator2");
+			caps.setCapability("autoGrantPermissions", true);
+			caps.setCapability("gpsEnabled", true);
+			caps.setCapability("autoAcceptAlerts", true);
 	
-			URL url = new URL("https://" + userName + ":" + accessKey + "@hub-cloud.browserstack.com/wd/hub");
-			driver = new AndroidDriver<MobileElement>(url, caps);
+			/*URL url = new URL("https://" + userName + ":" + accessKey + "@hub-cloud.browserstack.com/wd/hub");*/
+			driver = new AndroidDriver<MobileElement>(new URL("https://" + userName + ":" + accessKey + "@hub-cloud.browserstack.com/wd/hub"), caps);
 			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 			mobileActionUtil = new MobileActionUtil(driver);
 		}
 	}
 
-	/**
-	 * Closing the Session in the Device
-	 */
+	/** Closing the Session in the Device**/
 	@AfterSuite
 	public void afterClass() {
 		closeApp();
