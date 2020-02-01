@@ -1,90 +1,96 @@
 package com.tyss.justdial.globalscripts;
 
-
-	import java.lang.reflect.Method;
+import java.lang.reflect.Method;
+import java.util.List;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
 import com.tyss.justdial.library.BaseTest;
 import com.tyss.justdial.pages.HomePage;
 import com.tyss.justdial.pages.LoginPage;
 import com.tyss.justdial.pages.SearchPage;
-	 
-	public class BrowserStackAndroid extends BaseTest {
-	  
-	  public static String userName = "shreyau1";
-	  public static String accessKey = "oEUhApyGPx6ss5XVrLKJ";
 
-	  @Test
-	  public  void browserStackTest(Method m) throws InterruptedException  {
+import io.appium.java_client.TouchAction;
+import io.appium.java_client.touch.offset.PointOption;
 
-			/* Fetch the Test Data from Excel File */
-			String enterText = ExcelLibrary.getExcelData(XL_TESTPATH, "Sheet1", 79, 1);
-			String expText1 = ExcelLibrary.getExcelData(XL_TESTPATH, "Sheet1", 79, 2);
-			String expText2 = ExcelLibrary.getExcelData(XL_TESTPATH, "Sheet1", 79, 3);
-			String expText3 = ExcelLibrary.getExcelData(XL_TESTPATH, "Sheet1", 79, 4);
+public class BrowserStackAndroid extends BaseTest {
 
-			/* Click On Agree and Continue Button */
-			LoginPage loginPage = new LoginPage(driver, mobileActionUtil);
-			loginPage.clickOnAgreeAndContinueButton();
+	public static String userName = "shreyau1";
+	public static String accessKey = "oEUhApyGPx6ss5XVrLKJ";
 
-			/* Click On None Of The Above Link */
-			//loginPage.clickOnNoneOfTheAbove();
+	@Test
+	public void browserStackTest(Method m) throws InterruptedException {
 
-			/* Click On May Be Later Link */
-			loginPage.clickOnMayBeLaterLink();
+		/* Fetch the Test Data from Excel File */
+		String enterText = ExcelLibrary.getExcelData(XL_TESTPATH, "Sheet1", 79, 1);
+		String expText1 = ExcelLibrary.getExcelData(XL_TESTPATH, "Sheet1", 79, 2);
+		String expText2 = ExcelLibrary.getExcelData(XL_TESTPATH, "Sheet1", 79, 3);
+		String expText3 = ExcelLibrary.getExcelData(XL_TESTPATH, "Sheet1", 79, 4);
 
-			/* Click On No Thanks Button */
-			//loginPage.clickOnNoThanksButton();
+		/* Click On Agree and Continue Button */
+		LoginPage loginPage = new LoginPage(driver, mobileActionUtil);
+		loginPage.clickOnAgreeAndContinueButton();
 
-			/* Go To Home Screen */
-			//loginPage.goToHomeScreen();
-			
-			Thread.sleep(3000);
-			driver.findElement(By.xpath("//android.widget.Button[@text='ALLOW']")).click();
+		/* Click On May Be Later Link */
+		loginPage.clickOnMayBeLaterLink();
 
-			Thread.sleep(3000);
-			driver.findElement(By.xpath("//android.widget.Button[@text='ALLOW']")).click();
-			
-			Thread.sleep(3000);
-			driver.findElement(By.xpath("//android.widget.Button[@text='ALLOW']")).click();
-			
-			
-			driver.findElement(By.id("com.justdial.search:id/jd_image_home")).click();
-		
-			//driver.findElement(By.xpath("com.justdial.search:id/search_edit_text_home")).click();
-			/* Click On Search Box */
-			HomePage homePage = new HomePage(driver, mobileActionUtil);
-			homePage.testName(m.getName().toString() + "- Search CCD Nagawara");
-			homePage.clickOnSearchBox();
+		/*
+		 * Click On Allow Button clickOnAllowButton();
+		 */
 
-			/* Select Current Location */
-			//homePage.selectCurrentLocation();
+		List<WebElement> hotkeyImgIcon = driver.findElements(By.id("com.justdial.search:id/hotkeyimage"));
 
-			/* Click On Search Box */
-			//homePage.clickOnSearchBox();
+		Thread.sleep(8000);
+		TouchAction action = new TouchAction(driver);
+		action.tap(PointOption.point(hotkeyImgIcon.get(1).getLocation().x, hotkeyImgIcon.get(1).getLocation().y))
+				.waitAction().release();
 
-			Thread.sleep(3000);
-			/* Search Entered Text */
-			homePage.searchEnteredText(enterText);
+		// mobileActionUtil.swipe(500, 600, 500, 700);
+	//	driver.findElement(By.xpath("//android.widget.TextView[@text='Travel']")).click();
+		action.tap(PointOption.point(hotkeyImgIcon.get(1).getLocation().x, hotkeyImgIcon.get(1).getLocation().y))
+		.waitAction().release();
 
-			/* Verify Searched Keyword With firstSearch */
-			homePage.verifySearchedKeywordWithfirstSearch(expText1);
+		Thread.sleep(6000);
 
-			/* Verify Searched Keyword With SubSearch */
-			homePage.verifySearchedKeywordWithSubSearch(expText2);
+		driver.findElement(By.xpath("//android.widget.TextView[@text='Flights']")).click();
 
-			/* Click On CCD Nagawara Text */
-			homePage.clickOnCCDNagawaraText();
+		Thread.sleep(6000);
 
-			/* Scroll Till CCD Phone Number */
-			SearchPage searchpage = new SearchPage(driver, mobileActionUtil);
-			searchpage.scrollTillCCDPhoneNumber();
+		driver.findElement(By.id("com.justdial.search:id/from_city")).click();
 
-			/* Verify CCD Phone Number */
-			searchpage.verifySearchResultPage(expText3);
+		Thread.sleep(6000);
 
-	    driver.quit();
-	  }
+		driver.findElement(By.className("android.widget.MultiAutoCompleteTextView")).click();
+
+		Thread.sleep(6000);
+		driver.findElement(By.className("android.widget.MultiAutoCompleteTextView")).sendKeys("bangalore");
+
+		driver.findElement(By.xpath("//android.widget.TextView[@text='BLR']")).click();
+
+		driver.findElement(By.id("com.justdial.search:id/to_city")).click();
+
+		Thread.sleep(6000);
+
+		driver.findElement(By.className("android.widget.MultiAutoCompleteTextView")).click();
+
+		Thread.sleep(6000);
+		driver.findElement(By.className("android.widget.MultiAutoCompleteTextView")).sendKeys("Delhi");
+
+		driver.findElement(By.xpath("//android.widget.TextView[@text='DEL']")).click();
+
+		driver.quit();
 	}
+
+	public void clickOnAllowButton() throws InterruptedException {
+		Thread.sleep(5000);
+		driver.findElement(By.xpath("//android.widget.Button[@text='ALLOW']")).click();
+
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("//android.widget.Button[@text='ALLOW']")).click();
+
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("//android.widget.Button[@text='ALLOW']")).click();
+	}
+}

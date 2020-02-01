@@ -20,7 +20,7 @@ import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.touch.offset.PointOption;
 
-public class WorkFlowAutomation extends BaseTest {
+public class WorkFlowAutomation2 extends BaseTest {
 
 	ExcelLibrary excelLibrary = new ExcelLibrary();
 

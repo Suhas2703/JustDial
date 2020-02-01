@@ -1,5 +1,6 @@
 package com.tyss.justdial.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import org.openqa.selenium.support.FindBy;
@@ -45,7 +46,7 @@ public class HomePage extends BasePage {
 	@FindBy(className = "android.widget.MultiAutoCompleteTextView")
 	private WebElement searchBx;
 
-	@FindBy(id = "com.justdial.search:id/search_edit_text_home")
+	@FindBy(id = "com.justdial.search:id/search_edit_text_home")	
 	private WebElement searchBx1;
 
 	@FindBy(xpath = "//android.widget.MultiAutoCompleteTextView[@text='What? e.g. Restaurant']")
