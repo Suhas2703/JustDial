@@ -22,6 +22,7 @@ import io.appium.java_client.remote.MobileCapabilityType;
 
 public class BaseTest implements IAutoConstant {
 
+	/** Variable Declaration for Base Test Configuration**/
 	public ExcelLibrary ExcelLibrary = new ExcelLibrary();
 	public AndroidDriver driver;
 	public MobileActionUtil mobileActionUtil;

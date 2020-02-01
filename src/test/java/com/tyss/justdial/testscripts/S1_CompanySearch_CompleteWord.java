@@ -11,7 +11,7 @@ import com.tyss.justdial.pages.SearchPage;
 
 public class S1_CompanySearch_CompleteWord extends BaseTest {
 
-	@Test
+	@Test(testName="s1_CompanySearch_CompleteWord", description="", alwaysRun=true)
 	public void s1_CompanySearch_CompleteWord(Method m) {
 
 		/* Fetch the Test Data from Excel File */

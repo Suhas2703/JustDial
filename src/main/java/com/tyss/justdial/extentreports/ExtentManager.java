@@ -10,7 +10,7 @@ import com.aventstack.extentreports.reporter.configuration.Theme;
 
 public class ExtentManager {
 
-	/* Initialize Extent Reports variables*/
+	/** Extent Report Variable Declaration **/
 	private static ExtentReports extent;
 	private static String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
 	private static String reportFileName = "JustDial Test-Automation-Report-" + timeStamp + ".html";
@@ -18,13 +18,24 @@ public class ExtentManager {
 	private static String reportFilepath = System.getProperty("user.dir") + fileSeperator + "ExecutionReports";
 	private static String reportFileLocation = reportFilepath + fileSeperator + reportFileName;
 
+	
+	/**
+	 * @author Shobhan
+	 * @description Method to get initialized Extent Report object
+	 * @return
+	 */
 	public static ExtentReports getInstance() {
 		if (extent == null)
 			createInstance();
 		return extent;
 	}
 
-	/* Create an extent report instance */
+
+    /**
+     * @author Shobhan
+     * @description Method to initialize Extent Report object  
+     * @return
+     */
 	public static ExtentReports createInstance() {
 
 		String fileName = getReportPath(reportFilepath);
@@ -33,7 +44,6 @@ public class ExtentManager {
 		htmlReporter.config().setDocumentTitle(reportFileName);
 		htmlReporter.config().setEncoding("utf-8");
 		htmlReporter.config().setReportName(reportFileName);
-		//htmlReporter.config().setTimeStampFormat("EEEE, MMMM dd, yyyy, hh:mm a '('zzz')'");
 
 		extent = new ExtentReports();
 		extent.attachReporter(htmlReporter);
@@ -45,7 +55,12 @@ public class ExtentManager {
 		return extent;
 	}
 
-	/* Create the report path */
+    /**
+     * @author Shobhan
+     * @description Method to fetch the path of report
+     * @param path
+     * @return
+     */
 	private static String getReportPath(String path) {
 
 		File testDirectory = new File(path);

@@ -6,13 +6,13 @@ import io.appium.java_client.android.AndroidDriver;
 
 public class BasePage {
 
-	/* Initailizing Android driver in Public */
+	/** Initailizing Android driver in Public **/
 	public AndroidDriver driver;
 	public MobileActionUtil mobileActionUtil;
 
 	/**
 	 * @author Shobhan
-	 * @description Initializing PageFactory for all the POM Pages
+	 * @description Constructor to initialize POM Pages
 	 * @param driver
 	 * @param mobileActionUtil
 	 * 
