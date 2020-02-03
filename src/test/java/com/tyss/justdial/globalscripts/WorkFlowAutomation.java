@@ -1,7 +1,10 @@
 package com.tyss.justdial.globalscripts;
 
+import java.util.NoSuchElementException;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -37,7 +40,7 @@ public class WorkFlowAutomation extends BaseTest {
 	}
 
 	/**
-	 * @description Method to fetch the testData from the Excel File  
+	 * @description Method to fetch the testData from the Excel File
 	 * @param index
 	 */
 	@Test(dataProvider = "getData")
@@ -99,7 +102,7 @@ public class WorkFlowAutomation extends BaseTest {
 	}
 
 	/**
-	 * @description Method to Navigate to the Search Page 
+	 * @description Method to Navigate to the Search Page
 	 */
 	public void navigateToSearchPage() {
 
@@ -135,45 +138,32 @@ public class WorkFlowAutomation extends BaseTest {
 	}
 
 	/**
-	 * @description Method to Search 
+	 * @description Method to Search
 	 * @param driver
 	 * @param optionToSearh
 	 */
 	public void search(AndroidDriver driver, String optionToSearh) {
+
+		/* Click On Search Box */
+		clickOnSearchBox();
+
+		/* Select Current Location */
+// selectCurrentLocation();
 		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e1) {
-			e1.printStackTrace();
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+
+			e.printStackTrace();
 		}
 
-		swipe(500, 600, 500, 800);
-		WebDriverWait wait = new WebDriverWait(driver, 10);
-		try {
-			
-			wait.until(ExpectedConditions.elementToBeClickable(By.className("android.widget.MultiAutoCompleteTextView")));
-			WebElement searchElement1 = driver.findElement(By.className("android.widget.MultiAutoCompleteTextView"));
-			searchElement1.click();
-			
-		} catch (Exception e) {
-			
-			wait.until(ExpectedConditions.elementToBeClickable(By.id("com.justdial.search:id/search_edit_text_home")));
-			WebElement searchElement2 = driver.findElement(By.id("com.justdial.search:id/search_edit_text_home"));
-			searchElement2.click();
-			
-		}
-		WebElement selectLocationDrpDwn = driver.findElement(By.xpath("(//android.widget.ImageView)[2]/../..//android.widget.TextView"));
-		selectLocationDrpDwn.click();
-		WebElement selectLocation = driver.findElement(By.id("com.justdial.search:id/widget_near_me_home"));
-		selectLocation.click();
+		WebElement searchBx = driver.findElement(By.className("android.widget.MultiAutoCompleteTextView"));
+		clickOnMobileElement(searchBx, "Search Box ");
+		setText(searchBx, optionToSearh);
 
-		driver.findElement(By.className("android.widget.MultiAutoCompleteTextView")).click();
-		driver.findElement(By.className("android.widget.MultiAutoCompleteTextView")).sendKeys(optionToSearh);
-		driver.hideKeyboard();
 	}
 
 	/**
-	 * @description Method to select the Option
-	 * 				from the Xpath
+	 * @description Method to select the Option from the Xpath
 	 * @param driver
 	 * @param optionToSelect
 	 */
@@ -183,18 +173,24 @@ public class WorkFlowAutomation extends BaseTest {
 	}
 
 	/**
-	 * @description Method to  verify Also Listed In
+	 * @description Method to verify Also Listed In
 	 * @param driver
 	 * @param expectedText
 	 */
 	public void verifyAlsoListedIn(AndroidDriver driver, String expectedText) {
-		WebElement touristAttractionElement = driver.findElement(By.id("com.justdial.search:id/quick_text_leftColumnChild"));
-		swipe(578, 1475, 578, 550);
-		swipe(578, 1475, 578, 550);
-		swipe(578, 1475, 578, 550);
-		swipe(578, 1475, 578, 550);
-		swipe(578, 1475, 578, 550);
-		checkElementScroll(touristAttractionElement);	
+
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		for (int i = 0; i < 6; i++) {
+			swipeUp(578, 1475, 550);
+		}
+
+		WebElement touristAttractionElement = driver
+				.findElement(By.id("com.justdial.search:id/quick_text_leftColumnChild"));
+		checkElementScroll(touristAttractionElement);
 		verifyElementText(touristAttractionElement, 5, expectedText);
 	}
 
@@ -204,12 +200,13 @@ public class WorkFlowAutomation extends BaseTest {
 	 * @param expectedText
 	 */
 	public void verifyPhoneNumber(AndroidDriver driver, String expectedText) {
+
+		for (int i = 0; i < 3; i++) {
+			swipeUp(578, 1475, 550);
+		}
 		System.out.println("//android.widget.TextView[contains(@text,'" + expectedText + "')]");
 		WebElement ph = driver
 				.findElement(By.xpath("//android.widget.TextView[contains(@text,'" + expectedText + "')]"));
-		swipe(578, 1475, 578, 550);
-		swipe(578, 1475, 578, 550);
-		swipe(578, 1475, 578, 550);
 		checkElementScroll(ph);
 		verifyElementTextContains(ph, 5, expectedText);
 	}
@@ -235,7 +232,7 @@ public class WorkFlowAutomation extends BaseTest {
 		}
 
 	}
-	// ----------------------------------------------------------------------------------------------
+// ----------------------------------------------------------------------------------------------
 
 	/**
 	 * @description Method for wait for an element
@@ -255,19 +252,6 @@ public class WorkFlowAutomation extends BaseTest {
 	}
 
 	/**
-	 * @description Method the Swipe -Action
-	 * @param fromX
-	 * @param fromY
-	 * @param toX
-	 * @param toY
-	 */
-	public void swipe(Integer fromX, Integer fromY, Integer toX, Integer toY) {
-		TouchAction action = new TouchAction(driver);
-		System.out.println("swipe");
-		action.longPress(PointOption.point(fromX, fromY)).moveTo(PointOption.point(toX, toY)).release().perform();
-	}
-
-	/**
 	 * @description Check Element and Scroll
 	 * @param element
 	 */
@@ -276,7 +260,7 @@ public class WorkFlowAutomation extends BaseTest {
 			if (element.isDisplayed()) {
 			}
 		} catch (Exception e) {
-			swipe(578, 1475, 578, 550);
+			swipeUp(578, 1475, 550);
 		}
 		try {
 			if (element.isDisplayed()) {
@@ -338,6 +322,132 @@ public class WorkFlowAutomation extends BaseTest {
 			System.out.println("Element is Not Displayed " + element);
 		}
 		return flag;
+	}
+
+	public void clickOnSearchBox() {
+		WebElement searchBx = driver.findElement(By.className("android.widget.MultiAutoCompleteTextView"));
+		WebElement searchBx1 = driver.findElement(By.id("com.justdial.search:id/search_edit_text_home"));
+
+		boolean flag = false;
+		try {
+			while (searchBx.isDisplayed()) {
+				clickOnMobileElement(searchBx, "Search Box");
+				flag = true;
+				System.out.println("Clicking on the Element : " + "Search Box");
+				break;
+			}
+
+		} catch (Exception e) {
+			while (searchBx1.isDisplayed()) {
+				clickOnMobileElement(searchBx1, "Search Box");
+				flag = true;
+				break;
+			}
+		}
+
+		if (flag == false) {
+
+			try {
+				Thread.sleep(5000);
+			} catch (InterruptedException e) {
+
+				e.printStackTrace();
+			}
+			tapOnElementUsingCoordinate(326, 469);
+			System.out.println("Clicking on the Element : " + "Search Box");
+		} else {
+
+		}
+
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+
+			e.printStackTrace();
+		}
+	}
+
+	public void clickOnMobileElement(WebElement element, String elementName) {
+
+		try {
+			WebDriverWait wait = new WebDriverWait(driver, 5);
+			wait.ignoring(NoSuchElementException.class).until(ExpectedConditions.visibilityOf(element)).click();
+
+			System.out.println("Clicking on the Element : " + elementName);
+		} catch (Exception e1) {
+			System.out.println("Unable to click on the Element :" + elementName);
+		}
+	}
+
+	public void tapOnElementUsingCoordinate(int i, int j) {
+		TouchAction action = new TouchAction<>(driver);
+		action.tap(PointOption.point(i, j)).perform();
+	}
+
+	/**
+	 * @author Shobhan
+	 * @description Swipe Up
+	 * @param fromX
+	 * @param fromY
+	 * @param toY
+	 */
+	public void swipeUp(Integer fromX, Integer fromY, Integer toY) {
+
+		if (fromY > toY) {
+			swipe(fromX, fromY, fromX, toY);
+		} else {
+			System.out.println("Coordinate value is wrong ");
+		}
+	}
+
+	/**
+	 * @author Shobhan
+	 * @description Swipe Action
+	 * @param fromX
+	 * @param fromY
+	 * @param toX
+	 * @param toY
+	 */
+	public void swipe(Integer fromX, Integer fromY, Integer toX, Integer toY) {
+
+		System.out.println("swipe coordinates detail");
+		TouchAction action = new TouchAction(driver);
+		action.longPress(PointOption.point(fromX, fromY)).moveTo(PointOption.point(toX, toY)).release().perform();
+	}
+
+	/**
+	 * @author Shobhan
+	 * @description Enter the Text for WebElement
+	 * @param element
+	 * @param enterText
+	 * @param elementName
+	 */
+	public void setText(WebElement element, String enterText) {
+
+		try {
+			element.sendKeys(enterText);
+			System.out.println("Entering the " + enterText);
+		} catch (Exception e) {
+			System.out.println("Unable to enter the " + enterText);
+		}
+	}
+
+	/**
+	 * @author Shobhan
+	 * @description Method to select Current location
+	 */
+	public void selectCurrentLocation() {
+
+		WebElement selectLocationDrpDwn1 = driver
+				.findElement(By.xpath("(//android.widget.ImageView)[2]/../..//android.widget.TextView"));
+		WebElement detecteMyLocationOtn = driver.findElement(By.id("com.justdial.search:id/widget_near_me_home"));
+		driver.hideKeyboard();
+		try {
+			Thread.sleep(3000);
+			clickOnMobileElement(selectLocationDrpDwn1, "Select Location Drop Down");
+			clickOnMobileElement(detecteMyLocationOtn, "Detect My Location ");
+		} catch (Exception e) {
+		}
 	}
 
 }

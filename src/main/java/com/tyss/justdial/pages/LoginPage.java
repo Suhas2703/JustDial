@@ -124,7 +124,13 @@ public class LoginPage extends BasePage {
 	 * @description Click On No Thanks Button
 	 */
 	public void clickOnNoThanksButton() {
-		mobileActionUtil.clickOnMobileElement(noThanksBtn, "No Thanks Button");
-		mobileActionUtil.waitForElementToLoad(1);
+		/*try {
+			noThanksBtn.click();
+			mobileActionUtil.waitForElementToLoad(1);
+			mobileActionUtil.info("no thanks Button");
+		} catch (Exception e) {
+			mobileActionUtil.info("no thanks Button is not clicked");
+		}*/
+
 	}
 }

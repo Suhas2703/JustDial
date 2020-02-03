@@ -1,6 +1,7 @@
 package com.tyss.justdial.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 
 import org.openqa.selenium.support.FindBy;
@@ -46,7 +47,7 @@ public class HomePage extends BasePage {
 	@FindBy(className = "android.widget.MultiAutoCompleteTextView")
 	private WebElement searchBx;
 
-	@FindBy(id = "com.justdial.search:id/search_edit_text_home")	
+	@FindBy(id = "com.justdial.search:id/search_edit_text_home")
 	private WebElement searchBx1;
 
 	@FindBy(xpath = "//android.widget.MultiAutoCompleteTextView[@text='What? e.g. Restaurant']")
@@ -118,6 +119,18 @@ public class HomePage extends BasePage {
 	@FindBy(xpath = "(//android.widget.TextView[@resource-id='com.justdial.search:id/displayTxt']|//android.widget.TextView[@resource-id='com.justdial.search:id/autoArea'])[2]")
 	private WebElement generalisedXpath2;
 
+	@FindBy(xpath = "//android.widget.TextView[@text='B2b']")
+	private WebElement b2b;
+
+	@FindBy(xpath = "//android.widget.TextView[@text='Electronics & Electrical Supplies']")
+	private WebElement electronicsAndElectricalSuppliesLnk;
+
+	@FindBy(xpath = "//android.widget.TextView[@text='Batteries & Charge Storage Devices']")
+	private WebElement batteriesAndChargeStorageDevicesLnk;
+
+	@FindBy(xpath = "//android.widget.TextView[@text='Batteries Inverters UPS Stabilisers & Transformers']")
+	private WebElement batteriesLnk;
+
 	private WebElement getLocation(String value) {
 		return mobileActionUtil.getWebElement("xpath", "//android.widget.TextView[@text='" + value + "']");
 	}
@@ -127,16 +140,33 @@ public class HomePage extends BasePage {
 				"(//android.widget.TextView[@resource-id='com.justdial.search:id/displayTxt'])[" + value + "]");
 	}
 
-	/**
+/*	*//**
 	 * @author Shobhan
 	 * @description Method to click on Search box
-	 */
+	 *//*
 	public void clickOnSearchBox() {
+		try {
+			mobileActionUtil.waitForElementToLoad(10);
+			// mobileActionUtil.tapOnElementUsingCoordinate(448, 499);
+			mobileActionUtil.clickOnMobileElement(searchBx1, "Search Box");
 
-		mobileActionUtil.waitForElementToLoad(5);
-	    mobileActionUtil.tapOnElement(searchBx1);
+		} catch (NoSuchElementException Exception) {
+
+			try {
+				mobileActionUtil.waitForElementToLoad(5);
+				mobileActionUtil.tapOnElement(searchBx1);
+				mobileActionUtil.waitForElementToLoad(5);
+			} catch (Exception e) {
+				try {
+					mobileActionUtil.tapOnElementUsingCoordinate(448, 499);
+				} catch (Exception e2) {
+					mobileActionUtil.tapOnElementUsingCoordinate(448, 499);
+				}
+			}
+		}
+
 		mobileActionUtil.waitForElementToLoad(2);
-	}
+	}*/
 
 	/**
 	 * @author Shobhan
@@ -572,5 +602,75 @@ public class HomePage extends BasePage {
 
 		mobileActionUtil.waitForElementToLoad(5);
 		mobileActionUtil.verifyElementText(theaterName, seconds, expText);
+	}
+
+	/**
+	 * @author Shobhan
+	 * @description Verify DDLJ Search Results
+	 * @param expText
+	 */
+	public void clickOnShoppingIcon() {
+
+		mobileActionUtil.waitForElementToLoad(5);
+		// mobileActionUtil.cl(b2b, "B2b");
+		b2b.click();
+	}
+
+	public void clickOnOffersIcon() {
+
+		mobileActionUtil.waitForElementToLoad(5);
+		// mobileActionUtil.clickOnMobileElement(electronicsAndElectricalSuppliesLnk,
+		// "Electronics And ElectricalSupplies Lnk");
+		electronicsAndElectricalSuppliesLnk.click();
+	}
+
+	public void clickOnKnowMore() {
+
+		mobileActionUtil.waitForElementToLoad(5);
+		/// mobileActionUtil.clickOnMobileElement(batteriesAndChargeStorageDevicesLnk,
+		/// "Know More Link");
+		batteriesAndChargeStorageDevicesLnk.click();
+	}
+
+	public void clickOnFirstProduct() {
+
+		mobileActionUtil.waitForElementToLoad(5);
+		// mobileActionUtil.clickOnMobileElement(batteriesLnk, "First Product");
+		batteriesLnk.click();
+	}
+	/**
+	* @author Shobhan
+	* @description Method to click on Search box
+	*/
+	public void clickOnSearchBox() {
+
+	boolean flag=false;
+	try {
+	while (searchBx.isDisplayed()) {
+	mobileActionUtil.clickOnMobileElement(searchBx, "Search Box");
+	flag =true;
+	mobileActionUtil.pass("Clicking on the Element : " + "Search Box");
+	break;
+	}
+
+	} catch (Exception e) {
+	while (searchBx1.isDisplayed()) {
+	mobileActionUtil.clickOnMobileElement(searchBx1, "Search Box");
+	flag =true;
+	break;
+	}
+	}
+
+
+	if (flag==false) {
+
+	mobileActionUtil.waitForElementToLoad(5);
+	mobileActionUtil.tapOnElementUsingCoordinate(326, 469);
+	mobileActionUtil.pass("Clicking on the Element : " + "Search Box");
+	} else {
+
+	}
+
+	mobileActionUtil.waitForElementToLoad(2);
 	}
 }

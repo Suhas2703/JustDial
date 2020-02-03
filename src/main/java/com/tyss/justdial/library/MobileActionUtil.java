@@ -742,6 +742,16 @@ public class MobileActionUtil {
 	}
 	
 	/**
+	 * @author Shreya
+	 * @description Tap on Element Using the coordinates
+	 * @return
+	 */
+	public void tapOnElementUsingCoordinate(int xOffset,int yOffset) {
+		TouchAction action = new TouchAction<>(driver);
+		action.tap(PointOption.point(xOffset, yOffset));
+	}
+	
+	/**
 	 * @author Sunil.S
 	 * @description Method to tap on element using touch action class based on co-ordinates
 	 * @param ele
@@ -750,5 +760,5 @@ public class MobileActionUtil {
 		TouchAction action = new TouchAction<>(driver);
 		action.tap(PointOption.point(ele.getLocation().x, ele.getLocation().y)).waitAction().perform();
 	}
-
+	
 }
