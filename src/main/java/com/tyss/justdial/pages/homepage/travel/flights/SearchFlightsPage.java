@@ -199,7 +199,6 @@ public class SearchFlightsPage extends BasePage {
 	}
 
 	public String getTextSearchingForflights() {
-	
 		return mobileActionUtil.getText(searchingForFlightsTxt);
 	}
 
@@ -219,9 +218,16 @@ public class SearchFlightsPage extends BasePage {
 
 	public void verifyFirstprompt( String expectedText1, String expectedText2,
 			String expectedText3) {
-		mobileActionUtil.verifyText(getFromCityNameOnPrompt(), expectedText1);
-		mobileActionUtil.verifyText(getToCityNameOnPrompt(), expectedText2);
-		mobileActionUtil.verifyText(getDateOnPrompt(), expectedText3);
+		System.out.println();
+		String fromCity = getFromCityNameOnPrompt();
+		String toCity = getToCityNameOnPrompt();
+		String date = getDateOnPrompt();
+		System.out.println(fromCity);
+		System.out.println(toCity);
+		System.out.println(date);
+		mobileActionUtil.verifyText(fromCity, expectedText1);
+		mobileActionUtil.verifyText(toCity, expectedText2);
+		mobileActionUtil.verifyText(date, expectedText3);
 
 	}
 

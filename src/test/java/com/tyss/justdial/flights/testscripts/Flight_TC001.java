@@ -11,6 +11,7 @@ import com.tyss.justdial.pages.homepage.travel.flights.SearchFlightsPage;
 /**
  *
  * @author Shobhan
+ * 
  *
  */
 public class Flight_TC001 extends BaseTest {
@@ -22,10 +23,10 @@ public class Flight_TC001 extends BaseTest {
 //		String enterText = ExcelLibrary.getExcelData(XL_TESTPATH, "", 76, 1);
 		String enterText1 = "Mumbai";
 		String enterText2 = "Goa";
-		String expectedText1="";
-		String expectedText2= "Mumbai BOM";
-		String expectedText3= "Goa GOI";
-		String expectedText4= "WED, 5th Feb 2020";
+		String expectedText1="Mumbai BOM";
+		String expectedText2= "Goa GOI ";
+		String expectedText3= "WED, 5th Feb 2020";
+
 
 		// Enter the Test case name
 		TravelPage travelPage = new TravelPage(driver, mobileActionUtil);
