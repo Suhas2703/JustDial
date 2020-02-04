@@ -52,6 +52,9 @@ public class SearchFlightsPage extends BasePage {
 	@FindBy(id = "com.justdial.search:id/to_city")
 	private WebElement toTxtBx;
 
+	@FindBy(id = "com.justdial.search:id/round_trip")
+	private WebElement roundTripIcon;
+
 	@FindBy(id = "com.justdial.search:id/depature_date")
 	private WebElement depatureTxtBx;
 
@@ -67,22 +70,64 @@ public class SearchFlightsPage extends BasePage {
 	@FindBy(id = "com.justdial.search:id/search_flights")
 	private WebElement searchBtn;
 
+	@FindBy(id = "com.justdial.search:id/adults")
+	private WebElement adultsTxt;
+
+	@FindBy(id = "com.justdial.search:id/children")
+	private WebElement childrenTxt;
+
+	@FindBy(id = "com.justdial.search:id/infant")
+	private WebElement infantsTxt;
+
+	@FindBy(xpath = "//android.widget.TextView[@text='Adults']/..//android.widget.ImageView[@resource-id='com.justdial.search:id/seats_minus']")
+	private WebElement adultsMinusBtn;
+
+	@FindBy(xpath = "//android.widget.TextView[@text='Adults']/..//android.widget.ImageView[@resource-id='com.justdial.search:id/seats_plus']")
+	private WebElement adultsPlusBtn;
+
+	@FindBy(xpath = "//android.widget.TextView[@text='Children']/..//android.widget.ImageView[@resource-id='com.justdial.search:id/seats_minus']")
+	private WebElement childrenMinusBtn;
+
+	@FindBy(xpath = "//android.widget.TextView[@text='Children']/..//android.widget.ImageView[@resource-id='com.justdial.search:id/seats_plus']")
+	private WebElement childrenPlusBtn;
+
+	@FindBy(xpath = "//android.widget.TextView[@text='Infants']/..//android.widget.ImageView[@resource-id='com.justdial.search:id/seats_minus']")
+	private WebElement infantsMinusBtn;
+
+	@FindBy(xpath = "//android.widget.TextView[@text='Infants']/..//android.widget.ImageView[@resource-id='com.justdial.search:id/seats_plus']")
+	private WebElement infantsPlusBtn;
+
+	@FindBy(id = "com.justdial.search:id/seat_no_done")
+	private WebElement doneBtn;
+
 	@FindBy(className = "android.widget.MultiAutoCompleteTextView")
 	private WebElement airportSearchBx;
 
 	@FindBy(xpath = "//android.widget.LinearLayout[@resource-id='com.justdial.search:id/cities_Lay']")
 	private WebElement selectFirstCityOtn;
-	
+
 	private WebElement selectDate(String value) {
-		return mobileActionUtil.getWebElement("xpath", "(//android.widget.TextView[@text='Departure']/../../..//android.widget.TextView[@text="+value+"])[1]");
+		return mobileActionUtil.getWebElement("xpath",
+				"(//android.widget.TextView[@text='Departure']/../../..//android.widget.TextView[@text=" + value
+						+ "])[1]");
 	}
 
+	@FindBy(id = "com.justdial.search:id/loaderDate")
+	private WebElement loaderDateTxt;
+
+	@FindBy(id = "com.justdial.search:id/searchingfor")
+	private WebElement searchingForFlightsTxt;
+
 	public void clickOnFrom() {
-	mobileActionUtil.clickOnMobileElement(fromTxtBx, "From");
+		mobileActionUtil.clickOnMobileElement(fromTxtBx, "From");
+	}
+
+	public void clickOnRoundTripIcon() {
+		mobileActionUtil.clickOnMobileElement(roundTripIcon, "Round Trip Icon");
 	}
 
 	public void clickOnTo() {
-		mobileActionUtil.clickOnMobileElement(toTxtBx, "To");		
+		mobileActionUtil.clickOnMobileElement(toTxtBx, "To");
 	}
 
 	public void clickOnDepature() {
@@ -90,9 +135,8 @@ public class SearchFlightsPage extends BasePage {
 	}
 
 	public void clickOnTravellers() {
-		mobileActionUtil.clickOnMobileElement(travellersTxtBx, "Travellers Text Box");			
+		mobileActionUtil.clickOnMobileElement(travellersTxtBx, "Travellers Text Box");
 	}
-	
 
 	public void clickOnClass() {
 		mobileActionUtil.clickOnMobileElement(classLnk, "class Text Box");
@@ -104,17 +148,81 @@ public class SearchFlightsPage extends BasePage {
 
 	public void clickOnSearch() {
 		mobileActionUtil.clickOnMobileElement(searchBtn, "Search Box");
-	}	
+	}
 
 	public void clickOnAirportSearch() {
 		mobileActionUtil.clickOnMobileElement(airportSearchBx, "Airport Search Box");
-		}
+	}
 
 	public void enterCityNameInSearch(String enterText) {
 		mobileActionUtil.setText(airportSearchBx, enterText, "Search Box");
-		}
-	
-	public void selectCity() {
+	}
+
+	public void selectFirstCity() {
 		mobileActionUtil.clickOnMobileElement(selectFirstCityOtn, "Select City");
 	}
+
+	public void enterDate(String date) {
+		mobileActionUtil.clickOnMobileElement(selectDate(date), "Select Date");
+	}
+
+	public void increseAdultNumber() {
+		mobileActionUtil.clickOnMobileElement(adultsPlusBtn, "Adults Plus");
+	}
+
+	public void decreseAdultNumber() {
+		mobileActionUtil.clickOnMobileElement(adultsMinusBtn, "Adults Minus ");
+	}
+
+	public void increseChildrenNumber() {
+		mobileActionUtil.clickOnMobileElement(childrenPlusBtn, "Children Plus ");
+	}
+
+	public void decreseChildrenNumber() {
+		mobileActionUtil.clickOnMobileElement(childrenMinusBtn, " Children Minus");
+	}
+
+	public void increseInfantsNumber() {
+		mobileActionUtil.clickOnMobileElement(infantsPlusBtn, "Infants Plus ");
+	}
+
+	public void decreseInfantsNumber() {
+		mobileActionUtil.clickOnMobileElement(infantsMinusBtn, "Infants Minus ");
+	}
+
+	public void clickOnDone() {
+		mobileActionUtil.clickOnMobileElement(doneBtn, "Infants Minus ");
+	}
+
+	public void clickOnSearch(String date) {
+		mobileActionUtil.clickOnMobileElement(searchBtn, "search");
+	}
+
+	public String getTextSearchingForflights() {
+	
+		return mobileActionUtil.getText(searchingForFlightsTxt);
+	}
+
+	public String getFromCityNameOnPrompt() {
+		mobileActionUtil.waitForElement(fromTxtBx, seconds, "fromTxtBx");
+		return mobileActionUtil.getText(fromTxtBx);
+	}
+
+	public String getToCityNameOnPrompt() {
+		mobileActionUtil.waitForElement(toTxtBx, seconds, "fromTxtBx");
+		return mobileActionUtil.getText(toTxtBx);
+	}
+
+	public String getDateOnPrompt() {
+		return mobileActionUtil.getText(loaderDateTxt);
+	}
+
+	public void verifyFirstprompt( String expectedText1, String expectedText2,
+			String expectedText3) {
+		mobileActionUtil.verifyText(getFromCityNameOnPrompt(), expectedText1);
+		mobileActionUtil.verifyText(getToCityNameOnPrompt(), expectedText2);
+		mobileActionUtil.verifyText(getDateOnPrompt(), expectedText3);
+
+	}
+
 }
