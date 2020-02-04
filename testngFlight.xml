@@ -13,7 +13,7 @@
 		<parameter name="appPackage" value="com.justdial.search"></parameter>
 		<parameter name="appActivity"
 			value=".SplashScreenNewActivity"></parameter>
-		<parameter name="port" value="4723"></parameter>
+		<parameter name="port" value="4733"></parameter>
 		<parameter name="udid" value="3401eb0e8c0c4609"></parameter>
 		<parameter name="ip" value="localhost"></parameter>
 		<classes>
