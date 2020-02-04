@@ -49,6 +49,9 @@ public class FlightBookingPage extends BasePage {
 	@FindBy(xpath="(//android.view.View)[22]")
 	private WebElement toCity;
 	
+	@FindBy(xpath="(//android.view.View)[24]")
+	private WebElement arrvTime;
+	
 	public String getTravlinfo()
 	{
 		return mobileActionUtil.getText(travelInfo);
@@ -67,6 +70,10 @@ public class FlightBookingPage extends BasePage {
 	public String getTocity()
 	{
 		return mobileActionUtil.getText(toCity);
-		
+	}
+	
+	public String getArrvtime()
+	{
+		return mobileActionUtil.getText(arrvTime);
 	}
 }
