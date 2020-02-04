@@ -30,13 +30,21 @@ public class WorkFlowAutomation extends BaseTest {
 	@DataProvider
 	public Integer[][] getData() {
 
+//		int row = new ExcelLibrary().getExcelRowCount(XL_TESTPATH, "Scenarios");
+//
+//		Integer[][] data = new Integer[row][1];
+//		for (int i = 1; i <= row; i++) {
+//			data[i - 1][0] = i;
+//		}
+//		return data;
+		
 		int row = new ExcelLibrary().getExcelRowCount(XL_TESTPATH, "Scenarios");
 
-		Integer[][] data = new Integer[row][1];
-		for (int i = 1; i <= row; i++) {
-			data[i - 1][0] = i;
-		}
-		return data;
+				Integer[][] data = new Integer[1][1];
+		
+					data[0][0] = 1;
+
+				return data;
 	}
 
 	/**
