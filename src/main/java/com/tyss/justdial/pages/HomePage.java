@@ -140,33 +140,32 @@ public class HomePage extends BasePage {
 				"(//android.widget.TextView[@resource-id='com.justdial.search:id/displayTxt'])[" + value + "]");
 	}
 
-/*	*//**
-	 * @author Shobhan
-	 * @description Method to click on Search box
-	 *//*
-	public void clickOnSearchBox() {
-		try {
-			mobileActionUtil.waitForElementToLoad(10);
-			// mobileActionUtil.tapOnElementUsingCoordinate(448, 499);
-			mobileActionUtil.clickOnMobileElement(searchBx1, "Search Box");
+	@FindBy(xpath = "//android.widget.TextView[@text='Travel']")
+	private WebElement travelIcon;
 
-		} catch (NoSuchElementException Exception) {
+	public void clickOnTravelHotSearchKey() {
+		mobileActionUtil.clickOnMobileElement(travelIcon, "Travel Hot Search Key");
+	}
 
-			try {
-				mobileActionUtil.waitForElementToLoad(5);
-				mobileActionUtil.tapOnElement(searchBx1);
-				mobileActionUtil.waitForElementToLoad(5);
-			} catch (Exception e) {
-				try {
-					mobileActionUtil.tapOnElementUsingCoordinate(448, 499);
-				} catch (Exception e2) {
-					mobileActionUtil.tapOnElementUsingCoordinate(448, 499);
-				}
-			}
-		}
-
-		mobileActionUtil.waitForElementToLoad(2);
-	}*/
+	/*	*//**
+			 * @author Shobhan
+			 * @description Method to click on Search box
+			 *//*
+				 * public void clickOnSearchBox() { try {
+				 * mobileActionUtil.waitForElementToLoad(10); //
+				 * mobileActionUtil.tapOnElementUsingCoordinate(448, 499);
+				 * mobileActionUtil.clickOnMobileElement(searchBx1, "Search Box");
+				 * 
+				 * } catch (NoSuchElementException Exception) {
+				 * 
+				 * try { mobileActionUtil.waitForElementToLoad(5);
+				 * mobileActionUtil.tapOnElement(searchBx1);
+				 * mobileActionUtil.waitForElementToLoad(5); } catch (Exception e) { try {
+				 * mobileActionUtil.tapOnElementUsingCoordinate(448, 499); } catch (Exception
+				 * e2) { mobileActionUtil.tapOnElementUsingCoordinate(448, 499); } } }
+				 * 
+				 * mobileActionUtil.waitForElementToLoad(2); }
+				 */
 
 	/**
 	 * @author Shobhan
@@ -638,39 +637,39 @@ public class HomePage extends BasePage {
 		// mobileActionUtil.clickOnMobileElement(batteriesLnk, "First Product");
 		batteriesLnk.click();
 	}
+
 	/**
-	* @author Shobhan
-	* @description Method to click on Search box
-	*/
+	 * @author Shobhan
+	 * @description Method to click on Search box
+	 */
 	public void clickOnSearchBox() {
 
-	boolean flag=false;
-	try {
-	while (searchBx.isDisplayed()) {
-	mobileActionUtil.clickOnMobileElement(searchBx, "Search Box");
-	flag =true;
-	mobileActionUtil.pass("Clicking on the Element : " + "Search Box");
-	break;
-	}
+		boolean flag = false;
+		try {
+			while (searchBx.isDisplayed()) {
+				mobileActionUtil.clickOnMobileElement(searchBx, "Search Box");
+				flag = true;
+				mobileActionUtil.pass("Clicking on the Element : " + "Search Box");
+				break;
+			}
 
-	} catch (Exception e) {
-	while (searchBx1.isDisplayed()) {
-	mobileActionUtil.clickOnMobileElement(searchBx1, "Search Box");
-	flag =true;
-	break;
-	}
-	}
+		} catch (Exception e) {
+			while (searchBx1.isDisplayed()) {
+				mobileActionUtil.clickOnMobileElement(searchBx1, "Search Box");
+				flag = true;
+				break;
+			}
+		}
 
+		if (flag == false) {
 
-	if (flag==false) {
+			mobileActionUtil.waitForElementToLoad(5);
+			mobileActionUtil.tapOnElementUsingCoordinate(326, 469);
+			mobileActionUtil.pass("Clicking on the Element : " + "Search Box");
+		} else {
 
-	mobileActionUtil.waitForElementToLoad(5);
-	mobileActionUtil.tapOnElementUsingCoordinate(326, 469);
-	mobileActionUtil.pass("Clicking on the Element : " + "Search Box");
-	} else {
+		}
 
-	}
-
-	mobileActionUtil.waitForElementToLoad(2);
+		mobileActionUtil.waitForElementToLoad(2);
 	}
 }

@@ -144,7 +144,7 @@ public class BaseTest implements IAutoConstant {
 		capabilities.setCapability(MobileCapabilityType.VERSION, platformVersion);
 		capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, automationName);
 		capabilities.setCapability(MobileCapabilityType.FULL_RESET, false);
-		capabilities.setCapability(MobileCapabilityType.NO_RESET, false);
+		capabilities.setCapability(MobileCapabilityType.NO_RESET, true);
 		capabilities.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, 1200);
 		capabilities.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, appPackage);
 		capabilities.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, appActivity);
