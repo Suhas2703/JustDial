@@ -74,7 +74,7 @@ public class PassengerSelectionAndDetailsPage extends BasePage {
 	@FindBy(xpath = "//android.view.View[@text='DOB']")
 	private WebElement editPassengerdobTxt;
 
-	@FindBy(xpath = "//android.view.View[@text='Save & Continue']")
+	@FindBy(xpath = "//android.widget.Button[@text='Save & Continue']")
 	private WebElement editPassengerSaveAndContinueBtn;
 
 	@FindBy(id = "mainHeaderHeading")
@@ -350,6 +350,7 @@ public class PassengerSelectionAndDetailsPage extends BasePage {
 		mobileActionUtil.clickOnMobileElement(editPassengerdobTxtBx, "edit Passenger LastName Text Box");
 
 	}
+
 	/**
 	 * @author Shreya
 	 * @description Method to Click on Save and Continue Button
@@ -359,7 +360,7 @@ public class PassengerSelectionAndDetailsPage extends BasePage {
 		mobileActionUtil.clickOnMobileElement(editPassengerSaveAndContinueBtn, "edit Passenger SaveAndContinue Button");
 
 	}
-	
+
 	/**
 	 * @author Shreya
 	 * @description Method to Click on Back Button
@@ -369,7 +370,7 @@ public class PassengerSelectionAndDetailsPage extends BasePage {
 		mobileActionUtil.clickOnMobileElement(editBackBtn, "edit Back Button");
 
 	}
-	
+
 	/**
 	 * @author Shreya
 	 * @description Method to Click on Mr CheckBox
@@ -379,5 +380,143 @@ public class PassengerSelectionAndDetailsPage extends BasePage {
 		mobileActionUtil.clickOnMobileElement(mrChkBx, "Mr Check Box");
 
 	}
+
+	/**
+	 * @author Shreya
+	 * @description Method to Click on Mrs CheckBox
+	 */
+	public void selectMrsCheckBox() {
+
+		mobileActionUtil.clickOnMobileElement(mrsChkBx, "Mrs Check Box");
+
+	}
+
+	/**
+	 * @author Shreya
+	 * @description Method to Click on Ms CheckBox
+	 */
+	public void selectMsCheckBox() {
+
+		mobileActionUtil.clickOnMobileElement(msChkBx, "Ms Check Box");
+
+	}
+
+	/* ADD NEW PASSENGER SCREEN METHODS */
+
+	/**
+	 * @author Shreya
+	 * @description Method to Add New Passenger Title is Displayed
+	 */
+	public void verifyAddNewPassengerTitleIsDisplayed() {
+
+		mobileActionUtil.verifyElementIsDisplayed(addPassengerTitle, 2, "Add New Passenger Title");
+
+	}
+
+	/**
+	 * @author Shreya
+	 * @description Method to get Add New Passenger Page Title
+	 */
+	public String getAddNewPassengerTitle() {
+
+		return mobileActionUtil.getText(addPassengerTitle);
+	}
+
+	/**
+	 * @author Shreya
+	 * @description Method to Select Adult Check Box
+	 */
+	public void selectAdultCheckBox() {
+
+		mobileActionUtil.clickCheckBox(adultChkBx, "Adult Check Box");
+
+	}
+
+	/**
+	 * @author Shreya
+	 * @description Method to Select Child Check Box
+	 */
+	public void selectChildCheckBox() {
+
+		mobileActionUtil.clickCheckBox(childChkBx, "Child Check Box");
+
+	}
 	
+	/**
+	 * @author Shreya
+	 * @description Method to Select Infant Check Box
+	 */
+	public void selectInfantCheckBox() {
+
+		mobileActionUtil.clickCheckBox(infantChkBx, "Infant Check Box");
+
+	}
+	
+	/**
+	 * @author Shreya
+	 * @description Method to Click on First Name Text Box in Add Passenger Screen
+	 */
+	public void clickOnFirstNameAddPassenger() {
+
+		mobileActionUtil.clickOnMobileElement(addPassengerfirstNameTxtBx, "Firt Name Text Box In Add Passenger Screen");
+
+	}
+	/**
+	 * @author Shreya
+	 * @description Method to Click on Last Name Text Box in Add Passenger Screen
+	 */
+	public void clickOnLastNameAddPassenger() {
+
+		mobileActionUtil.clickOnMobileElement(addPassengerlastNameTxtBx, "Last Name Text Box In Add Passenger Screen");
+
+	}
+	
+	/**
+	 * @author Shreya
+	 * @description Method to Click on Dob  Text Box in Add Passenger Screen
+	 */
+	public void clickOnDobAddPassenger() {
+
+		mobileActionUtil.clickOnMobileElement(addPassengerdobTxtBx, "DOB Text Box In Add Passenger Screen");
+
+	}
+	
+	/**
+	 * @author Shreya
+	 * @description Method to Click on Save And Continue Button in Add Passenger Screen
+	 */
+	public void clickOnSaveAndContinueAddPassenger() {
+
+		mobileActionUtil.clickOnMobileElement(addPassengerSaveAndContinueBtn, "Save And Continue Button Add Passenger Screen");
+
+	}
+	/**
+	 * @author Shreya
+	 * @description Method to Select Mr Check Box in Add  Passenger Screen
+	 */
+	public void selectnMrInAddPassenger() {
+
+		mobileActionUtil.clickCheckBox(addPassengermrChkBx, "Mr Check Box in Add Passenger");
+
+	}
+	
+	/**
+	 * @author Shreya
+	 * @description Method to Select Ms Check Box in Add  Passenger Screen
+	 */
+	public void selectnMsInAddPassenger() {
+
+		mobileActionUtil.clickCheckBox(addPassengermsChkBx, "Ms Check Box in Add Passenger");
+
+	}
+	
+	/**
+	 * @author Shreya
+	 * @description Method to Select Ms Check Box in Add  Passenger Screen
+	 */
+	public void selectnMrsInAddPassenger() {
+
+		mobileActionUtil.clickCheckBox(addPassengermrsChkBx, "Mrs Check Box in Add Passenger");
+
+	}
 }
