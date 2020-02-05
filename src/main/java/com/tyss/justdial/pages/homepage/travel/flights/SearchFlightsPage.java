@@ -333,6 +333,87 @@ public class SearchFlightsPage extends BasePage {
 		mobileActionUtil.verifyText(date, expectedText3);
 
 	}
+	
+	/**
+	 * @author Anil
+	 * @description Method to verify swap button is dispalyed
+	 */	
+	public void verifySwapIconIsDisplayed(){
+		mobileActionUtil.verifyElementIsDisplayed(roundTripIcon, seconds, "Swap Icon");
+		mobileActionUtil.info("Swap icon is displayed");
+	}
+	
+	/**
+	 * @author Anil
+	 * @description Method to verify swap button is tappable
+	 */	
+	public void validateSwapIconIsTappable(){
+		mobileActionUtil.isClickable(roundTripIcon, seconds);
+		mobileActionUtil.info("Swap icon is clickable");
+	}
+	/**
+	 * @author Anil
+	 * @description Method to verify Search button is dispalyed
+	 */	
+	public void verifySearchBtnIsDispalyed(){
+		mobileActionUtil.verifyElementIsDisplayed(searchBtn, seconds, "Search Button");
+		mobileActionUtil.info("Search button is displayed");
+	}
+
+	/**
+	 * @author Anil
+	 * @description Method to verify search button is tappable
+	 */	
+	public void validateSerachBtnIsTappable(){
+		mobileActionUtil.isClickable(searchBtn, seconds);
+		mobileActionUtil.info("Search button is clickable");
+	}
+	/**
+	 * @author Anil
+	 * @description Method to verify Class Link is dispalyed
+	 */	
+	public void verifyClassTextIsDispalyed(String expectedText){
+		mobileActionUtil.verifyElementIsDisplayed(classLnk, seconds, "Class Link");
+		mobileActionUtil.info("Class Link is displayed");
+		String actualText = classLnk.getText();
+		if (actualText.equalsIgnoreCase(expectedText))
+		{
+			mobileActionUtil.info("The Actual text"+actualText+"is matching with Expected text"+expectedText);
+		}
+		else{
+			mobileActionUtil.info("The Actual text"+actualText+"is not matching with Expected text"+expectedText);
+		}
+		
+	}
+	
+	/**
+	 * @author Anil
+	 * @description Method to verify class link is tappable
+	 */	
+	public void validateClassLinkIsTappable(){
+		mobileActionUtil.isClickable(classLnk, seconds);
+		mobileActionUtil.info("Class Link is clickable");		
+	}
+	/**
+	 * @author Anil
+	 * @description Method to verify from text box is tappable
+	 */	
+	public void validateFromTextBoxIsTappable(){
+		mobileActionUtil.isClickable(fromTxtBx, seconds);
+		mobileActionUtil.info("From Text Box is clickable");	
+	}
+	
+	/**
+	 * @author Anil
+	 * @description Method to verify to text box is tappable
+	 */	
+	public void validateToTextBoxIsTappable(){
+		mobileActionUtil.isClickable(toTxtBx, seconds);
+		mobileActionUtil.info("From Text Box is clickable");	
+	}
+	
+	
+	
 
 
 }

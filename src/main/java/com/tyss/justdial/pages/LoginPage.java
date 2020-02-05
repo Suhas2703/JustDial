@@ -52,6 +52,8 @@ public class LoginPage extends BasePage {
 
 	@FindBy(xpath = "//android.widget.TextView[@text='Namaste']")
 	private WebElement namasteTxt;
+	
+	
 
 	/**
 	 * @author Shobhan

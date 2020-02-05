@@ -1,20 +1,12 @@
 package com.tyss.justdial.pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
-
 import org.openqa.selenium.support.FindBy;
 
 import com.tyss.justdial.library.BasePage;
 import com.tyss.justdial.library.MobileActionUtil;
 
-import io.appium.java_client.MobileDriver;
-import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.touch.TapOptions;
-import io.appium.java_client.touch.offset.ElementOption;
-import io.appium.java_client.touch.offset.PointOption;
 
 public class HomePage extends BasePage {
 
@@ -687,14 +679,26 @@ public class HomePage extends BasePage {
 	public void clickOnMoreIcon() {
 		try {
 			travelIcon.isDisplayed();
+			verifyTravelIcon();
+			validateTravelIconIsTappable();
 			mobileActionUtil.clickOnMobileElement(travelIcon, "Travel Hot Search Key");
+			
 		}
 		catch (Exception e) {
 			mobileActionUtil.clickOnMobileElement(moreIcon, "Travel Hot Search Key");
 			verifyTravelIcon();
+			validateTravelIconIsTappable();
 			mobileActionUtil.clickOnMobileElement(travelIcon, "Travel Hot Search Key");
+
 		}
 	}
+	
+	/**
+	 * @author Anil
+	 * @description verifying travel icon is displayed 
+	 * 
+	 * 
+	 */
 	
 	public void verifyTravelIcon()
 	{
@@ -705,6 +709,18 @@ public class HomePage extends BasePage {
 		else{
 			mobileActionUtil.fail("The Travel icon is not dispalyed");
 		}
+	}
+	
+	/**
+	 * @author Anil
+	 * @description validating  travel icon is clickable 
+	 * 
+	 * 
+	 */
+
+	public void validateTravelIconIsTappable() {
+		mobileActionUtil.isClickable(travelIcon, seconds);
+		
 	}
 	
 }

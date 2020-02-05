@@ -18,7 +18,7 @@
 		<parameter name="ip" value="localhost"></parameter>
 		<classes>
 			<class
-				name="com.tyss.justdial.flights.testscripts.Flight_TC001" />
+				name="com.tyss.justdial.flights.testscripts.Flight_TC006" />
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->

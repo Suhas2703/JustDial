@@ -4,7 +4,6 @@ import java.util.NoSuchElementException;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -13,15 +12,10 @@ import org.testng.annotations.Test;
 
 import com.tyss.justdial.library.BaseTest;
 import com.tyss.justdial.library.ExcelLibrary;
-import com.tyss.justdial.pages.HomePage;
-import com.tyss.justdial.pages.LoginPage;
-import com.tyss.justdial.pages.SearchPage;
 
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.nativekey.AndroidKey;
-import io.appium.java_client.android.nativekey.KeyEvent;
-import io.appium.java_client.touch.offset.PointOption;
+import io.appium.java_client.android.AndroidKeyCode;
 
 public class WorkFlowAutomation extends BaseTest {
 
@@ -138,7 +132,7 @@ public class WorkFlowAutomation extends BaseTest {
 		waitforElement(driver, namasteElement);
 		if (isElementDisplayed(namasteElement)) {
 			namasteElement.click();
-			driver.pressKey(new KeyEvent().withKey(AndroidKey.BACK));
+			driver.pressKeyCode(AndroidKeyCode.BACK);
 		} else {
 
 		}
@@ -388,8 +382,8 @@ public class WorkFlowAutomation extends BaseTest {
 	}
 
 	public void tapOnElementUsingCoordinate(int i, int j) {
-		TouchAction action = new TouchAction<>(driver);
-		action.tap(PointOption.point(i, j)).perform();
+/*		TouchAction action = new TouchAction<>(driver);
+		action.tap(PointOption.point(i, j)).perform();*/
 	}
 
 	/**
@@ -420,7 +414,7 @@ public class WorkFlowAutomation extends BaseTest {
 
 		System.out.println("swipe coordinates detail");
 		TouchAction action = new TouchAction(driver);
-		action.longPress(PointOption.point(fromX, fromY)).moveTo(PointOption.point(toX, toY)).release().perform();
+	//	action.longPress(PointOption.point(fromX, fromY)).moveTo(PointOption.point(toX, toY)).release().perform();
 	}
 
 	/**
