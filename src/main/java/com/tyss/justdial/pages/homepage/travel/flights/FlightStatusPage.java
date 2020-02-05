@@ -15,6 +15,8 @@ public class FlightStatusPage extends BasePage {
 		super(driver, mobileActionUtil);
 	}
 
+
+
 	@FindBy(xpath = "//android.view.View[@text='By Flight']")
 	private WebElement byFlightRadioBtn;
 
