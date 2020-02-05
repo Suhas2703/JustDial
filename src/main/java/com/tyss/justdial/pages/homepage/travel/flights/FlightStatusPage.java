@@ -23,7 +23,7 @@ public class FlightStatusPage extends BasePage {
 	}
 
 	/** FLIGHT STATUS PAGE MOBILE ELEMENTS DECLARATION **/
-	
+
 	@FindBy(xpath = "//android.view.View[@text='By Flight']")
 	private WebElement byFlightRadioBtn;
 
@@ -56,10 +56,36 @@ public class FlightStatusPage extends BasePage {
 
 	@FindBy(xpath = "//android.widget.EditText")
 	private WebElement searchForDesiredCityOrAirportSearchTxtBx;
-	
-	
-	@FindBy(xpath="(//android.view.View)[1]")
+
+	@FindBy(xpath = "(//android.view.View)[5]")
 	private WebElement selectAirportAndCityFirstOtn;
+	//
+
+	@FindBy(id = "cityhdr")
+	private WebElement placeToPlace;
+
+	@FindBy(xpath = "//android.view.View[@text='ARRIVED']")
+	private WebElement arrivedTxt;
+
+	@FindBy(xpath = "//android.view.View[@text='Departed']")
+	private WebElement departedTxt;
+
+	@FindBy(xpath = "(//android.view.View[@text='Terminal'])[1]")
+	private WebElement terminalTxt;
+
+	@FindBy(xpath = "(//android.view.View[@text='Gate'])[1]")
+	private WebElement gateTxt;
+	@FindBy(xpath = "(//android.view.View[@text='Terminal'])[2]")
+	private WebElement terminalTxt1;
+
+	@FindBy(xpath = "(//android.view.View[@text='Gate'])[2]")
+	private WebElement gateTxt1;
+
+	@FindBy(xpath = "//android.view.View[@text='Scheduled Departure']")
+	private WebElement scheduledDepartureTxt;
+
+	@FindBy(xpath = "//android.view.View[@text='Scheduled Arrival']")
+	private WebElement scheduledArrivalTxt;
 
 	/**
 	 * @author Shobhan
@@ -152,18 +178,22 @@ public class FlightStatusPage extends BasePage {
 
 	/**
 	 * @author Shobhan
-	 * @description Method to click On search For Desired City Or Airport Search Text Box
+	 * @description Method to click On search For Desired City Or Airport Search
+	 *              Text Box
 	 */
 	public void clickOnsearchForDesiredCityOrAirportSearch() {
-		mobileActionUtil.clickOnMobileElement(searchForDesiredCityOrAirportSearchTxtBx,"search For Desired City Or Airport Search Text Box");
+		mobileActionUtil.clickOnMobileElement(searchForDesiredCityOrAirportSearchTxtBx,
+				"search For Desired City Or Airport Search Text Box");
 	}
-	
+
 	/**
 	 * @author Shobhan
-	 * @description Method to enter and search For Desired City Or Airport Search Text Box
+	 * @description Method to enter and search For Desired City Or Airport Search
+	 *              Text Box
 	 */
 	public void enterSearchForDesiredCityOrAirportSearch(String input) {
-		mobileActionUtil.setText(searchForDesiredCityOrAirportSearchTxtBx, input, "search For Desired City Or Airport Search Text Box");
+		mobileActionUtil.setText(searchForDesiredCityOrAirportSearchTxtBx, input,
+				"search For Desired City Or Airport Search Text Box");
 	}
 
 	/**
@@ -171,6 +201,104 @@ public class FlightStatusPage extends BasePage {
 	 * @description Method to select Airport And City First Option
 	 */
 	public void selectAirportAndCityFirstOption() {
-		mobileActionUtil.clickOnMobileElement(selectAirportAndCityFirstOtn,"search For Desired City Or Airport Search Text Box");
+		mobileActionUtil.clickOnMobileElement(selectAirportAndCityFirstOtn,
+				"search For Desired City Or Airport Search Text Box");
 	}
+
+	/**
+	 * @author Preety
+	 * @description: Method to verify the place to place text
+	 */
+	public void getPlaceToPlace() {
+		String textPresentInPage = placeToPlace.getText();
+		System.out.println(textPresentInPage);
+
+	}
+
+	/**
+	 * @author Preety
+	 * @description: Method to verify the arrival text
+	 */
+	public void getFlightStatus() {
+		String textPresentInPage = arrivedTxt.getText();
+		System.out.println(textPresentInPage);
+
+	}
+
+	/**
+	 * @author Preety
+	 * @description: Method to verify the departed time text
+	 */
+	public void getDepartedTime() {
+		String textPresentInPage = departedTxt.getText();
+		System.out.println(textPresentInPage);
+	}
+
+	/**
+	 * @author Preety
+	 * @description: Method to verify the departed terminal text
+	 */
+	public void getDepartedTerminalText() {
+		String textPresentInPage = terminalTxt.getText();
+		System.out.println(textPresentInPage);
+	}
+
+	/**
+	 * @author Preety
+	 * @description: Method to verify the Departed gate text
+	 */
+	public void getDepartedGateText() {
+		String textPresentInPage = gateTxt.getText();
+		System.out.println(textPresentInPage);
+	}
+
+	/**
+	 * @author Preety
+	 * @description: Method to verify the Scheduled departure text
+	 */
+
+	public void getScheduledDepartureText() {
+		String textPresentInPage = scheduledDepartureTxt.getText();
+		System.out.println(textPresentInPage);
+
+	}
+
+	/**
+	 * @author Preety
+	 * @description: Method to verify the arrival text
+	 */
+
+	public void getArrivalTime() {
+		String textPresentInPage = arrivedTxt.getText();
+		System.out.println(textPresentInPage);
+	}
+
+	/**
+	 * @author Preety
+	 * @description: Method to verify the arrival text
+	 */
+	public void getArrivalTerminalText() {
+		String textPresentInPage = terminalTxt1.getText();
+		System.out.println(textPresentInPage);
+	}
+
+	/**
+	 * @author Preety
+	 * @description: Method to verify the arrival gate text
+	 */
+	public void getArrivalGateText() {
+		String textPresentInPage = gateTxt1.getText();
+		System.out.println(textPresentInPage);
+	}
+
+	/**
+	 * @author Preety
+	 * @description: Method to verify the Scheduled arrival text
+	 */
+	public void getScheduledArrivalText() {
+		String textPresentInPage = scheduledArrivalTxt.getText();
+		System.out.println(textPresentInPage);
+
+	}
+
 }
