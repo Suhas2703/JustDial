@@ -44,128 +44,198 @@ public class FlightBookingPage extends BasePage {
 	private WebElement fromCity;
 	
 	@FindBy(xpath="(//android.view.View)[16]")
-	private WebElement depTime;
+	private WebElement departureTime;
 	
 	@FindBy(xpath="(//android.view.View)[22]")
 	private WebElement toCity;
 	
 	@FindBy(xpath="(//android.view.View)[24]")
-	private WebElement arrvTime;
+	private WebElement arrivalTime;
 	
 	@FindBy(xpath="(//android.view.View)[13]")
-	private WebElement selAirline;
+	private WebElement selectedAirline;
 	
 	@FindBy(xpath="//android.view.View[contains(@text,'Refundable')]")
 	private WebElement flghtType;
 	
 	@FindBy(id="toggleInsurance")
-	private WebElement insRdbtn;
+	private WebElement insuranceRadiobtn;
 	
 	@FindBy(xpath="//android.view.View[@text='T&C']")
-	private WebElement terms_Cndtns;
+	private WebElement termsAndConditions;
 	
 	@FindBy(xpath="//android.view.View[contains(@text,'more')]")
-	private WebElement plcyBnfts;
+	private WebElement policyBenifits;
 	
 	@FindBy(xpath="//android.view.View[contains(@text,'Promocode')]")
 	private WebElement promoCode;
 	
 	@FindBy(id="promocode")
-	private WebElement enter_Promocde;
+	private WebElement enterPromocde;
 	
 	@FindBy(id="applyPromo")
-	private WebElement apply_Promo;
+	private WebElement applyPromo;
 	
 	@FindBy(id="sumPrice")
-	private WebElement totFare;
+	private WebElement totalFare;
 	
 	@FindBy(id="bookFlt")
-	private WebElement bookFlght;
+	private WebElement bookFlight;
 	
 	@FindBy(id="mainHeaderHeading")
 	private WebElement backBtn;
 	
+	/**
+	 * @author Savitha
+	 * @description Method to Fetch Travel Information
+	 * 
+	 **/
 	public String getTravlinfo()
 	{
 		return mobileActionUtil.getText(travelInfo);
 	}
-	
-	public String getFrmcity()
+	/**
+	 * @author Savitha
+	 * @description Method to Fetch From City
+	 * 
+	 **/
+	public String getFromcity()
 	{
 		return mobileActionUtil.getText(fromCity);
 	}
-	
-	public String getDeptime()
+	/**
+	 * @author Savitha
+	 * @description Method to Fetch DepartureTime
+	 * 
+	 **/
+	public String getDepartureTime()
 	{
-		return mobileActionUtil.getText(depTime);
+		return mobileActionUtil.getText(departureTime);
 	}
-	
-	public String getTocity()
+	/**
+	 * @author Savitha
+	 * @description Method to Fetch To City
+	 * 
+	 **/
+	public String getToCity()
 	{
 		return mobileActionUtil.getText(toCity);
 	}
-	
-	public String getArrvtime()
+	/**
+	 * @author Savitha
+	 * @description Method to Fetch Arrival Time
+	 * 
+	 **/
+	public String getArrivalTime()
 	{
-		return mobileActionUtil.getText(arrvTime);
+		return mobileActionUtil.getText(arrivalTime);
 	}
-	
-	public String getSel_airline()
+	/**
+	 * @author Savitha
+	 * @description Method to Fetch Selected Airline
+	 * 
+	 **/
+	public String getSelectedAirline()
 	{
-		return mobileActionUtil.getText(selAirline);
+		return mobileActionUtil.getText(selectedAirline);
 	}
-	
-	public String getFlghttype()
+	/**
+	 * @author Savitha
+	 * @description Method to Fetch Flight Type
+	 * 
+	 **/
+	public String getFlightType()
 	{
 		return mobileActionUtil.getText(flghtType);
 	}
-	
-	public void clickonIns_rdbtn()
+	/**
+	 * @author Savitha
+	 * @description Method to Click on Insurance Button
+	 * 
+	 **/
+	public void clickonInsuranceradiobtn()
 	{
-		mobileActionUtil.clickCheckBox(insRdbtn, "Insurance Radio Button");
+		mobileActionUtil.clickCheckBox(insuranceRadiobtn, "Insurance Radio Button");
 	}
-	
-	public void clickonTerms_cndtns()
+	/**
+	 * @author Savitha
+	 * @description Method to Click on Terms And Conditions
+	 * 
+	 **/
+	public void clickonTermsAndConditions()
 	{
-		mobileActionUtil.tapOnElement(terms_Cndtns);
+		mobileActionUtil.tapOnElement(termsAndConditions);
 	}
-	
-	public String getPlcybnfts()
+	/**
+	 * @author Savitha
+	 * @description Method to Fetch Policy Benefits
+	 * 
+	 **/
+	public String getPolicybenifits()
 	{
-		return mobileActionUtil.getText(plcyBnfts);
+		return mobileActionUtil.getText(policyBenifits);
 		
 	}
-	public void scrollTo_Plcybnfts()
+	/**
+	 * @author Savitha
+	 * @description Method to Scroll to FlightType
+	 * 
+	 **/
+	public void scrollTogetFlightType()
 	{
-		mobileActionUtil.scrollTillElement(getFlghttype());
+		mobileActionUtil.scrollTillElement(getFlightType());
 	}
-	
-	public String verify_Promocode()
+	/**
+	 * @author Savitha
+	 * @description Method to Fetch Promocode
+	 * 
+	 **/
+	public String getPromocode()
 	{
 		return mobileActionUtil.getText(promoCode);
 	}
-	
+	/**
+	 * @author Savitha
+	 * @description Method to Click on Promocode
+	 * 
+	 **/
 	public void click_Promocode()
 	{
-		mobileActionUtil.clickOnMobileElement(enter_Promocde, "PromoCode");
+		mobileActionUtil.clickOnMobileElement(enterPromocde, "PromoCode");
 	}
-	
-	public void click_applyPromo()
+	/**
+	 * @author Savitha
+	 * @description Method to Click on Apply Promo
+	 * 
+	 **/
+	public void clickApplyPromo()
 	{
-		mobileActionUtil.clickOnMobileElement(apply_Promo, "ApplyPromo");
+		mobileActionUtil.clickOnMobileElement(applyPromo, "ApplyPromo");
 	}
-	
+	/**
+	 * @author Savitha
+	 * @description Method to Fetch Total Fare
+	 * 
+	 **/
 	public String getTotalfare()
 	{
-		return mobileActionUtil.getText(totFare);
+		return mobileActionUtil.getText(totalFare);
 	}
-	
-	public void click_Tobookflght()
+	/**
+	 * @author Savitha
+	 * @description Method to Click on continue
+	 * 
+	 **/
+	public void clickTobookflight()
 	{
-		mobileActionUtil.clickOnMobileElement(bookFlght, "Continue to book Flight");
+		mobileActionUtil.clickOnMobileElement(bookFlight, "Continue to book Flight");
 	}
-	
-	public void click_BackBtn()
+	/**
+	 * @author Savitha
+	 * @description Method to Click on Back Button
+	 * 
+	 **/
+	public void clickonBackBtn()
 	{
 		mobileActionUtil.clickOnMobileElement(backBtn, "Back Button");
 	}
