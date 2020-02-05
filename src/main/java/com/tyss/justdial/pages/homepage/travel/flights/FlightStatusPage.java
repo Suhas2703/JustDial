@@ -11,12 +11,18 @@ import io.appium.java_client.android.AndroidDriver;
 
 public class FlightStatusPage extends BasePage {
 
+	/**
+	 * @author Shobhan
+	 * @description Constructor to initialize Flight Status Page mobile elements
+	 * @param driver
+	 * @param mobileActionUtil
+	 */
 	public FlightStatusPage(AndroidDriver driver, MobileActionUtil mobileActionUtil) {
 		super(driver, mobileActionUtil);
 	}
 
 
-
+	/** FLIGHT STATUS PAGE MOBILE ELEMENTS DECLARATION **/
 	@FindBy(xpath = "//android.view.View[@text='By Flight']")
 	private WebElement byFlightRadioBtn;
 
@@ -46,6 +52,7 @@ public class FlightStatusPage extends BasePage {
 
 	@FindBy(xpath = "(//android.widget.EditText)[4]")
 	private WebElement byRouteAirportDateLnk;
+
 
 	public void clickOnByFlightRadioButton() {
 		mobileActionUtil.clickOnMobileElement(byFlightRadioBtn, "By Flight Radio Button");
