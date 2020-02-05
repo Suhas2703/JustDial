@@ -57,40 +57,37 @@ public class PassengerSelectionAndDetailsPage extends BasePage {
 	private WebElement editPassengerTitle;
 
 	@FindBy(id = "edtLnFname")
-	private WebElement firstNameTxtBx;
+	private WebElement editPassengerfirstNameTxtBx;
 
 	@FindBy(id = "edtLnLname")
-	private WebElement lastNameTxtBx;
+	private WebElement editPassengerlastNameTxtBx;
 
 	@FindBy(id = "edtLnDob")
-	private WebElement dobTxtBx;
+	private WebElement editPassengerdobTxtBx;
 
 	@FindBy(xpath = "//android.view.View[@text='First name']")
-	private WebElement firstNameTxt;
+	private WebElement editPassengerfirstNameTxt;
 
 	@FindBy(xpath = "//android.view.View[@text='Last name']")
-	private WebElement lastNameTxt;
+	private WebElement editPassengerlastNameTxt;
 
 	@FindBy(xpath = "//android.view.View[@text='DOB']")
-	private WebElement dobTxt;
+	private WebElement editPassengerdobTxt;
 
 	@FindBy(xpath = "//android.view.View[@text='Save & Continue']")
 	private WebElement editPassengerSaveAndContinueBtn;
 
 	@FindBy(id = "mainHeaderHeading")
 	private WebElement editBackBtn;
-	
+
 	@FindBy(xpath = "//android.view.View[@text='Mr']")
 	private WebElement mrChkBx;
-	
+
 	@FindBy(xpath = "//android.view.View[@text='Mrs']")
 	private WebElement mrsChkBx;
-	
+
 	@FindBy(xpath = "//android.view.View[@text='Ms']")
 	private WebElement msChkBx;
-	
-	
-
 
 	/* ADD NEW PASSENGER ELEMENTS */
 
@@ -114,45 +111,44 @@ public class PassengerSelectionAndDetailsPage extends BasePage {
 
 	@FindBy(id = "addDob")
 	private WebElement addPassengerdobTxtBx;
-	
+
 	@FindBy(xpath = "//android.view.View[@text='Mr']")
 	private WebElement addPassengermrChkBx;
-	
+
 	@FindBy(xpath = "//android.view.View[@text='Mrs']")
 	private WebElement addPassengermrsChkBx;
-	
+
 	@FindBy(xpath = "//android.view.View[@text='Ms']")
 	private WebElement addPassengermsChkBx;
-	
+
 	@FindBy(id = "btnDoneCan_login")
 	private WebElement addPassengerSaveAndContinueBtn;
-	
-	
 
 	/**
 	 * @author Shreya
 	 * @description Method to verify loggedInUserName is displayed
 	 * @param loggedInUserNameText
 	 */
-	
+
 	public void verifyLoggedInUserNameisdisplayed() {
 
 		mobileActionUtil.verifyElementIsDisplayed(loggedInUserNameTxt, 2, "Logged In UserName Text");
-		
+
 	}
+
 	/**
 	 * @author Shreya
-	 * @description Method to verify the  UserName
+	 * @description Method to verify the UserName
 	 * @param loggedInUserNameText
 	 */
 	public void verifyLoggedInUserName(String loggedInUserNameText) {
 
 		mobileActionUtil.verifyElementText(loggedInUserNameTxt, 2, loggedInUserNameText);
 	}
-	
+
 	/**
 	 * @author Shreya
-	 * @description Method to get Looged in  UserName
+	 * @description Method to get Looged in UserName
 	 * @param loggedInUserNameText
 	 */
 	public String getLoggeInUserName() {
@@ -162,26 +158,24 @@ public class PassengerSelectionAndDetailsPage extends BasePage {
 
 	/**
 	 * @author Shreya
-	 * @description Method to verify loggedInUserEditIcn is displayed 
+	 * @description Method to verify loggedInUserEditIcn is displayed
 	 *
 	 */
 
 	public void verifyLoggedInUserEditIconisDisplayed() {
 
 		mobileActionUtil.verifyElementIsDisplayed(loggedInUserEditIcn, 2, "Logged In UserName Edit Icon");
-		
+
 	}
-	
-	
+
 	/**
 	 * @author Shreya
 	 * @description click on the loggedInUserEditIcn.
-	 *            
+	 * 
 	 */
 
 	public void clickOnloggedInUserEditIcon() {
 
-		mobileActionUtil.verifyElementIsDisplayed(loggedInUserEditIcn, 2, "Logged In UserName Edit Icon");
 		mobileActionUtil.clickOnMobileElement(loggedInUserEditIcn, "Logged in UserName Edit Icon");
 
 	}
@@ -199,7 +193,7 @@ public class PassengerSelectionAndDetailsPage extends BasePage {
 		mobileActionUtil.clickCheckBox(loggedInUserChkBx, "Logged In UserName Check Box");
 
 	}
-	
+
 	/**
 	 * @author Shreya
 	 * @description Method to verify loggedIn User Check Box is displayed and select
@@ -221,27 +215,27 @@ public class PassengerSelectionAndDetailsPage extends BasePage {
 		mobileActionUtil.clickOnMobileElement(addNewPassengerLnk, "Add New Passenger Link");
 
 	}
+
 	/**
 	 * @author Shreya
 	 * @description click on the loggedInUserEditIcn.
 	 */
 	public void verifyAddNewPassengerLinkIsDisplayed() {
 
-		mobileActionUtil.verifyElementIsDisplayed(addNewPassengerLnk,2, "Add New Passenger Link");
+		mobileActionUtil.verifyElementIsDisplayed(addNewPassengerLnk, 2, "Add New Passenger Link");
 
 	}
-	
 
 	/**
 	 * @author Shreya
 	 * @description Method to verify i Icon is displayed and click on the same.
 	 */
 	public void clickOniIcon() {
-		
+
 		mobileActionUtil.clickOnMobileElement(iIcon, "i Icon");
 
 	}
-	
+
 	/**
 	 * @author Shreya
 	 * @description Method to verify i Icon is displayed and click on the same.
@@ -250,11 +244,10 @@ public class PassengerSelectionAndDetailsPage extends BasePage {
 
 		mobileActionUtil.verifyElementIsDisplayed(iIcon, 2, "i Icon");
 	}
-	
 
 	/**
 	 * @author Shreya
-	 * @description  verify the Total fare
+	 * @description verify the Total fare
 	 * @param fare
 	 */
 
@@ -270,10 +263,10 @@ public class PassengerSelectionAndDetailsPage extends BasePage {
 	 */
 
 	public String getFare() {
-		
+
 		return mobileActionUtil.getText(fareTxt);
 	}
-	
+
 	/**
 	 * @author Shreya
 	 * @description Method to verify fare is displayed and verify the Total fare
@@ -281,9 +274,10 @@ public class PassengerSelectionAndDetailsPage extends BasePage {
 	 */
 
 	public void verifyFareisDisplayed() {
-		
+
 		mobileActionUtil.verifyElementIsDisplayed(fareTxt, 2, "Total Fare");
 	}
+
 	/**
 	 * @author Shreya
 	 * @description Method to verify Save And Continue is displayed and click on the
@@ -295,18 +289,95 @@ public class PassengerSelectionAndDetailsPage extends BasePage {
 		mobileActionUtil.clickOnMobileElement(passengerSaveAndContinueBtn, "Passenger Save And Contiinue Button");
 
 	}
+
 	/**
 	 * @author Shreya
-	 * @description  Save And Continue is displayed in Passenger Detail Screen
+	 * @description Save And Continue is displayed in Passenger Detail Screen
 	 */
-	
+
 	public void verifySaveAndContinueButtonIsDisplayed() {
 
 		mobileActionUtil.verifyElementIsDisplayed(passengerSaveAndContinueBtn, 2, "Save And Continue Button");
 
 	}
+
+	/* EDIT PASSENGER SCREEN METHODS */
+	/**
+	 * @author Shreya
+	 * @description Method to verify Passenger Title is Displayed
+	 */
+	public void verifyEditPassengerTitleIsDisplayed() {
+
+		mobileActionUtil.verifyElementIsDisplayed(editPassengerTitle, 2, "Edit Passenger Title");
+
+	}
+
+	/**
+	 * @author Shreya
+	 * @description Method to get Edit Passenger Page Title
+	 */
+	public String getEditPassengerTitle() {
+
+		return mobileActionUtil.getText(editPassengerTitle);
+	}
+
+	/**
+	 * @author Shreya
+	 * @description Method to Click on First Name Text Box
+	 */
+	public void clickOnFirstNameInEditPassenger() {
+
+		mobileActionUtil.clickOnMobileElement(editPassengerfirstNameTxtBx, "edit Passenger firstName Text Box");
+
+	}
+
+	/**
+	 * @author Shreya
+	 * @description Method to Click on Last Name Text Box
+	 */
+	public void clickOnLastNameInEditPassenger() {
+
+		mobileActionUtil.clickOnMobileElement(editPassengerlastNameTxtBx, "edit Passenger LastName Text Box");
+
+	}
+
+	/**
+	 * @author Shreya
+	 * @description Method to Click on Last Name Text Box
+	 */
+	public void clickOnDOBInEditPassenger() {
+
+		mobileActionUtil.clickOnMobileElement(editPassengerdobTxtBx, "edit Passenger LastName Text Box");
+
+	}
+	/**
+	 * @author Shreya
+	 * @description Method to Click on Save and Continue Button
+	 */
+	public void clickOnSaveAndContinueInEditPassenger() {
+
+		mobileActionUtil.clickOnMobileElement(editPassengerSaveAndContinueBtn, "edit Passenger SaveAndContinue Button");
+
+	}
 	
-	/*EDIT PASSENGER SCREEN METHODS*/
+	/**
+	 * @author Shreya
+	 * @description Method to Click on Back Button
+	 */
+	public void clickOnBackInEditPassenger() {
+
+		mobileActionUtil.clickOnMobileElement(editBackBtn, "edit Back Button");
+
+	}
 	
+	/**
+	 * @author Shreya
+	 * @description Method to Click on Mr CheckBox
+	 */
+	public void selectMrCheckBox() {
+
+		mobileActionUtil.clickOnMobileElement(mrChkBx, "Mr Check Box");
+
+	}
 	
 }
