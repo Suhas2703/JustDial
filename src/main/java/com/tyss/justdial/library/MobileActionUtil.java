@@ -3,6 +3,7 @@ package com.tyss.justdial.library;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -13,6 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -28,10 +30,12 @@ import org.testng.Reporter;
 import com.aventstack.extentreports.Status;
 import com.tyss.justdial.extentreports.ExtentTestManager;
 
+import io.appium.java_client.MobileDriver;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
+import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 
 public class MobileActionUtil {
@@ -211,7 +215,7 @@ public class MobileActionUtil {
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, 5);
 			wait.ignoring(NoSuchElementException.class).until(ExpectedConditions.visibilityOf(element)).click();
-	
+
 			pass("Clicking on the Element : " + elementName);
 		} catch (Exception e1) {
 			fail("Unable to click on the Element :" + elementName);
@@ -740,25 +744,60 @@ public class MobileActionUtil {
 		cal.add(Calendar.DATE, 0);
 		return new SimpleDateFormat(" MM/dd/yyyy").format(cal.getTime());
 	}
-	
+
 	/**
 	 * @author Shreya
 	 * @description Tap on Element Using the coordinates
 	 * @return
 	 */
-	public void tapOnElementUsingCoordinate(int xOffset,int yOffset) {
+	public void tapOnElementUsingCoordinate(int xOffset, int yOffset) {
 		TouchAction action = new TouchAction<>(driver);
 		action.tap(PointOption.point(xOffset, yOffset));
 	}
-	
+
 	/**
 	 * @author Sunil.S
-	 * @description Method to tap on element using touch action class based on co-ordinates
+	 * @description Method to tap on element using touch action class based on
+	 *              co-ordinates
 	 * @param ele
 	 */
 	public void tapOnElement(WebElement ele) {
 		TouchAction action = new TouchAction<>(driver);
 		action.tap(PointOption.point(ele.getLocation().x, ele.getLocation().y)).waitAction().perform();
 	}
+
+	public void scrollToElement(String mnthyear, int maxScroll, double start, double end) throws InterruptedException {
+
+		  System.out.println(mnthyear);
+		  driver.findElementByAndroidUIAutomator(
+		  "new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().textContains(\"" + mnthyear + "\"));"
+		  );
+		 
+		  TouchAction ta = new TouchAction(driver);
+		  
+		 
+		/*
+		 * while (maxScroll != 0) { try {
+		 * System.out.println("Trying to locate the element"); WebElement ele =
+		 * driver.findElement(By.xpath("//android.widget.TextView[@text='"+mnthyear+"']"
+		 * )); if(ele.isDisplayed()) { maxScroll++; break; } }catch (Exception e) {
+		 * swipeBottomToTop(driver, start, end); } maxScroll--; }
+		 */
+	}
 	
+	
+
+	public void swipeBottomToTop(AndroidDriver driver, double start, double end) throws InterruptedException {
+
+		Dimension d = driver.manage().window().getSize();
+		int startY = (int) (d.height * start);
+		int endY = (int) (d.height * end);
+		int x = d.width / 2;
+		Thread.sleep(1000);
+		TouchAction action = new TouchAction<>(driver);
+		action.press(PointOption.point(x, startY)).waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
+				.moveTo(PointOption.point(x, endY)).release();
+
+	}
+
 }

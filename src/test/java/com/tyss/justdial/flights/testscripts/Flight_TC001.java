@@ -17,7 +17,7 @@ import com.tyss.justdial.pages.homepage.travel.flights.SearchFlightsPage;
 public class Flight_TC001 extends BaseTest {
 
 	@Test(description = "searchFlight")
-	public void searchFlight(Method m) {
+	public void searchFlight(Method m) throws InterruptedException {
 
 		/* Fetch the Test Data from Excel File */
 //		String enterText = ExcelLibrary.getExcelData(XL_TESTPATH, "", 76, 1);
@@ -26,7 +26,7 @@ public class Flight_TC001 extends BaseTest {
 		String expectedText1="Mumbai BOM";
 		String expectedText2= "Goa GOI ";
 		String expectedText3= "WED, 5th Feb 2020";
-
+        String date="2020-06-05";
 
 		// Enter the Test case name
 		TravelPage travelPage = new TravelPage(driver, mobileActionUtil);
@@ -38,25 +38,33 @@ public class Flight_TC001 extends BaseTest {
 		travelPage.selectFlightFilter();
 
 		SearchFlightsPage searchFlightsPage = new SearchFlightsPage(driver, mobileActionUtil);
-		searchFlightsPage.clickOnFrom();
+		/*
+		 * searchFlightsPage.clickOnFrom();
+		 * 
+		 * searchFlightsPage.clickOnAirportSearch();
+		 * searchFlightsPage.enterCityNameInSearch(enterText1);
+		 * searchFlightsPage.selectFirstCity();
+		 * 
+		 * searchFlightsPage.clickOnTo();
+		 * 
+		 * searchFlightsPage.clickOnAirportSearch();
+		 * searchFlightsPage.enterCityNameInSearch(enterText2);
+		 * searchFlightsPage.selectFirstCity();
+		 */
+		searchFlightsPage.clickOnDepature();
+		searchFlightsPage.selectDepartureDate(date);
+	
+		
 
-		searchFlightsPage.clickOnAirportSearch();
-		searchFlightsPage.enterCityNameInSearch(enterText1);
-		searchFlightsPage.selectFirstCity();
-
-		searchFlightsPage.clickOnTo();
-
-		searchFlightsPage.clickOnAirportSearch();
-		searchFlightsPage.enterCityNameInSearch(enterText2);
-		searchFlightsPage.selectFirstCity();
-
-		searchFlightsPage.clickOnTravellers();
-		searchFlightsPage.increseAdultNumber();
-
-
-		searchFlightsPage.clickOnDone();
-		searchFlightsPage.clickOnSearch();
-
-		searchFlightsPage.verifyFirstprompt(expectedText1, expectedText2, expectedText3);
-	}
+		//Call select Date method
+		/*
+		 * searchFlightsPage.clickOnTravellers();
+		 * searchFlightsPage.increseAdultNumber();
+		 * 
+		 * 
+		 * searchFlightsPage.clickOnDone(); searchFlightsPage.clickOnSearch();
+		 * 
+		 * searchFlightsPage.verifyFirstprompt(expectedText1, expectedText2,
+		 * expectedText3);
+		 */	}
 }

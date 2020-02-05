@@ -1,5 +1,8 @@
 package com.tyss.justdial.pages.homepage.travel.flights;
 
+import java.time.LocalDate;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -237,4 +240,57 @@ public class SearchFlightsPage extends BasePage {
 
 	}
 
+	public void selectDepartureDate(String date) throws InterruptedException
+	{
+		String[] dtvals=getDateVals(date);
+		String mnthyear=toTitleCase(dtvals[1])+" " +dtvals[2];
+		scrollToMonthYear(mnthyear);
+	}
+	
+	
+	//Date to sent in the format 2020-12-03 i.e. Year-Month-Date
+	public static String[] getDateVals(String date)
+	{
+		String dateInString = date;
+		String[] dateVals=new String[3];
+		LocalDate dt = LocalDate.parse(dateInString);
+		dateVals[0]=Integer.toString(dt.getDayOfMonth());
+		dateVals[1]=dt.getMonth().toString();
+		dateVals[2]=Integer.toString(dt.getYear());
+        return dateVals;
+	}
+	
+	private static String toTitleCase(String str) {
+
+		if (str == null || str.isEmpty())
+			return "";
+
+		if (str.length() == 1)
+			return str.toUpperCase();
+
+		// split the string by space
+		String[] parts = str.split(" ");
+
+		StringBuilder sb = new StringBuilder(str.length());
+
+		for (String part : parts) {
+
+			if (part.length() > 1)
+				sb.append(part.substring(0, 1).toUpperCase()).append(part.substring(1).toLowerCase());
+			else
+				sb.append(part.toUpperCase());
+
+			sb.append(" ");
+		}
+
+		return sb.toString().trim();
+	}
+	
+	
+	public void scrollToMonthYear(String mnthyear) throws InterruptedException
+	{
+
+		mobileActionUtil.scrollToElement(mnthyear, 5,  0.20,0.80);
+	}
+	
 }
