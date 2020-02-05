@@ -9,9 +9,9 @@ import com.tyss.justdial.library.MobileActionUtil;
 
 import io.appium.java_client.android.AndroidDriver;
 
-public class FlightStatus extends BasePage {
+public class FlightStatusPage extends BasePage {
 
-	public FlightStatus(AndroidDriver driver, MobileActionUtil mobileActionUtil) {
+	public FlightStatusPage(AndroidDriver driver, MobileActionUtil mobileActionUtil) {
 		super(driver, mobileActionUtil);
 	}
 
