@@ -118,104 +118,206 @@ public class SearchFlightsPage extends BasePage {
 	@FindBy(id = "com.justdial.search:id/searchingfor")
 	private WebElement searchingForFlightsTxt;
 
+
+	/**
+	 * @author Shobhan
+	 * @description Method to click on From Text Box
+	 */
 	public void clickOnFrom() {
 		mobileActionUtil.clickOnMobileElement(fromTxtBx, "From");
 	}
 
+	/**
+	 * @author Shobhan
+	 * @description Method to click on Round Trip Icon
+	 */
 	public void clickOnRoundTripIcon() {
 		mobileActionUtil.clickOnMobileElement(roundTripIcon, "Round Trip Icon");
 	}
 
+	/**
+	 * @author Shobhan
+	 * @description Method to click on To Text Box
+	 */
 	public void clickOnTo() {
 		mobileActionUtil.clickOnMobileElement(toTxtBx, "To");
 	}
 
+	/**
+	 * @author Shobhan
+	 * @description Method to click on Departure Text Box
+	 */
 	public void clickOnDepature() {
 		mobileActionUtil.clickOnMobileElement(depatureTxtBx, "Depature Text Box");
 	}
 
+	/**
+	 * @author Shobhan
+	 * @descriptiion Method to click on Travellers Text Box
+	 */
 	public void clickOnTravellers() {
 		mobileActionUtil.clickOnMobileElement(travellersTxtBx, "Travellers Text Box");
 	}
 
+	/**
+	 * @author Shobhan
+	 * @description Method to click on Class link
+	 */
 	public void clickOnClass() {
 		mobileActionUtil.clickOnMobileElement(classLnk, "class Text Box");
 	}
 
+	/**
+	 * @author Shobhan
+	 * @description Method to click on Non Stop Fights Radio Button
+	 */
 	public void clickOnNonStopFlightsOnly() {
 		mobileActionUtil.clickOnMobileElement(nonStopFlightsRadioBtn, "Non Stop Flights Radio Button");
 	}
 
+	/**
+	 * @author Shobhan
+	 * @description Method to click on Search Button
+	 */
 	public void clickOnSearch() {
 		mobileActionUtil.clickOnMobileElement(searchBtn, "Search Box");
 	}
 
+	/**
+	 * @author Shobhan
+	 * @description Method to click on Airport Serach Box
+	 */
 	public void clickOnAirportSearch() {
 		mobileActionUtil.clickOnMobileElement(airportSearchBx, "Airport Search Box");
 	}
 
+	/**
+	 * @author Shobhan
+	 * @description Method to send value to Airport Search Box
+	 * @param enterText
+	 */
 	public void enterCityNameInSearch(String enterText) {
 		mobileActionUtil.setText(airportSearchBx, enterText, "Search Box");
 	}
 
+	/**
+	 * @author Shobhan
+	 * @description Method to select city
+	 */
 	public void selectFirstCity() {
 		mobileActionUtil.clickOnMobileElement(selectFirstCityOtn, "Select City");
 	}
 
+	/**
+	 * @author Shobhan
+	 * @description Method to select date
+	 */
 	public void enterDate(String date) {
 		mobileActionUtil.clickOnMobileElement(selectDate(date), "Select Date");
 	}
 
+	/**
+	 * @author Shobhan
+	 * @description Method to click on Adults Plus Button
+	 */
 	public void increseAdultNumber() {
 		mobileActionUtil.clickOnMobileElement(adultsPlusBtn, "Adults Plus");
 	}
 
+	/**
+	 * @author Shobhan
+	 * @description Method to click on Adults Minus Button
+	 */
 	public void decreseAdultNumber() {
 		mobileActionUtil.clickOnMobileElement(adultsMinusBtn, "Adults Minus ");
 	}
 
+	/**
+	 * @author Shobhan
+	 * @description Method to click on Childern Plus Button
+	 */
 	public void increseChildrenNumber() {
 		mobileActionUtil.clickOnMobileElement(childrenPlusBtn, "Children Plus ");
 	}
 
+	/**
+	 * @author Shobhan
+	 * @description Method to click on Childern Minus Button
+	 */
 	public void decreseChildrenNumber() {
 		mobileActionUtil.clickOnMobileElement(childrenMinusBtn, " Children Minus");
 	}
 
+	/**
+	 * @author Shobhan
+	 * @description Method to click on Infants Plus Button
+	 */
 	public void increseInfantsNumber() {
 		mobileActionUtil.clickOnMobileElement(infantsPlusBtn, "Infants Plus ");
 	}
 
+	/**
+	 * @author Shobhan
+	 * @description Method to click on Infants Minus Button
+	 */
 	public void decreseInfantsNumber() {
 		mobileActionUtil.clickOnMobileElement(infantsMinusBtn, "Infants Minus ");
 	}
 
+	/**
+	 * @author Shobhan
+	 * @description Method to click on Done Button
+	 */
 	public void clickOnDone() {
 		mobileActionUtil.clickOnMobileElement(doneBtn, "Infants Minus ");
 	}
 
+	/**
+	 * @author Shobhan
+	 * @description Method to click on Search Button
+	 */
 	public void clickOnSearch(String date) {
 		mobileActionUtil.clickOnMobileElement(searchBtn, "search");
 	}
 
+	/**
+	 * @author Shobhan
+	 * @description Method to verify searched flights 
+	 */
 	public String getTextSearchingForflights() {
 		return mobileActionUtil.getText(searchingForFlightsTxt);
 	}
 
+	/**
+	 * @author Shobhan
+	 * @description Method to verify From City Text
+	 */
 	public String getFromCityNameOnPrompt() {
 		mobileActionUtil.waitForElement(fromTxtBx, seconds, "fromTxtBx");
 		return mobileActionUtil.getText(fromTxtBx);
 	}
 
+	/**
+	 * @author Shobhan
+	 * @description Method to verify To City Text
+	 */
 	public String getToCityNameOnPrompt() {
 		mobileActionUtil.waitForElement(toTxtBx, seconds, "fromTxtBx");
 		return mobileActionUtil.getText(toTxtBx);
 	}
 
+	/**
+	 * @author Shobhan
+	 * @description Method to verify date
+	 */
 	public String getDateOnPrompt() {
 		return mobileActionUtil.getText(loaderDateTxt);
 	}
 
+	/**
+	 * @author Shobhan
+	 * @description Method to verify City Details
+	 */
 	public void verifyFirstprompt( String expectedText1, String expectedText2,
 			String expectedText3) {
 		System.out.println();

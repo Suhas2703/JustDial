@@ -1,0 +1,13 @@
+/target/
+
+.classpath
+
+.DS_Store
+
+.settings
+
+/test-output/
+
+.project
+
+
