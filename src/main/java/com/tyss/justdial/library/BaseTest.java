@@ -148,9 +148,9 @@ public class BaseTest implements IAutoConstant {
 		capabilities.setCapability(MobileCapabilityType.NEW_COMMAND_TIMEOUT, 1200);
 		capabilities.setCapability(AndroidMobileCapabilityType.APP_PACKAGE, appPackage);
 		capabilities.setCapability(AndroidMobileCapabilityType.APP_ACTIVITY, appActivity);
-	//	capabilities.setCapability(AndroidMobileCapabilityType.APP_WAIT_DURATION, 180000);
-		capabilities.setCapability(AndroidMobileCapabilityType.AUTO_GRANT_PERMISSIONS, true);
 		capabilities.setCapability(MobileCapabilityType.UDID, udid);
+	//	capabilities.setCapability(AndroidMobileCapabilityType.APP_WAIT_DURATION, 180000);
+		capabilities.setCapability("autoGrantPermissions", true);
 		capabilities.setCapability("autoAcceptAlerts", true);
 		capabilities.setCapability("uiautomator2ServerInstallTimeout", 50000);
 		capabilities.setCapability("adbExecTimeout", 50000);

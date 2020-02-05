@@ -1,6 +1,7 @@
 package com.tyss.justdial.globalscripts;
 
 import java.lang.reflect.Method;
+
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -13,7 +14,7 @@ import com.tyss.justdial.pages.LoginPage;
 import com.tyss.justdial.pages.SearchPage;
 
 import io.appium.java_client.TouchAction;
-import io.appium.java_client.touch.offset.PointOption;
+
 
 public class BrowserStackAndroid extends BaseTest {
 
@@ -44,13 +45,13 @@ public class BrowserStackAndroid extends BaseTest {
 
 		Thread.sleep(8000);
 		TouchAction action = new TouchAction(driver);
-		action.tap(PointOption.point(hotkeyImgIcon.get(1).getLocation().x, hotkeyImgIcon.get(1).getLocation().y))
-				.waitAction().release();
+/*//		action.tap(PointOption.point(hotkeyImgIcon.get(1).getLocation().x, hotkeyImgIcon.get(1).getLocation().y))
+				.waitAction().release();*/
 
 		// mobileActionUtil.swipe(500, 600, 500, 700);
 	//	driver.findElement(By.xpath("//android.widget.TextView[@text='Travel']")).click();
-		action.tap(PointOption.point(hotkeyImgIcon.get(1).getLocation().x, hotkeyImgIcon.get(1).getLocation().y))
-		.waitAction().release();
+/*	//	action.tap(PointOption.point(hotkeyImgIcon.get(1).getLocation().x, hotkeyImgIcon.get(1).getLocation().y))
+		.waitAction().release();*/
 
 		Thread.sleep(6000);
 

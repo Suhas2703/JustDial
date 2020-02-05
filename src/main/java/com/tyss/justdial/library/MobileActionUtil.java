@@ -1,9 +1,9 @@
 package com.tyss.justdial.library;
 
+
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.time.Duration;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -30,13 +30,11 @@ import org.testng.Reporter;
 import com.aventstack.extentreports.Status;
 import com.tyss.justdial.extentreports.ExtentTestManager;
 
-import io.appium.java_client.MobileDriver;
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.nativekey.AndroidKey;
-import io.appium.java_client.android.nativekey.KeyEvent;
-import io.appium.java_client.touch.WaitOptions;
-import io.appium.java_client.touch.offset.PointOption;
+import io.appium.java_client.android.AndroidKeyCode;
+
 
 public class MobileActionUtil {
 
@@ -55,7 +53,7 @@ public class MobileActionUtil {
 	}
 
 	public String getScreenShot() {
-
+		
 		String screenShotName = "screenshot";
 		String dateName = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
 
@@ -63,19 +61,19 @@ public class MobileActionUtil {
 		TakesScreenshot scrShot = ((TakesScreenshot) driver);
 
 		// Call getScreenshotAs method to create image file
-		File SrcFile = scrShot.getScreenshotAs(OutputType.FILE);
+		File srcFile = scrShot.getScreenshotAs(OutputType.FILE);
 
 		// Move image file to new destination
-		String DestFile = System.getProperty("user.dir") + "/ScreenShots/" + screenShotName + dateName + ".png";
-		File finalDestFile = new File(DestFile);
+		String destFile = System.getProperty("user.dir") + "/ScreenShots/" + screenShotName + dateName + ".png";
+		File finalDestFile = new File(destFile);
 
 		// Copy file at destination
 		try {
-			FileUtils.copyFile(SrcFile, finalDestFile);
+			FileUtils.copyFile(srcFile, finalDestFile);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return DestFile;
+		return destFile;
 	}
 
 	/**
@@ -274,7 +272,7 @@ public class MobileActionUtil {
 	 */
 	public void pressBack() {
 
-		driver.pressKey(new KeyEvent().withKey(AndroidKey.BACK));
+		driver.pressKeyCode(AndroidKeyCode.BACK);
 		info("press back navigation");
 	}
 
@@ -319,8 +317,11 @@ public class MobileActionUtil {
 	public void tapOnSpecifiedLocation(Integer xCoordinate, Integer yCoordinate) {
 
 		info("Tap On Specified Location; x: " + xCoordinate + " y:" + yCoordinate);
-		TouchAction action = new TouchAction(driver);
-		action.tap(PointOption.point(xCoordinate, yCoordinate)).perform();
+		/*
+		 * TouchAction action = new TouchAction(driver);
+		 * action.tap(PointOption.point(xCoordinate, yCoordinate)).perform();
+		 */
+		driver.tap(1, xCoordinate, yCoordinate, 1000);
 
 	}
 
@@ -353,8 +354,11 @@ public class MobileActionUtil {
 	public void swipe(Integer fromX, Integer fromY, Integer toX, Integer toY) {
 
 		info("swipe coordinates detail");
-		TouchAction action = new TouchAction(driver);
-		action.longPress(PointOption.point(fromX, fromY)).moveTo(PointOption.point(toX, toY)).release().perform();
+		/*
+		 * TouchAction action = new TouchAction(driver);
+		 * action.longPress(PointOption.point(fromX,
+		 * fromY)).moveTo(PointOption.point(toX, toY)).release().perform();
+		 */
 	}
 
 	/**
@@ -431,31 +435,19 @@ public class MobileActionUtil {
 	 * @param toY
 	 * @param mobElement
 	 * @param maxScroll
-	 */
-	public void swipeToElement(int fromX, int fromY, int toX, int toY, WebElement mobElement, int maxScroll) {
-
-		{
-			info("Swiping to element");
-			if (mobElement.isDisplayed()) {
-				maxScroll = 0;
-			}
-			while (maxScroll != 0) {
-				try {
-					TouchAction action = new TouchAction(driver);
-					action.longPress(PointOption.point(fromX, fromY)).moveTo(PointOption.point(toX, toY)).release()
-							.perform();
-
-				} catch (Exception e) {
-					info("Failed to swipe");
-				}
-				maxScroll--;
-
-				if (mobElement.isDisplayed()) {
-					break;
-				}
-			}
-		}
-	}
+	 *//*
+		 * public void swipeToElement(int fromX, int fromY, int toX, int toY,
+		 * WebElement mobElement, int maxScroll) {
+		 * 
+		 * { info("Swiping to element"); if (mobElement.isDisplayed()) {
+		 * maxScroll = 0; } while (maxScroll != 0) { try { TouchAction action =
+		 * new TouchAction(driver); action.longPress(PointOption.point(fromX,
+		 * fromY)).moveTo(PointOption.point(toX, toY)).release() .perform();
+		 * 
+		 * } catch (Exception e) { info("Failed to swipe"); } maxScroll--;
+		 * 
+		 * if (mobElement.isDisplayed()) { break; } } } }
+		 */
 
 	/**
 	 * @author Shobhan
@@ -573,8 +565,11 @@ public class MobileActionUtil {
 	 */
 	public void scrollTillElement(String text) {
 
-		driver.findElementByAndroidUIAutomator(
-				"new UiScrollable(new UiSelector()).scrollIntoView(text(" + "\\" + "\"" + text + "\\" + "\"" + "))");
+		/*
+		 * driver.findElementByAndroidUIAutomator(
+		 * "new UiScrollable(new UiSelector()).scrollIntoView(text(" + "\\" + "\"" +
+		 * text + "\\" + "\"" + "))");
+		 */
 	}
 
 	/**
@@ -699,7 +694,8 @@ public class MobileActionUtil {
 		info("Verifying whether the element: " + elementName + " is NOT Displayed");
 		WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
 		try {
-			wait.until(ExpectedConditions.invisibilityOf(element));
+		
+			wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("")));
 			info("Specified Element is NOT Displayed ");
 		} catch (Exception e) {
 			info("Specified Element is Displayed ");
@@ -751,8 +747,7 @@ public class MobileActionUtil {
 	 * @return
 	 */
 	public void tapOnElementUsingCoordinate(int xOffset, int yOffset) {
-		TouchAction action = new TouchAction<>(driver);
-		action.tap(PointOption.point(xOffset, yOffset));
+		driver.tap(1, xOffset, yOffset, 1000);
 	}
 
 	/**
@@ -762,9 +757,9 @@ public class MobileActionUtil {
 	 * @param ele
 	 */
 	public void tapOnElement(WebElement ele) {
-		TouchAction action = new TouchAction<>(driver);
-		action.tap(PointOption.point(ele.getLocation().x, ele.getLocation().y)).waitAction().perform();
+		driver.tap(1, ele, 1000);
 	}
+
 
 	public void scrollToElement(String mnthyear, int maxScroll, double start, double end) throws InterruptedException {
 
@@ -787,17 +782,169 @@ public class MobileActionUtil {
 	
 	
 
-	public void swipeBottomToTop(AndroidDriver driver, double start, double end) throws InterruptedException {
 
-		Dimension d = driver.manage().window().getSize();
-		int startY = (int) (d.height * start);
-		int endY = (int) (d.height * end);
-		int x = d.width / 2;
-		Thread.sleep(1000);
-		TouchAction action = new TouchAction<>(driver);
-		action.press(PointOption.point(x, startY)).waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000)))
-				.moveTo(PointOption.point(x, endY)).release();
 
+	/**
+	 * Description: This method to scroll Up side based on device height and
+	 * width
+	 * 
+	 * @param value
+	 * @param driver
+	 * @param starty1
+	 * @param endy1
+	 * @throws Exception
+	 */
+
+	public static void swipeBottomToTop(int value, AppiumDriver driver, double starty1, double endy1) throws Exception {
+		try {
+			Thread.sleep(1000);
+			System.out.println("inside swipe");
+			for (int i = 1; i <= value; i++) {
+				Dimension dSize = driver.manage().window().getSize();
+				int starty = (int) (dSize.height * starty1);
+				int endy = ((int) (dSize.height * endy1));
+				int startx = dSize.width / 2;
+				driver.swipe(startx, starty, startx, endy, 1000);
+			}
+		} catch (Exception e) {
+
+			throw e;
+		}
+	}
+
+	/**
+	 * Description: This method to scroll Bottom side based on device height and
+	 * width
+	 * 
+	 * @param value
+	 * @param driver
+	 * @param starty1
+	 * @param endy1
+	 * @throws Exception
+	 */
+	public static void swipeTopToBottom(int value, AppiumDriver driver, double starty1, double endy1) throws Exception {
+		try {
+			Thread.sleep(1000);
+
+			System.out.println("inside swipe");
+			for (int i = 1; i <= value; i++) {
+				Dimension dSize = driver.manage().window().getSize();
+				int starty = (int) (dSize.height * starty1);
+				int endy = (int) (dSize.height * endy1);
+				int startx = dSize.width / 2;
+				driver.swipe(startx, starty, startx, endy, 1000);
+			}
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+
+	/**
+	 * 
+	 * Description: Method for Scrolling to particular element based on
+	 * direction and device size
+	 * 
+	 * @param maxScroll
+	 * @param start
+	 * @param end
+	 * @param scrollType
+	 * @param element
+	 * @param driver
+	 * @throws Exception
+	 */
+	public static void scrollToElement(int maxScroll, double start, double end, String scrollType, WebElement element,
+			AppiumDriver driver) throws Exception {
+
+		while (maxScroll != 0) {
+			try {
+				if (element.isDisplayed()) {
+					maxScroll++;
+					break;
+				}
+			} catch (Exception e) {
+				switch (scrollType.toUpperCase()) {
+				case ("DOWN"):
+					swipeTopToBottom(1, driver, start, end);
+					break;
+
+				case ("UP"):
+					swipeBottomToTop(1, driver, start, end);
+					break;
+
+				case ("LEFT"):
+					swipeRightToLeft(1, start, end, driver);
+					break;
+
+				case ("RIGHT"):
+					swipeLefToRight(1, start, end, driver);
+					break;
+
+				default:
+					System.out.println("Invalid Swipe type");
+
+					break;
+
+				}
+
+			}
+			maxScroll--;
+		}
+	}
+
+	/**
+	 * 
+	 * Description: This method to scroll left side based on device height and
+	 * width
+	 * 
+	 * @param value
+	 * @param startX
+	 * @param endX
+	 * @param driver
+	 * @throws Exception
+	 */
+
+	public static void swipeRightToLeft(int value, double startX, double endX, AppiumDriver driver) throws Exception {
+		try {
+			Thread.sleep(1000);
+			System.out.println("inside swipe");
+			for (int i = 1; i <= value; i++) {
+				Dimension dSize = driver.manage().window().getSize();
+				int startx = (int) (dSize.width * startX);
+				int endx = (int) (dSize.width * endX);
+				int starty = dSize.height / 2;
+				driver.swipe(startx, starty, endx, starty, 1000);
+
+			}
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+
+	/**
+	 * Description: This method to scroll Right side based on device height and
+	 * width
+	 * 
+	 * @param value
+	 * @param startx
+	 * @param endx
+	 * @param driver
+	 * @throws Exception
+	 */
+	public static void swipeLefToRight(int value, double startx, double endx, AppiumDriver driver) throws Exception {
+		try {
+			Thread.sleep(1000);
+			System.out.println("inside swipe");
+			for (int i = 1; i <= value; i++) {
+				Dimension dSize = driver.manage().window().getSize();
+				int startX = (int) (dSize.width * startx);
+				int endX = (int) (dSize.width * endx);
+				int starty = dSize.height / 2;
+				driver.swipe(startX, starty, endX, starty, 1000);
+			}
+		} catch (Exception e) {
+			throw e;
+
+		}
 	}
 
 }

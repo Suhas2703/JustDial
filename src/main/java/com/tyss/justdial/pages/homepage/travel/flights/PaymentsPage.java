@@ -42,4 +42,46 @@ public class PaymentsPage extends BasePage {
 	@FindBy(xpath = "//android.view.View[@text='Net Banking']")
 	private WebElement netBankingTxt;
 
+	/**
+	 * @author Shreya
+	 * @description Method to verify Payements Page Title is Displayed.
+	 */
+
+	public void verifyPaymentsPageTitleIsDisplayed() {
+
+		mobileActionUtil.verifyElementIsDisplayed(paymentsTitle, 2, "PayMents Title");
+
+	}
+
+	/**
+	 * @author Shreya
+	 * @description Method to get Payments Page Title
+	 */
+	public String getPaymentsTitle() {
+
+		return mobileActionUtil.getText(paymentsTitle);
+
+	}
+
+	/**
+	 * @author Shreya
+	 * @description Method to verify Net Banking Text is Displayed.
+	 */
+
+	public void verifyNetBankingTextIsDisplayed() {
+
+		mobileActionUtil.verifyElementIsDisplayed(netBankingTxt, 2, "Net Banking ");
+
+	}
+
+	/**
+	 * @author Shreya
+	 * @description Method to get Net Banking Text
+	 */
+	public String getNetBankingText() {
+
+		return mobileActionUtil.getText(netBankingTxt);
+
+	}
+
 }
