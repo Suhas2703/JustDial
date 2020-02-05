@@ -52,6 +52,39 @@ public class FlightBookingPage extends BasePage {
 	@FindBy(xpath="(//android.view.View)[24]")
 	private WebElement arrvTime;
 	
+	@FindBy(xpath="(//android.view.View)[13]")
+	private WebElement selAirline;
+	
+	@FindBy(xpath="//android.view.View[contains(@text,'Refundable')]")
+	private WebElement flghtType;
+	
+	@FindBy(id="toggleInsurance")
+	private WebElement insRdbtn;
+	
+	@FindBy(xpath="//android.view.View[@text='T&C']")
+	private WebElement terms_Cndtns;
+	
+	@FindBy(xpath="//android.view.View[contains(@text,'more')]")
+	private WebElement plcyBnfts;
+	
+	@FindBy(xpath="//android.view.View[contains(@text,'Promocode')]")
+	private WebElement promoCode;
+	
+	@FindBy(id="promocode")
+	private WebElement enter_Promocde;
+	
+	@FindBy(id="applyPromo")
+	private WebElement apply_Promo;
+	
+	@FindBy(id="sumPrice")
+	private WebElement totFare;
+	
+	@FindBy(id="bookFlt")
+	private WebElement bookFlght;
+	
+	@FindBy(id="mainHeaderHeading")
+	private WebElement backBtn;
+	
 	public String getTravlinfo()
 	{
 		return mobileActionUtil.getText(travelInfo);
@@ -75,5 +108,65 @@ public class FlightBookingPage extends BasePage {
 	public String getArrvtime()
 	{
 		return mobileActionUtil.getText(arrvTime);
+	}
+	
+	public String getSel_airline()
+	{
+		return mobileActionUtil.getText(selAirline);
+	}
+	
+	public String getFlghttype()
+	{
+		return mobileActionUtil.getText(flghtType);
+	}
+	
+	public void clickonIns_rdbtn()
+	{
+		mobileActionUtil.clickCheckBox(insRdbtn, "Insurance Radio Button");
+	}
+	
+	public void clickonTerms_cndtns()
+	{
+		mobileActionUtil.tapOnElement(terms_Cndtns);
+	}
+	
+	public String getPlcybnfts()
+	{
+		return mobileActionUtil.getText(plcyBnfts);
+		
+	}
+	public void scrollTo_Plcybnfts()
+	{
+		mobileActionUtil.scrollTillElement(getFlghttype());
+	}
+	
+	public String verify_Promocode()
+	{
+		return mobileActionUtil.getText(promoCode);
+	}
+	
+	public void click_Promocode()
+	{
+		mobileActionUtil.clickOnMobileElement(enter_Promocde, "PromoCode");
+	}
+	
+	public void click_applyPromo()
+	{
+		mobileActionUtil.clickOnMobileElement(apply_Promo, "ApplyPromo");
+	}
+	
+	public String getTotalfare()
+	{
+		return mobileActionUtil.getText(totFare);
+	}
+	
+	public void click_Tobookflght()
+	{
+		mobileActionUtil.clickOnMobileElement(bookFlght, "Continue to book Flight");
+	}
+	
+	public void click_BackBtn()
+	{
+		mobileActionUtil.clickOnMobileElement(backBtn, "Back Button");
 	}
 }
