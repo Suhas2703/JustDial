@@ -53,7 +53,7 @@ public class SearchFlightsPage extends BasePage {
 	private WebElement toTxtBx;
 
 	@FindBy(id = "com.justdial.search:id/round_trip")
-	private WebElement roundTripIcon;
+	private WebElement tripFlipBtn;
 
 	@FindBy(id = "com.justdial.search:id/depature_date")
 	private WebElement depatureTxtBx;
@@ -63,6 +63,9 @@ public class SearchFlightsPage extends BasePage {
 
 	@FindBy(id = "com.justdial.search:id/travler_class")
 	private WebElement classLnk;
+
+	@FindBy(id = "com.justdial.search:id/return_date")
+	private WebElement returnDateLnk;
 
 	@FindBy(id = "com.justdial.search:id/checkbox_nonstop_flights")
 	private WebElement nonStopFlightsRadioBtn;
@@ -85,16 +88,16 @@ public class SearchFlightsPage extends BasePage {
 	@FindBy(xpath = "//android.widget.TextView[@text='Adults']/..//android.widget.ImageView[@resource-id='com.justdial.search:id/seats_plus']")
 	private WebElement adultsPlusBtn;
 
-	@FindBy(xpath = "//android.widget.TextView[@text='Children']/..//android.widget.ImageView[@resource-id='com.justdial.search:id/seats_minus']")
+	@FindBy(xpath = "//android.widget.TextView[@text='Children']/..//android.widget.ImageView[@resource-id='com.justdial.search:id/seats_minus_children']")
 	private WebElement childrenMinusBtn;
 
-	@FindBy(xpath = "//android.widget.TextView[@text='Children']/..//android.widget.ImageView[@resource-id='com.justdial.search:id/seats_plus']")
+	@FindBy(xpath = "//android.widget.TextView[@text='Children']/..//android.widget.ImageView[@resource-id='com.justdial.search:id/seats_plus_children']")
 	private WebElement childrenPlusBtn;
 
-	@FindBy(xpath = "//android.widget.TextView[@text='Infants']/..//android.widget.ImageView[@resource-id='com.justdial.search:id/seats_minus']")
+	@FindBy(xpath = "//android.widget.TextView[@text='Infants']/..//android.widget.ImageView[@resource-id='com.justdial.search:id/seats_minus_infant']")
 	private WebElement infantsMinusBtn;
 
-	@FindBy(xpath = "//android.widget.TextView[@text='Infants']/..//android.widget.ImageView[@resource-id='com.justdial.search:id/seats_plus']")
+	@FindBy(xpath = "//android.widget.TextView[@text='Infants']/..//android.widget.ImageView[@resource-id='com.justdial.search:id/seats_plus_infant']")
 	private WebElement infantsPlusBtn;
 
 	@FindBy(id = "com.justdial.search:id/seat_no_done")
@@ -122,8 +125,8 @@ public class SearchFlightsPage extends BasePage {
 		mobileActionUtil.clickOnMobileElement(fromTxtBx, "From");
 	}
 
-	public void clickOnRoundTripIcon() {
-		mobileActionUtil.clickOnMobileElement(roundTripIcon, "Round Trip Icon");
+	public void clickOnTripFlip() {
+		mobileActionUtil.clickOnMobileElement(tripFlipBtn, "Round Trip Icon");
 	}
 
 	public void clickOnTo() {
@@ -216,8 +219,11 @@ public class SearchFlightsPage extends BasePage {
 		return mobileActionUtil.getText(loaderDateTxt);
 	}
 
-	public void verifyFirstprompt( String expectedText1, String expectedText2,
-			String expectedText3) {
+	public void verifyTravelClass(String expectedText) {
+	mobileActionUtil.verifyElementText(classLnk,seconds, expectedText);
+	}
+
+	public void verifyFirstprompt(String expectedText1, String expectedText2, String expectedText3) {
 		System.out.println();
 		String fromCity = getFromCityNameOnPrompt();
 		String toCity = getToCityNameOnPrompt();
