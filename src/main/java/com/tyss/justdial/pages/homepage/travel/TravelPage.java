@@ -41,7 +41,10 @@ public class TravelPage extends BasePage {
 	private WebElement flightsFilters;
 
 	public void selectFlightFilter() {
-		mobileActionUtil.clickOnMobileElement(flightsFilters, "select Flight Filter");
+		mobileActionUtil.clickOnMobileElement(flightsFilters, "Select Flight Filter");
 	}
-
+	
+	public void verifyFlightsFilterIsDisplayed() {
+		mobileActionUtil.verifyElementIsDisplayed(flightsFilters, seconds, "'Flights' Filters");
+	}
 }

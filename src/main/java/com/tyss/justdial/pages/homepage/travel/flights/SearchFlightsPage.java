@@ -1,3 +1,4 @@
+
 package com.tyss.justdial.pages.homepage.travel.flights;
 
 import org.openqa.selenium.WebElement;
@@ -332,5 +333,6 @@ public class SearchFlightsPage extends BasePage {
 		mobileActionUtil.verifyText(date, expectedText3);
 
 	}
+
 
 }
