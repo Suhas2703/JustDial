@@ -6,15 +6,15 @@
 			class-name="com.tyss.justdial.extentreports.TestListener" />
 	</listeners>
 	<test thread-count="1" name="Device2Test">
-		<parameter name="deviceName" value="SM_M205F"></parameter>
+		<parameter name="deviceName" value="emulator-5554"></parameter>
 		<parameter name="platformName" value="android"></parameter>
-		<parameter name="platformVersion" value="9"></parameter>
+		<parameter name="platformVersion" value="10"></parameter>
 		<parameter name="automationName" value="UiAutomator2"></parameter>
 		<parameter name="appPackage" value="com.justdial.search"></parameter>
 		<parameter name="appActivity"
 			value=".SplashScreenNewActivity"></parameter>
 		<parameter name="port" value="4723"></parameter>
-		<parameter name="udid" value="3401eb0e8c0c4609"></parameter>
+		<parameter name="udid" value="emulator-5554"></parameter>
 		<parameter name="ip" value="localhost"></parameter>
 		<classes>
 			<class

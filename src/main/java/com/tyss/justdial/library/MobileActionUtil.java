@@ -761,4 +761,21 @@ public class MobileActionUtil {
 		action.tap(PointOption.point(ele.getLocation().x, ele.getLocation().y)).waitAction().perform();
 	}
 	
+	
+	public boolean isClickable(WebElement element)      
+	{
+	    try
+	    {
+	        WebDriverWait wait = new WebDriverWait(driver, 5);
+	        wait.until(ExpectedConditions.elementToBeClickable(element));
+	        pass("Element is clickable"+element);
+	        return true;
+	    }
+	    catch (Exception e)
+	    {
+	        fail("Element is not clickable");
+	        return true;
+	    }
+	}
+	
 }
