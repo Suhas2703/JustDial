@@ -59,7 +59,7 @@ public class FlightBookingPage extends BasePage {
 	@FindBy(xpath = "//android.view.View[contains(@text,'Refundable')]")
 	private WebElement flghtType;
 
-	@FindBy(id = "toggleInsurance")
+	@FindBy(xpath = "//android.view.View[@resource-id='toggleInsurance']")
 	private WebElement insuranceRadiobtn;
 
 	@FindBy(xpath = "//android.view.View[@text='T&C']")
@@ -80,7 +80,7 @@ public class FlightBookingPage extends BasePage {
 	@FindBy(id = "sumPrice")
 	private WebElement totalFare;
 
-	@FindBy(id = "bookFlt")
+	@FindBy(xpath = "//android.view.View[@resource-id = 'bookFlt']")
 	private WebElement bookFlight;
 
 	@FindBy(id = "mainHeaderHeading")
@@ -239,4 +239,22 @@ public class FlightBookingPage extends BasePage {
 	public void clickonBackBtn() {
 		mobileActionUtil.clickOnMobileElement(backBtn, "Back Button");
 	}
+	
+	public void verfiyAllElementFlightBookingPage(){
+		mobileActionUtil.verifyElementIsDisplayed(insuranceRadiobtn, seconds, "Insurance Radio Button");
+		mobileActionUtil.verifyElementIsDisplayed(bookFlight, seconds, "Continue Button");	
+	}
+	
+	public void validateContinueButtonIsTappable(){
+		mobileActionUtil.isClickable(bookFlight, seconds);
+	}
+	
+	@FindBy(id = "com.justdial.search:id/registration_name")
+	private WebElement registrName;
+	
+	public void verifyPresenceOfRegisterName(){
+		mobileActionUtil.verifyElementIsDisplayed(registrName, seconds, "Register Name");
+		mobileActionUtil.isClickable(registrName, seconds);
+	}
 }
+

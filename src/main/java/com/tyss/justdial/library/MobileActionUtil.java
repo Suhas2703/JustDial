@@ -754,6 +754,24 @@ public class MobileActionUtil {
 		driver.tap(1, ele, 1000);
 	}
 
+	
+	public void isClickable(WebElement element, long timeOutInSeconds)      
+	{
+	    try
+	    {
+	        WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
+	        wait.until(ExpectedConditions.elementToBeClickable(element));
+	        pass("Element is clickable"+element);
+	        
+	    }
+	    catch (Exception e)
+	    {
+	        fail("Element is not clickable");
+	       
+	    }
+	}
+	
+
 	/**
 	 * Description: This method to scroll Up side based on device height and
 	 * width

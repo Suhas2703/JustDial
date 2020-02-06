@@ -139,6 +139,11 @@ public class HomePage extends BasePage {
 		mobileActionUtil.clickOnMobileElement(travelIcon, "Travel Hot Search Key");
 	}
 
+	@FindBy(xpath = "(//android.widget.RelativeLayout[@resource-id='com.justdial.search:id/gridimagelay']/android.widget.LinearLayout)[4]")
+	private WebElement moreIcon;
+	
+	
+	
 	/*	*//**
 			 * @author Shobhan
 			 * @description Method to click on Search box
@@ -664,4 +669,58 @@ public class HomePage extends BasePage {
 
 		mobileActionUtil.waitForElementToLoad(2);
 	}
+	
+	/**
+	 * @author Anil
+	 * @description Checking Travel Icon if present then clicking on travel icon or clicking on 
+	 * more icon
+	 * 
+	 */
+	public void clickOnMoreIcon() {
+		try {
+			travelIcon.isDisplayed();
+			verifyTravelIcon();
+			validateTravelIconIsTappable();
+			mobileActionUtil.clickOnMobileElement(travelIcon, "Travel Hot Search Key");
+			
+		}
+		catch (Exception e) {
+			mobileActionUtil.clickOnMobileElement(moreIcon, "Travel Hot Search Key");
+			verifyTravelIcon();
+			validateTravelIconIsTappable();
+			mobileActionUtil.clickOnMobileElement(travelIcon, "Travel Hot Search Key");
+
+		}
+	}
+	
+	/**
+	 * @author Anil
+	 * @description verifying travel icon is displayed 
+	 * 
+	 * 
+	 */
+	
+	public void verifyTravelIcon()
+	{
+		if (mobileActionUtil.isElementDisplayed(travelIcon))
+		{
+			mobileActionUtil.pass("The travel icon is displayed");
+		}
+		else{
+			mobileActionUtil.fail("The Travel icon is not dispalyed");
+		}
+	}
+	
+	/**
+	 * @author Anil
+	 * @description validating  travel icon is clickable 
+	 * 
+	 * 
+	 */
+
+	public void validateTravelIconIsTappable() {
+		mobileActionUtil.isClickable(travelIcon, seconds);
+		
+	}
+	
 }

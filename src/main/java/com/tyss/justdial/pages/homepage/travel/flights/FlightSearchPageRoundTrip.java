@@ -21,7 +21,7 @@ public class FlightSearchPageRoundTrip extends BasePage {
 	}
 
 	/** Round Trip Page ELEMENTS DECLARATION **/
-	
+	long seconds = 10;
 	@FindBy(xpath = "//android.view.View[@resource-id='departSortL']")
 	private WebElement fromDepartureTimeSortBtn;
 

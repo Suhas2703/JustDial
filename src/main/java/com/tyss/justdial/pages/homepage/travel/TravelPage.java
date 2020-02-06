@@ -47,4 +47,22 @@ public class TravelPage extends BasePage {
 	public void verifyFlightsFilterIsDisplayed() {
 		mobileActionUtil.verifyElementIsDisplayed(flightsFilters, seconds, "'Flights' Filters");
 	}
+	
+	@FindBy(xpath = "resource-id='com.justdial.search:id/filter_img_root'")
+	private WebElement navigationArrow;
+	/**
+	 * @author Pawan Kumar
+	 * @description Method to verify navigation arrow is displayed
+	 */
+	public void verifyNavigationArrowIsDisplayed() {
+		mobileActionUtil.verifyElementIsDisplayed(navigationArrow, seconds, "Navigation Arrow");
+	}
+	
+	/**
+	 * @author Pawan Kumar
+	 * @description Method verify the flight btn is Tapable
+	 */
+	public void verifyFlightFilterTapable() {
+		mobileActionUtil.isClickable(flightsFilters, seconds);
+	}
 }
