@@ -6,19 +6,27 @@
 			class-name="com.tyss.justdial.extentreports.TestListener" />
 	</listeners>
 	<test thread-count="1" name="Device2Test">
+<<<<<<< HEAD
 		<parameter name="deviceName" value="Redmi_Note_5_Pro"></parameter>
+=======
+		<parameter name="deviceName" value="emulator-5554"></parameter>
+>>>>>>> 8630aba509642bdcbac10eaeabea3fd6746edd59
 		<parameter name="platformName" value="android"></parameter>
-		<parameter name="platformVersion" value="9"></parameter>
+		<parameter name="platformVersion" value="10"></parameter>
 		<parameter name="automationName" value="UiAutomator2"></parameter>
 		<parameter name="appPackage" value="com.justdial.search"></parameter>
 		<parameter name="appActivity"
 			value=".SplashScreenNewActivity"></parameter>
 		<parameter name="port" value="4723"></parameter>
+<<<<<<< HEAD
 		<parameter name="udid" value="fe47d8f8"></parameter>
+=======
+		<parameter name="udid" value="emulator-5554"></parameter>
+>>>>>>> 8630aba509642bdcbac10eaeabea3fd6746edd59
 		<parameter name="ip" value="localhost"></parameter>
 		<classes>
 			<class
-				name="com.tyss.justdial.flights.testscripts.Flight_TC001" />
+				name="com.tyss.justdial.flights.testscripts.Flight_TC006" />
 		</classes>
 	</test> <!-- Test -->
 </suite> <!-- Suite -->
