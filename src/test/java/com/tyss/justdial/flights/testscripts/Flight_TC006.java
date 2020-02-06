@@ -56,12 +56,10 @@ public class Flight_TC006 extends BaseTest{
 		searchFlightsPage.verifyClassTextIsDispalyed("Economy");
 		searchFlightsPage.clickOnSearch();
 		FlightSearchPageOneWay flightSearchPageOneWay = new FlightSearchPageOneWay(driver, mobileActionUtil);
-		Thread.sleep(30000);
 		flightSearchPageOneWay.verifyAllElementsDisplayedInOneWayRound();
 		flightSearchPageOneWay.validateAllElementsIsTappableInOneWayRound();
 		flightSearchPageOneWay.validateFirstFlightResultIsTappable();
 		flightSearchPageOneWay.clickOnFirstFlightResult();
-		Thread.sleep(30000);
 		FlightBookingPage flightBookingPage = new FlightBookingPage(driver, mobileActionUtil);
 		flightBookingPage.verfiyAllElementFlightBookingPage();
 		flightBookingPage.validateContinueButtonIsTappable();

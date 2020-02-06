@@ -107,10 +107,19 @@ public class FlightSearchPageOneWay extends BasePage {
 		return dateOneWayTripBtn;
 	}
 	
+	/**
+	 * @author Anil Kumar 
+	 * @description Method to click on First Flight Result
+	 */
 	public void clickOnFirstFlightResult(){
 		mobileActionUtil.clickOnMobileElement(firstFlightResult, "First Flight Result");
+		mobileActionUtil.waitForElementToLoad(30000);
 	}
 	
+	/**
+	 * @author Anil Kumar
+	 * @description Method to Validate First Flight Results is Clickable
+	 */
 	public void validateFirstFlightResultIsTappable(){
 		mobileActionUtil.isClickable(firstFlightResult, seconds);
 		mobileActionUtil.info("First Flight Result is clickable");	
@@ -122,6 +131,7 @@ public class FlightSearchPageOneWay extends BasePage {
 	*/
 	public void verifyAllElementsDisplayedInOneWayRound() {
 
+	mobileActionUtil.waitForElementToLoad(30000);
 	mobileActionUtil.verifyElementIsDisplayed(timeOneWayTripBtn, seconds, "time Button");
 	mobileActionUtil.verifyElementIsDisplayed(durationOneWayTripBtn, seconds, "duration Button");
 	mobileActionUtil.verifyElementIsDisplayed(priceOneWayTripBtn, seconds, "price Button");
@@ -132,6 +142,10 @@ public class FlightSearchPageOneWay extends BasePage {
 	mobileActionUtil.verifyElementIsDisplayed(headerBackOneWayTripBtn, seconds, "headerBack Button");
 	}
 	
+	/**
+	 * @author Anil Kumar
+	 * @description Method to validate all elements is clickable in one way round
+	 */
 	public void validateAllElementsIsTappableInOneWayRound(){
 		mobileActionUtil.isClickable(durationOneWayTripBtn, seconds);
 		mobileActionUtil.isClickable(timeOneWayTripBtn, seconds);
@@ -139,6 +153,10 @@ public class FlightSearchPageOneWay extends BasePage {
 		
 	}
 
+	/**
+	 * @author Anil Kumar
+	 * @description Method to get travel dates
+	 */
 	public void getTravelDates() {
 		int dateSize = travelDates().size();
 		System.out.println(dateSize);
