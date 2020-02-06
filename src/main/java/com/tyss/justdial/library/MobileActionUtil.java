@@ -760,24 +760,22 @@ public class MobileActionUtil {
 		driver.tap(1, ele, 1000);
 	}
 
+	/**
+	 * @author Harsha K.B
+	 * @description Method to scroll to the element into view and to center it 
+	 *              so that full element is visible and child element can be selected
+	 * @param ele
+	 */
+	public void scrollToElement(String mnthyear) throws InterruptedException {
 
-	public void scrollToElement(String mnthyear, int maxScroll, double start, double end) throws InterruptedException {
-
-		  System.out.println(mnthyear);
+		 
 		  driver.findElementByAndroidUIAutomator(
 		  "new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().textContains(\"" + mnthyear + "\"));"
 		  );
 		 
 		  TouchAction ta = new TouchAction(driver);
-		  
-		 
-		/*
-		 * while (maxScroll != 0) { try {
-		 * System.out.println("Trying to locate the element"); WebElement ele =
-		 * driver.findElement(By.xpath("//android.widget.TextView[@text='"+mnthyear+"']"
-		 * )); if(ele.isDisplayed()) { maxScroll++; break; } }catch (Exception e) {
-		 * swipeBottomToTop(driver, start, end); } maxScroll--; }
-		 */
+		  ta.press(driver.findElementByXPath("//android.widget.TextView[@text='"+mnthyear+"']")).waitAction(500).moveTo(400,600).perform();
+	  
 	}
 	
 	
