@@ -1,15 +1,9 @@
 package com.tyss.justdial.flights.testscripts;
 
 import java.lang.reflect.Method;
-import java.text.NumberFormat;
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Locale;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
 import com.tyss.justdial.library.BaseTest;
@@ -37,17 +31,22 @@ public class Flight_TC001 extends BaseTest {
 		String expectedText3 = "WED, 5th Feb 2020";
 		String date = "2020-07-05";
 
-		// Enter the Test case name
-		TravelPage travelPage = new TravelPage(driver, mobileActionUtil);
+		
+		
+		
+		  // Enter the Test case name 
+		TravelPage travelPage = new TravelPage(driver,  mobileActionUtil);
 		travelPage.testName(m.getName().toString());
-
-		HomePage homePage = new HomePage(driver, mobileActionUtil);
-		homePage.clickOnTravelHotSearchKey();
-
-		travelPage.selectFlightFilter();
-
-		SearchFlightsPage searchFlightsPage = new SearchFlightsPage(driver, mobileActionUtil);
+		  
+		  HomePage homePage = new HomePage(driver, mobileActionUtil);
+		  homePage.clickOnTravelHotSearchKey();
+		  
+		  travelPage.selectFlightFilter();
+		  SearchFlightsPage searchFlightsPage = new SearchFlightsPage(driver, mobileActionUtil);
+		  
 		/*
+		 *
+		 * 
 		 * searchFlightsPage.clickOnFrom();
 		 * 
 		 * searchFlightsPage.clickOnAirportSearch();
@@ -59,14 +58,14 @@ public class Flight_TC001 extends BaseTest {
 		 * searchFlightsPage.clickOnAirportSearch();
 		 * searchFlightsPage.enterCityNameInSearch(enterText2);
 		 * searchFlightsPage.selectFirstCity();
-		 */
-		/*
+		 * 
+		 * 
 		 * searchFlightsPage.clickOnDepature();
 		 * searchFlightsPage.selectDepartureDate(date);
-		 */
-
-		// Call select Date method
-		/*
+		 * 
+		 * 
+		 * // Call select Date method
+		 * 
 		 * searchFlightsPage.clickOnTravellers();
 		 * searchFlightsPage.increseAdultNumber();
 		 * 
@@ -76,31 +75,77 @@ public class Flight_TC001 extends BaseTest {
 		 * searchFlightsPage.verifyFirstprompt(expectedText1, expectedText2,
 		 * expectedText3);
 		 */
-
-		searchFlightsPage.clickOnSearch();
-
-		Thread.sleep(4000l);
-		searchFlightsPage.validateIfFlightsAreSortedByRateAscending();
-		driver.findElement(By.xpath("//android.view.View[ @resource-id=\"priceSort\"]")).click();
-		;
-		Thread.sleep(4000l);
-		searchFlightsPage.validateIfFlightsAreSortedByRateDescending();
-
-		Thread.sleep(4000l);
-		driver.findElement(By.xpath("//android.view.View[ @resource-id=\"durationSort\"]")).click();
-		Thread.sleep(4000l);
-		searchFlightsPage.validateIfFlightsAreSortedByDurationAscending();
-		driver.findElement(By.xpath("//android.view.View[ @resource-id=\"durationSort\"]")).click();
-		Thread.sleep(4000l);
-		searchFlightsPage.validateIfFlightsAreSortedByDurationDescending();
-
-		driver.findElement(By.xpath("//android.view.View[ @resource-id=\"departSort\"]")).click();
-		Thread.sleep(4000l);
-		searchFlightsPage.validateIfFlightsAreSortedByTimeAscending();
-
-		driver.findElement(By.xpath("//android.view.View[ @resource-id=\"departSort\"]")).click();
-		Thread.sleep(4000l);
-		searchFlightsPage.validateIfFlightsAreSortedByTimeDescending();
+		
+		  searchFlightsPage.clickOnRoundTripIcon(); 
+		  searchFlightsPage.clickOnSearch();
+		  Thread.sleep(10000l);
+		 
+		  
+		
+		/*
+		 * searchFlightsPage.clickOnSearch(); Thread.sleep(4000l);
+		 * searchFlightsPage.validateIfFlightsAreSortedByRateAscending();
+		 * driver.findElement(By.
+		 * xpath("//android.view.View[ @resource-id=\"priceSort\"]")).click();
+		 * Thread.sleep(4000l);
+		 * searchFlightsPage.validateIfFlightsAreSortedByRateDescending();
+		 * 
+		 * Thread.sleep(4000l); driver.findElement(By.
+		 * xpath("//android.view.View[ @resource-id=\"durationSort\"]")).click();
+		 * Thread.sleep(4000l);
+		 * searchFlightsPage.validateIfFlightsAreSortedByDurationAscending();
+		 * driver.findElement(By.
+		 * xpath("//android.view.View[ @resource-id=\"durationSort\"]")).click();
+		 * Thread.sleep(4000l);
+		 * searchFlightsPage.validateIfFlightsAreSortedByDurationDescending();
+		 * 
+		 * 
+		 * driver.findElement(By.
+		 * xpath("//android.view.View[ @resource-id=\"departSort\"]")).click();
+		 * Thread.sleep(4000l);
+		 * searchFlightsPage.validateIfFlightsAreSortedByTimeAscending();
+		 * 
+		 * driver.findElement(By.
+		 * xpath("//android.view.View[ @resource-id=\"departSort\"]")).click();
+		 * Thread.sleep(4000l);
+		 * searchFlightsPage.validateIfFlightsAreSortedByTimeDescending();
+		 */
+		  
+		 
+		
+		
+		
+		/*
+		 * searchFlightsPage.validateIfFlightsAreSortedByRateAscending_RoundTrip_Dep();
+		 * Thread.sleep(4000l); driver.findElement(By.
+		 * xpath("//android.view.View[ @resource-id=\"priceSortL\"]")).click();
+		 * Thread.sleep(4000l);
+		 * searchFlightsPage.validateIfFlightsAreSortedByRateDescending_RoundTrip_Dep();
+		 * 
+		 * 
+		 * Thread.sleep(4000l); driver.findElement(By.xpath(
+		 * "//android.view.View[@resource-id=\"departSortL\"]")).click();
+		 * Thread.sleep(4000l);
+		 * searchFlightsPage.validateIfFlightsAreSortedByTimeAscending_RoundTrip_Dep();
+		 * Thread.sleep(4000l); driver.findElement(By.xpath(
+		 * "//android.view.View[@resource-id=\"departSortL\"]")).click();
+		 * Thread.sleep(4000l);
+		 * searchFlightsPage.validateIfFlightsAreSortedByTimeDescending_RoundTrip_Dep();
+		 */
+		 Thread.sleep(4000l);
+		 searchFlightsPage.validateIfFlightsAreSortedByRateAscending_RoundTrip_Return();
+		
+		 driver.findElement(By.xpath("//android.view.View[ @resource-id=\"priceSortR\"]")).click();
+		 Thread.sleep(4000l);
+		 searchFlightsPage.validateIfFlightsAreSortedByRateDescending_RoundTrip_Return();
+		 
+		 driver.findElement(By.xpath("//android.view.View[@resource-id=\"departSortR\"]")).click();
+		 Thread.sleep(4000l);
+		 searchFlightsPage.validateIfFlightsAreSortedByTimeAscending_RoundTrip_Return();
+		 
+		 driver.findElement(By.xpath("//android.view.View[@resource-id=\"departSortR\"]")).click();
+		 Thread.sleep(4000l);
+		 searchFlightsPage.validateIfFlightsAreSortedByTimeDescending_RoundTrip_Return();
 
 	}
 }
